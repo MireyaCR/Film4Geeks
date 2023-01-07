@@ -1,0 +1,90 @@
+@media screen and (max-width: 600px) {
+    .show-div{
+        display:none;
+    }
+}
+
+.bg-color{
+    background-color: rgb(10, 25, 41);
+    color: rgb(210, 148, 53);
+}
+
+.title {
+    text-decoration:underline;
+    text-decoration-color: rgb(149,211,245);
+    margin-bottom: 2rem;
+    margin-top: 2rem;
+}
+
+
+@media(min-width:510px){
+    .format{
+    width: 500px;
+    text-align: end;
+    }
+}
+@media(max-width:510px){
+    .format{
+    text-align: center;
+    }
+}
+
+@media (min-width: 500px){
+.input {
+    background:none;
+    border:none;
+    border-bottom: 2px solid #95D3F5;
+    width: 500px; 
+    margin-bottom: 3rem;
+    color:white
+  }
+}
+
+@media (max-width: 500px){
+    .input {
+        background:none;
+        border:none;
+        border-bottom: 2px solid #95D3F5;
+        width: auto; 
+        margin-bottom: 3rem;
+        color:white
+      }
+    }
+
+@media (max-width: 600px){
+.button {
+    background-color:#D29435 ;
+    border-radius: 20px;
+    padding: 3px;
+    width: 30%;
+    font-weight: bold;
+    text-align: center;
+    
+    
+    
+}
+}
+@media (max-width: 2000px){
+    .button {
+        background-color:#D29435 ;
+        border-radius: 20px;
+        padding: 3px;
+        width: 30%;
+        font-weight: bold;
+        
+        
+    }
+    }
+
+p {
+    color:white
+}
+
+.register {
+    color: rgb(149,211,245);
+    cursor: pointer;
+}
+
+.color {
+    background-color:rgb(10, 25, 41) ;
+}
