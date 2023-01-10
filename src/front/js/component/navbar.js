@@ -10,7 +10,7 @@ export const Navbar = () => {
 	return (
 		<nav className="navbar navbar-expand-sm fixed-top">
            <a className="navbar-brand p-2" href="#">
-            <img src={logo} width={50} height={50}/>Film4Geeks</a>                
+            <img src={logo} width={50} height={50}/>Films4Geeks</a>                
 			<button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
              <span className="navbar-toggler-icon">
 		        <i className="fas fa-bars"></i>
