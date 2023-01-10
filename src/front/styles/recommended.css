@@ -1,0 +1,45 @@
+.viewtrailer{
+    min-height: 700px;
+    background-size: cover;
+    background-position:center;
+    position: relative;
+
+  }
+  .player{
+    width: 100%;
+    height: 600px;
+    position: absolute;
+  }
+
+
+
+  .info {
+    color: rgb(247, 247, 247);
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    
+  }
+
+.close {
+    position: absolute;
+    padding: 10px;
+    margin: 10px;
+    background-color: black;
+    border: 1px solid whitesmoke;
+    color: whitesmoke;
+    
+  }
+
+.close_one {
+    padding: 10px;
+    margin: 10px;
+    background-color: black;
+    border: 1px solid whitesmoke;
+    color: whitesmoke;
+}
+
+
+  .movie {
+    display: block;
+  }
