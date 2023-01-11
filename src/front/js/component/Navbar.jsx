@@ -8,7 +8,7 @@ import "../../styles/navbar.css";
 
 const Navbar = () => {
 	return (
-		<nav className="navbar p-0 navbar-expand-sm fixed-top">
+		<nav className="navbar p-0 navbar-expand-sm sticky-top">
            <a className="navbar-brand p-2" href="#">
             <img src={logo} width={50} height={50}/>Films4Geeks</a>                
 			<button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
