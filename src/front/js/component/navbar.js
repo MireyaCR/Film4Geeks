@@ -31,11 +31,12 @@ export const Navbar = () => {
                    </li>
                    <li className="nav-item">
                        <a className="nav-link link-warning" href="#">Starring</a>
-                   </li>  
+                   </li> 
                    <li className="nav-item">
-                       <a className="nav-link link-warning" href="#">Cerrar Sesión</a>
-                   </li>            
+                     <i className="fa fa-power-off p-2"></i>
+                   </li>                                          
                </ul>
+               
            </div>
 		</nav>
 	);
