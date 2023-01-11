@@ -33,7 +33,7 @@ export const Navbar = () => {
                        <a className="nav-link link-warning" href="#">Starring</a>
                    </li> 
                    <li className="nav-item">
-                     <i className="fa fa-power-off p-2"></i>
+                     <i className="fa fa-power-off p-1"></i>
                    </li>                                          
                </ul>
                
