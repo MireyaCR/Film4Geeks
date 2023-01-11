@@ -2,8 +2,9 @@ import React, {useContext, useState, useEffect} from "react";
 import { Context } from "../store/appContext";
 import { Link } from "react-router-dom";
 import AliceCarousel from 'react-alice-carousel';
-//import 'react-alice-carousel/lib/alice-carousel.css';
-
+import 'react-alice-carousel/lib/alice-carousel.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faHeart, faEye, faFlag, faCircleCheck } from '@fortawesome/free-solid-svg-icons'
 
 
 // import quotes from '/workspace/react-hello-webapp/quotes.json'
@@ -51,16 +52,17 @@ const ComingSoon = () => {
 						<img className="card-img-top" src={API_IMAGE+movie.poster_path} />
 					{/* </Link> */}
 					</div>
+					
 					<div className="d-flex justify-content-around p-1">
-						{/* {store.seen.includes(API_IMAGE+movie.poster_path) ? <span className="hovertext" data-hover="Added"> <CheckCircle className="added" /></span> : (
-						<button onClick={() => actions.setSeen(API_IMAGE+movie.poster_path)} className='seen' title="Add to your seen list"><Visibility /></button>
+						 {store.seen.includes(API_IMAGE+movie.poster_path) ? <span title="Already seen"> <FontAwesomeIcon icon={faCircleCheck} className="added" /></span> : (
+						<button onClick={() => actions.setSeen(API_IMAGE+movie.poster_path)} className='seen' title="Add to your seen list"><FontAwesomeIcon icon={faEye} /></button>
 						)}
-						{store.favourites.includes(API_IMAGE+movie.poster_path) ? <span className="hovertext" data-hover="Added"> <CheckCircle className="added" /></span> : (
-						<button onClick={() => actions.setFavourites(API_IMAGE+movie.poster_path)} className='fav' title="Add to your favourites list"><Favorite /></button>
+						{store.favourites.includes(API_IMAGE+movie.poster_path) ? <span title="Added to favourites"> <FontAwesomeIcon icon={faCircleCheck} className="added" /></span> : (
+						<button onClick={() => actions.setFavourites(API_IMAGE+movie.poster_path)} className='fav' title="Add to your favourites list"><FontAwesomeIcon icon={faHeart} /></button>
 						)}
-						{store.pending.includes(API_IMAGE+movie.poster_path) ? <span className="hovertext" data-hover="Added"> <CheckCircle className="added" /></span> : (
-						<button onClick={() => actions.setPending(API_IMAGE+movie.poster_path)} className='pended' title="Add to your pending list"><Tour /></button>
-						)} */}
+						{store.pending.includes(API_IMAGE+movie.poster_path) ? <span title="Added to movies I want to see"> <FontAwesomeIcon icon={faCircleCheck} className="added" /></span> : (
+						<button onClick={() => actions.setPending(API_IMAGE+movie.poster_path)} className='pended' title="Add to your pending list"><FontAwesomeIcon icon={faFlag} /></button>
+						)} 
 				</div>
 			</div>    
 			))}
