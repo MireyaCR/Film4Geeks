@@ -1,8 +1,9 @@
 import React, {useContext} from "react";
 import { Context } from '../store/appContext';
+import { Link } from "react-router-dom";
 import AliceCarousel from 'react-alice-carousel';
 import 'react-alice-carousel/lib/alice-carousel.css';
-import { DeleteOutline } from "@mui/icons-material";
+
 
 export const MyFavourites = () => {
 
@@ -31,9 +32,12 @@ export const MyFavourites = () => {
 				 
                 <div key={index}>
                         <div>
-                        <img src={favourite} className='grid'/>
+							<Link to={`/details/${index}`}>
+								<img src={favourite} className='grid' style={{height:"400px"}}/>
+							</Link>
+                        
                         </div>
-                        <button onClick={() => actions.removeFavourite(favourite)} key={index} className='remove-fav'><DeleteOutline /></button>
+                        <button onClick={() => actions.removeFavourite(favourite)} key={index} className='remove-fav'>Borrar</button>
                  </div>
 				
 			)
