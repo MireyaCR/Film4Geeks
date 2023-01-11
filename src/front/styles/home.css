@@ -1,7 +1,131 @@
-/*
-    home.css: This website contains selectors only used in home.css
+.grid {
+    margin-left: 5px;
+    margin-bottom: 10px;
+    display: flex;
+    flex-wrap: wrap;
+}
 
-    All pages share the styles on index.css but you should create 
-    one more css for each page that will contain the selected used 
-    on that page only (the ones not reused in other pages).
-*/
+.fav {
+    background: none;
+    border: none;
+    color:  rgb(255, 206, 71);
+}
+
+.fav:hover {
+    background: none;
+    border: none;
+    color: orange;
+}
+
+.seen {
+    background: none;
+    border: none;
+    color:  rgb(255, 206, 71);
+}
+
+.seen:hover {
+    background: none;
+    border: none;
+    color: orange;
+
+}
+
+.pended {
+    background: none;
+    border: none;
+    color:  rgb(255, 206, 71);
+
+}
+
+.pended:hover {
+    background: none;
+    border: none;
+    color: orange;
+}
+
+.added {
+    color: greenyellow;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.added:hover {
+    color: rgb(80, 123, 15);
+    background: none;
+    border: none;
+}
+
+.ind {
+    transition: all .4s ease-in-out; 
+}
+      
+ .ind:hover { 
+    transform: scale(0.9);   
+}
+
+.recommended {
+    display: flex;
+}
+
+.hovertext {
+    position: relative;
+   
+  }
+  
+  .hovertext:before {
+    content: attr(data-hover);
+    visibility: hidden;
+    opacity:0.33;
+    width: 100px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+  
+    border-radius: 5px;
+    padding: 5px 0;
+    transition: opacity 4s ease-in-out;
+
+    position: absolute;
+    z-index: 1;
+  
+  }
+  
+  .hovertext:hover:before {
+    opacity: 0.55;
+    visibility: visible;
+  }
+
+  .banner {
+    background-image: url('https://cdn.pixabay.com/photo/2013/07/12/17/22/curtain-152112_1280.png');
+    width: 100%;
+    min-height: 400px;
+    background-position:center;
+    object-fit: cover;
+    background-size: cover;
+  }
+
+  hr {
+    margin: 30px 0;
+    
+    height: 1px;
+    border: none;
+    background: -webkit-gradient(linear, 0 0, 100% 0, from(transparent), to(transparent), color-stop(50%, orange));
+}
+
+h2 {
+    font-family: 'Rowdies';
+    font-size: 40px;
+    font-weight: 100;
+}
+
+.button {
+    background-color: rgb(255, 206, 71);
+    padding: 5px;
+    border-radius: 10px;
+    position: absolute;
+}
+
+a {
+    position: relative;
+}

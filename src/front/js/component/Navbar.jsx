@@ -6,7 +6,7 @@ import logo from "../../img/LOGO.png";
 //include your index.scss file into the bundle
 import "../../styles/navbar.css";
 
-export const Navbar = () => {
+const Navbar = () => {
 	return (
 		<nav className="navbar p-0 navbar-expand-sm fixed-top">
            <a className="navbar-brand p-2" href="#">
@@ -41,3 +41,5 @@ export const Navbar = () => {
 		</nav>
 	);
 };
+
+export default Navbar;
