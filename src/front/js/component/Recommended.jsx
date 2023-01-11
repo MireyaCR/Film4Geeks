@@ -6,10 +6,11 @@ import YouTube from 'react-youtube';
 import '../../styles/recommended.css'
 
 
+
 const Recommended = () => {
 const {store, actions } = useContext(Context);
   const API_URL = "https://api.themoviedb.org/3";
-  const API_KEY = "c5083e57bd8e698a2a69427a666f125f";
+  const API_KEY = process.env.TMDB_API;
   const IMAGE_PATH = "https://image.tmdb.org/t/p/w1280";
 
   // variables de estado
@@ -24,7 +25,7 @@ const {store, actions } = useContext(Context);
    // const type = searchKey ? "search" : "discover";
     const {
       data: { results },
-    } = await axios.get('https://api.themoviedb.org/3/discover/movie?api_key=c5083e57bd8e698a2a69427a666f125f&vote_average.gte=8', 
+    } = await axios.get(`https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&vote_average.gte=8`, 
    );
     //console.log('data',results);
     //setSelectedMovie(results[0])

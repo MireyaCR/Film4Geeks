@@ -74,8 +74,11 @@
 	},
 	"dependencies": {
 		"@emotion/react": "^11.10.5",
-		"@material-ui/core": "^4.12.4",
-		"@material-ui/icons": "^4.11.3",
+		"@emotion/styled": "^11.10.5",
+		"@fortawesome/fontawesome-svg-core": "^6.2.1",
+		"@fortawesome/free-regular-svg-icons": "^6.2.1",
+		"@fortawesome/free-solid-svg-icons": "^6.2.1",
+		"@fortawesome/react-fontawesome": "^0.2.0",
 		"axios": "^1.2.2",
 		"material-icons": "^1.13.1",
 		"prop-types": "^15.6.1",
