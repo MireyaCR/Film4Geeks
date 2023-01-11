@@ -23,7 +23,7 @@ const NearestCinema = () => {
 	}, [])
 
 	const fetchPlace = async () => {
-		const URL = `https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/nearbysearch/json?key=${apiURL}&location=${currentLocation.latitude},${currentLocation.longitude}&radius=1000000&type=school`;
+		const URL = `https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/nearbysearch/json?key=${apiURL}&location=${currentLocation.latitude},${currentLocation.longitude}&radius=1000000&type=movie_theater`;
 		console.log(URL)
 		const CONFIG = {
 		  method: "GET",

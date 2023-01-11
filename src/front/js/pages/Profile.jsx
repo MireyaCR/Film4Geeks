@@ -2,6 +2,7 @@ import React from "react"
 import { Pie } from 'react-chartjs-2';
 import 'chart.js/auto';
 import profileCss from "../../styles/profile.css"
+import { MyFavourites } from "../component/MyFavourites.jsx";
 
 export const Profile = () => {
 
@@ -31,14 +32,15 @@ export const Profile = () => {
                 </div>
             </div>
             <div>
-                    <h3>My favourite films</h3>
-                </div>
-                <div>
-                    <h3>Films I want to see</h3>
-                </div>
-                <div>
-                    <h3>Films watched</h3>
-                </div>
+                <h3>My favourite films</h3>
+                <MyFavourites/>
+            </div>
+            <div>
+                <h3>Films I want to see</h3>
+            </div>
+            <div>
+                <h3>Films watched</h3>
+            </div>
         </div>
     )
 }

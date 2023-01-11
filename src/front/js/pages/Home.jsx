@@ -28,7 +28,7 @@ const Home = () => {
 		<hr></hr>
 		<Recommended />
 		<hr></hr>
-		<NearestCinema />
+		{/* <NearestCinema /> */}
 	
 		</section>
 
