@@ -1,0 +1,28 @@
+.navbar {
+  background-color: #132f4c;
+  color: #d29435;
+}
+
+.navbar-brand {
+  color: #d29435;
+}
+.navbar-brand:hover {
+  color: #d29435;
+}
+.navbar-toggler {
+  color: #d29435;
+}
+.navbar-toggler:focus {
+box-shadow: 0 0 0 0;
+}
+.nav-item{
+  text-align: center;
+  color:#d29435;
+}
+.nav-link{
+  padding: 0;
+  color:#d29435;
+}
+a:focus{
+  color:#d29435;
+}

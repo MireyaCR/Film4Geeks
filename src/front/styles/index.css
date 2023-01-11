@@ -1,3 +1,6 @@
-/* 
-    General Styles used on every website (Don't Repeat Yourself)
-*/
+@import url('https://fonts.googleapis.com/css2?family=Bigelow+Rules&family=Chakra+Petch:wght@300&family=Open+Sans:wght@300&display=swap');
+body {
+    color: rgb(255, 206, 71);
+    background-color:  #0A1929 ;
+    font-family: 'Rowdies';
+}

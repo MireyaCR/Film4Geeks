@@ -1,0 +1,58 @@
+.viewtrailer{
+  min-height: 700px;
+  background-size: cover;
+  background-position:center;
+  position: relative;
+
+}
+.player{
+  width: 100%;
+  height: 600px;
+  position: absolute;
+}
+
+
+
+.info {
+  color: rgb(247, 247, 247);
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  
+}
+
+.close {
+  position: absolute;
+  padding: 5px;
+  margin: 10px;
+  background-color: #d29435;
+  color: black;
+  border-radius: 20px;
+  width: 75px;
+  border: none;
+  
+}
+
+.close_one {
+  padding: 5px;
+  margin: 10px;
+  background-color: #d29435;
+  color: black;
+  border-radius: 20px;
+  width: 100px;
+  border: none;
+}
+
+.close:hover {
+background-color: orange;
+}
+
+.close_one:hover{
+background-color: orange;
+}
+
+
+.movie {
+  display: block;
+}
+

@@ -1,52 +1,103 @@
+const API_KEY = process.env.TMDB_API;
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
-			message: null,
-			demo: [
-				{
-					title: "FIRST",
-					background: "white",
-					initial: "white"
-				},
-				{
-					title: "SECOND",
-					background: "white",
-					initial: "white"
-				}
-			]
+			movies: [],
+			comingSoon: [],
+			favourites: [],
+			pending: [],
+			movieOfTheDay: [],
+			seen: [],
 		},
 		actions: {
-			// Use getActions to call a function within a fuction
-			exampleFunction: () => {
-				getActions().changeColor(0, "green");
-			},
 
-			getMessage: async () => {
-				try{
-					// fetching data from the backend
-					const resp = await fetch(process.env.BACKEND_URL + "/api/hello")
-					const data = await resp.json()
-					setStore({ message: data.message })
-					// don't forget to return something, that is how the async resolves
-					return data;
-				}catch(error){
-					console.log("Error loading message from backend", error)
+			fetchMovies: async () => {
+				const API_URL = `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&primary_release_year=2022&include_video=true`;
+
+				const CONFIG = {
+					method: "GET",
+					headers: {
+						"Content-type": "application/json"
+					}	
 				}
+				const response  = await fetch (API_URL, CONFIG)
+				const json = await response.json();
+				setStore({movies:json.results})
 			},
-			changeColor: (index, color) => {
-				//get the store
+
+			fetchComingSoon: async () => {
+				const API_URL = `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&primary_release_year=2023`;
+			
+				const CONFIG = {
+					method: "GET",
+					headers: {
+						"Content-type": "application/json"
+					}	
+				}
+				const response  = await fetch (API_URL, CONFIG)
+				const json = await response.json();
+			
+				console.log(">>items>>", json)
+				setStore({comingSoon:json.results})
+			},
+
+
+			fetchMovieOfTheDay: async () => {
+				const API_URL_2 = `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&vote_average.gte=8&append_to_response=videos`
+	
+				const CONFIG = {
+					method: "GET",
+					headers: {
+						"Content-type": "application/json"
+					}	
+				}
+				
+				const response  = await fetch (API_URL_2, CONFIG)
+				const json = await response.json();
+					//empty.push(json)
+				console.log(">>filtered>>", json)
+				setStore({movieOfTheDay:json.results})
+			},
+
+			setFavourites: (poster_path) => {
 				const store = getStore();
+				setStore({favourites: [...store.favourites, poster_path]})
+				console.log(store.favourites)
+			},
 
-				//we have to loop the entire demo array to look for the respective index
-				//and change its color
-				const demo = store.demo.map((elm, i) => {
-					if (i === index) elm.background = color;
-					return elm;
-				});
 
-				//reset the global store
-				setStore({ demo: demo });
-			}
+			removeFavourite: (item) => {
+				const store = getStore();
+				setStore({ favourites: store.favourites.filter(movie => movie !== item) });
+			},
+
+
+			setPending: (poster_path) => {
+				const store = getStore();
+				setStore({pending: [...store.pending, poster_path]})
+				console.log(store.pending)
+			},
+
+			setSeen: (poster_path) => {
+				
+				const store = getStore();
+				setStore({seen: [...store.seen, poster_path]})
+				
+			},
+
+			removeSeen: (item) => {
+				const store = getStore();
+				setStore({ seen: store.seen.filter(movie => movie !== item) });
+			},
+
+			removePending: (item) => {
+				const store = getStore();
+				setStore({ pending: store.pending.filter(movie => movie !== item) });
+			},
+
+				
+			
+
 		}
 	};
 };
