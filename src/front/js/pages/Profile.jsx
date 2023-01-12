@@ -3,6 +3,7 @@ import { Pie } from 'react-chartjs-2';
 import 'chart.js/auto';
 import profileCss from "../../styles/profile.css"
 import { MyFavourites } from "../component/MyFavourites.jsx";
+import { FilmsWantSee } from "../component/FilmsWantSee.jsx";
 
 export const Profile = () => {
 
@@ -37,6 +38,7 @@ export const Profile = () => {
             </div>
             <div>
                 <h3>Films I want to see</h3>
+                <FilmsWantSee/>
             </div>
             <div>
                 <h3>Films watched</h3>

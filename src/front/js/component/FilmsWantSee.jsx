@@ -6,7 +6,7 @@ import 'react-alice-carousel/lib/alice-carousel.css';
 import '../../styles/profileCards.css'
 
 
-export const MyFavourites = () => {
+export const FilmsWantSee = () => {
 
     const {store, actions } = useContext(Context);
 
@@ -26,15 +26,18 @@ export const MyFavourites = () => {
 	};
 
     return (
+
         <div className="text-center d-flex flex-wrap">
             <AliceCarousel responsive={responsive} autoPlay autoPlayInterval="1500"> 
         {
-			store.favourites.map((favourite, index) => 
+			store.pending.map((favourite, index) => 
 				 
                 <div key={index}>
                         <div className='ind me-1'>
 							<Link to={`/details/${index}`}>
-								<img src={favourite} className='grid' style={{height:"400px"}}/>
+                                
+								    <img src={favourite} className='grid' style={{height:"400px"}}/>
+                                
 							</Link>
                         
                         </div>
