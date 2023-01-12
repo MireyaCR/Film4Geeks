@@ -10,24 +10,61 @@ import { PendingMovies } from "../component/PendingMovies.jsx";
 export const Profile = () => {
 
     const {store, actions } = useContext(Context);
+    const [genres, setGenres] = useState([])
 
-    const [films, setFilms] = useState([])
+    const typesGenres = {
+        "action":28,
+        "adventure":12,
+        "animation":16,
+        "comedy":35,
+        "crime":80,
+        "documentary":99,
+        "drama":18,
+        "family":10751,
+        "fantasy":14,
+        "history":36,
+        "horror":27,
+        "music":10402,
+        "mistery":9648,
+        "romance":10749,
+        "science-fiction":878,
+        "TV movie":10770,
+        "thriller":53,
+        "war":10752,
+        "western":37
+    }
 
-    useEffect(() => {
-        fetch("https://imdb-api.com/en/API/ComingSoon/k_1zlv93ae")
-        .then((response) => response.json())
-        .then((data) => {
-          setFilms(data)
-        });
-    }, [])
+    console.log("esto es array>>>>>>>>>",store.seen)
 
-
-
+    
  
+    useEffect(()=> {
+    //     setGenres(Object.keys(typesGenres))
+    //     for(let i = 0; i<store.seen.length; i++) {
+    //         for(let j=0; j<store.seen[i].length;j++){
+    //             if(store.seen[i][1]===genres) {
+    //                  console.log(store.seen[i][1])
+    //             }
+                
+    //         }
+    //     }
 
+    Object.entries(typesGenres)
+    .forEach(([key,value])=> {
+        if(key[value]==store.seen) {
+            console.log(value)
+        }
+    })
+
+    },[store.seen])
+
+  
 
    
 
+   
+
+   
 
     const data= {
         labels: ["adventure","terror","thriller","action"],

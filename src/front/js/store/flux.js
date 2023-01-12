@@ -78,10 +78,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 				console.log(store.pending)
 			},
 
-			setSeen: (poster_path) => {
+			setSeen: (array) => {
 				
 				const store = getStore();
-				setStore({seen: [...store.seen, poster_path]})
+				setStore({seen: [...store.seen, array]})
 				
 			},
 

@@ -29,12 +29,12 @@ export const PendingMovies = () => {
         <div className="text-center d-flex flex-wrap">
             <AliceCarousel responsive={responsive} autoPlay autoPlayInterval="1500"> 
         {
-			store.pending.map((favourite, index) => 
+			store.pending.map((pending, index) => 
 				 
                 <div key={index}>
                         <div className='ind me-1'>
 							<Link to={`/details/${index}`}>
-								<img src={favourite} className='grid' style={{height:"400px"}}/>
+								<img src={pending} className='grid' style={{height:"400px"}}/>
 							</Link>
                         
                         </div>

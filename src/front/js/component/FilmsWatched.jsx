@@ -10,6 +10,7 @@ export const FilmsWatched = () => {
 
     const {store, actions } = useContext(Context);
 
+
     const responsive = {
 		2000: {
 		items: 7,
@@ -30,13 +31,13 @@ export const FilmsWatched = () => {
         <div className="text-center d-flex flex-wrap">
             <AliceCarousel responsive={responsive} autoPlay autoPlayInterval="1500"> 
         {
-			store.seen.map((favourite, index) => 
+			store.seen.map((seen, index) => 
 				 
                 <div key={index}>
                         <div className='ind me-1'>
 							<Link to={`/details/${index}`}>
                                 
-								    <img src={favourite} className='grid' style={{height:"400px"}}/>
+								    <img src={seen[0]} className='grid' style={{height:"400px"}}/>
                                 
 							</Link>
                         

@@ -10,6 +10,8 @@ export const MyFavourites = () => {
 
     const {store, actions } = useContext(Context);
 
+	
+
     const responsive = {
 		2000: {
 		items: 7,
@@ -33,14 +35,11 @@ export const MyFavourites = () => {
 				 
                 <div key={index}>
                         <div className='ind me-1'>
-							<Link to={`/details/${index}`}>
+							<Link to={`/details_favourites/${index}`}>
 								<img src={favourite} className='grid' style={{height:"400px"}}/>
 							</Link>
-                        
-                        </div>
-                       
-                 </div>
-				
+                        </div> 
+                </div>
 			)
 		}
         </AliceCarousel>

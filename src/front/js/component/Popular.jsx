@@ -54,7 +54,7 @@ const Popular = () => {
 				<div className="d-flex justify-content-around p-1 position-relative">
 				
 				{store.seen.includes(API_IMAGE+movie.poster_path) ? <span title="Already seen"> <i class="fas fa-check-circle"></i></span> : (
-						<button onClick={() => actions.setSeen(API_IMAGE+movie.poster_path)} className='seen' title="Add to your seen list"><i class="fas fa-check-circle added"></i></button>
+						<button onClick={() => actions.setSeen([API_IMAGE+movie.poster_path,movie.genre_ids])} className='seen' title="Add to your seen list"><i class="fas fa-check-circle added"></i></button>
 						)}
 						{store.favourites.includes(API_IMAGE+movie.poster_path) ? <span title="Added to favourites"><i class="fas fa-check-circle"></i></span> : (
 						<button onClick={() => actions.setFavourites(API_IMAGE+movie.poster_path)} className='fav' title="Add to your favourites list"><i class="fas fa-check-circle"></i></button>

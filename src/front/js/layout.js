@@ -17,6 +17,8 @@ import { Profile } from "./pages/Profile.jsx";
 
 import { Details } from "./pages/Details.js";  //Borrar antes de pushear
 
+import { DetailsFavourites } from "./pages/DetailsFavourites.js";
+
 //create your first component
 const Layout = () => {
     //the basename is used when your project is published in a subdirectory and not in the root of the domain
@@ -37,6 +39,7 @@ const Layout = () => {
                         <Route element={<SignUp/>} path="/signup" />
                         <Route element={<Profile/>} path="/profile"/>
                         <Route path="/details/:index" element={<Details />} /> {/* /*Borrar antes de pushear/* */}
+                        <Route path="/details_favourites/:index" element={<DetailsFavourites />} /> {/* /*Borrar antes de pushear/* */}
                     </Routes>
                     <Footer />
                 </ScrollToTop>
