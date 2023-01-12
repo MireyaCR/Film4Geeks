@@ -6,7 +6,7 @@ import 'react-alice-carousel/lib/alice-carousel.css';
 import '../../styles/profileCards.css'
 
 
-export const FilmsWantSee = () => {
+export const FilmsWatched = () => {
 
     const {store, actions } = useContext(Context);
 
@@ -30,7 +30,7 @@ export const FilmsWantSee = () => {
         <div className="text-center d-flex flex-wrap">
             <AliceCarousel responsive={responsive} autoPlay autoPlayInterval="1500"> 
         {
-			store.pending.map((favourite, index) => 
+			store.seen.map((favourite, index) => 
 				 
                 <div key={index}>
                         <div className='ind me-1'>
