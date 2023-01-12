@@ -1,0 +1,14 @@
+.grid {
+    margin-left: 1px;
+    margin-bottom: 10px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.ind {
+    transition: all .4s ease-in-out; 
+}
+      
+ .ind:hover { 
+    transform: scale(0.9);   
+}
