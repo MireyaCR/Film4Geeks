@@ -8,14 +8,14 @@ const Detailspopular = () => {
 
 	const { store } = useContext(Context);
 	let params = useParams()
-	
+	console.log(store.movie)
 	return (
         <div className="container">       
             <h1>{store.movies[params.index].title}</h1> 
             <div className="row ms-2">imagenes
                 <img src={`https://image.tmdb.org/t/p/w500/${store.movies[params.index].poster_path}`} alt="POSTER"/> 
                 <button>reproducir trailer</button>
-                <img src="" alt="Cartel"/>                
+                <img src={`https://image.tmdb.org/t/p/w500/${store.movies[params.index].cartel_path}`} alt="CARTEL"/>                
             </div>  
             <div className="row ms-2">iconos derecha e izquierda
                 <div >
