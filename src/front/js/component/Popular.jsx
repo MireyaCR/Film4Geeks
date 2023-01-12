@@ -47,9 +47,9 @@ const Popular = () => {
 			{store.movies.map((movie, index) => (   
 			<div key={index}>   
 				<div key={index} className='ind me-1'>
-					{/* <Link to={`/details/${index}`}> */}
+					<Link to={`/details/${index}`}> 
 						<img className="card-img-top" src={API_IMAGE+movie.poster_path} />
-					{/* </Link>  */}
+					</Link>  
 				</div>
 				<div className="d-flex justify-content-around p-1 position-relative">
 				
