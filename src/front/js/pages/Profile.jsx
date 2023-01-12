@@ -1,4 +1,5 @@
-import React from "react"
+import React,{useContext, useEffect, useState} from "react"
+import { Context } from '../store/appContext';
 import { Pie } from 'react-chartjs-2';
 import 'chart.js/auto';
 import profileCss from "../../styles/profile.css"
@@ -8,6 +9,26 @@ import { PendingMovies } from "../component/PendingMovies.jsx";
 
 export const Profile = () => {
 
+    const {store, actions } = useContext(Context);
+
+    const [films, setFilms] = useState([])
+
+    useEffect(() => {
+        fetch("https://imdb-api.com/en/API/ComingSoon/k_1zlv93ae")
+        .then((response) => response.json())
+        .then((data) => {
+          setFilms(data)
+        });
+    }, [])
+
+
+
+ 
+
+
+   
+
+
     const data= {
         labels: ["adventure","terror","thriller","action"],
         datasets:[{   //porcentaje de cada uno e los parametros
@@ -16,7 +37,7 @@ export const Profile = () => {
         }]
     }
 
-    const opciones= {
+    const options= {
         responsive:true
     }
 
@@ -30,7 +51,7 @@ export const Profile = () => {
                 </div>
                 <div>
                     <h3>Your favourite Genders:</h3>
-                <Pie className="mt-3" data={data} options={opciones} />
+                <Pie className="mt-3" data={data} options={options} />
                 </div>
             </div>
             <div>

@@ -38,6 +38,9 @@ const ComingSoon = () => {
 		},
 	};
 
+	
+
+
 	return (
 	
 	<div className="container mt-5">
