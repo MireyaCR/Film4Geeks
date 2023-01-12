@@ -4,16 +4,16 @@ import { useParams } from "react-router-dom";
 
 const API_IMAGE = 'https://image.tmdb.org/t/p/w500/'
 
-const Details = () => {
+const Detailspopular = () => {
 
 	const { store } = useContext(Context);
 	let params = useParams()
 	
 	return (
         <div className="container">       
-            <h1>{store.movies[params.index].title}</h1>   
+            <h1>{store.movies[params.index].title}</h1> 
             <div className="row ms-2">imagenes
-                <img src={`https://image.tmdb.org/t/p/w500/${store.movies[params.index].poster_path}`} alt=""/>
+                <img src={`https://image.tmdb.org/t/p/w500/${store.movies[params.index].poster_path}`} alt="POSTER"/> 
                 <button>reproducir trailer</button>
                 <img src="" alt="Cartel"/>                
             </div>  
@@ -46,7 +46,7 @@ const Details = () => {
                 </div>estrellas de la derecha        
             </div>
             <div className="row ms-2">
-                <p>{store.movies[params.index].overview}</p>
+                <p>{store.movies[params.index].overview}</p> 
                 <h6>CLASIFICACION</h6>
                 <p>generos: terror, comedia</p>
                 <h6>DIRECTOR</h6>
@@ -59,4 +59,4 @@ const Details = () => {
 	</div>
     );
 };
-export default Details
+export default Detailspopular
