@@ -44,14 +44,14 @@
 }
 
 .added {
-    color: greenyellow;
+    color: orange;
     background: none;
     border: none;
     cursor: pointer;
 }
 
 .added:hover {
-    color: rgb(80, 123, 15);
+    color: rgb(104, 61, 0);
     background: none;
     border: none;
 }
