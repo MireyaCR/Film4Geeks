@@ -3,8 +3,8 @@ import { Context } from "../store/appContext";
 import { Link } from "react-router-dom";
 import AliceCarousel from 'react-alice-carousel';
 import 'react-alice-carousel/lib/alice-carousel.css';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faHeart, faEye, faFlag, faCircleCheck } from '@fortawesome/free-solid-svg-icons'
+//import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+//import { faHeart, faEye, faFlag, faCircleCheck } from '@fortawesome/free-solid-svg-icons'
 
 
 // import quotes from '/workspace/react-hello-webapp/quotes.json'
@@ -54,6 +54,7 @@ const ComingSoon = () => {
 					</div>
 					
 					<div className="d-flex justify-content-around p-1">
+
 						 {store.seen.includes(API_IMAGE+movie.poster_path) ? <span title="Already seen" className="added"><i className="fas fa-check-circle"></i></span> : (
 						<button onClick={() => actions.setSeen(API_IMAGE+movie.poster_path)} className='seen' title="Add to your seen list"><i className="far fa-check-circle"></i></button>
 						)}
@@ -62,6 +63,7 @@ const ComingSoon = () => {
 						)}
 						{store.pending.includes(API_IMAGE+movie.poster_path) ? <span title="Added to movies I want to see" className="added"><i className="fas fa-flag"></i></span> : (
 						<button onClick={() => actions.setPending(API_IMAGE+movie.poster_path)} className='pended' title="Add to your pending list"><i className="far fa-flag"></i></button>
+
 						)} 
 				</div>
 			</div>    
