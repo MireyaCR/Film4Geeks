@@ -11,7 +11,8 @@ export const Profile = () => {
 
     const {store, actions } = useContext(Context);
     const [genres, setGenres] = useState([])
-
+    const [prueba, setPrueba] = useState([])
+ 
     const typesGenres = {
         "action":28,
         "adventure":12,
@@ -36,38 +37,51 @@ export const Profile = () => {
 
     console.log("esto es array>>>>>>>>>",store.seen)
 
-    
- 
-    useEffect(()=> {
-    //     setGenres(Object.keys(typesGenres))
-    //     for(let i = 0; i<store.seen.length; i++) {
-    //         for(let j=0; j<store.seen[i].length;j++){
-    //             if(store.seen[i][1]===genres) {
-    //                  console.log(store.seen[i][1])
-    //             }
-                
-    //         }
-    //     }
-
-    Object.entries(typesGenres)
-    .forEach(([key,value])=> {
-        if(key[value]==store.seen) {
-            console.log(value)
+    const contador = []
+    const funcion=()=>{
+       
+        for(let i = 0; i<store.seen.length; i++) {
+            for(let j=0; j<store.seen[i].length;j++){
+            }
+            contador.push(store.seen[i][1])
+            
         }
-    })
+        return contador
+    }
 
+    const funcion2 = (array) => {
+        const array3 = array.join()
+        return array3
+    }
+    const var4 = [funcion2(prueba)]
+    console.log("esto es el var4",var4)
+
+    const funcion3 = (array) => {
+        for(let i=0; i<array.length; i++) {
+            if(array[i].includes("16")) {
+                return "animation"
+            }
+        }
+    }
+
+    const var5 =funcion3(var4)
+    
+    useEffect(()=> {
+        setGenres(Object.keys(typesGenres))
+        setPrueba(funcion())
+        
     },[store.seen])
 
-  
+    console.log("genres",genres)
+    console.log("store.seen",store.seen)
 
-   
+  console.log("esto es prueba",prueba)
+  console.log("este es var5",var5)
 
-   
-
-   
+ 
 
     const data= {
-        labels: ["adventure","terror","thriller","action"],
+        labels: [var5],
         datasets:[{   //porcentaje de cada uno e los parametros
             data:[75.65, 80, 87,99 ],  //porcentajes
             backgroundColor: ["green","red","yellow","#D29435"] //fondo
