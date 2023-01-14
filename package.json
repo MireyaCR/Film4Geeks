@@ -80,6 +80,7 @@
 		"@fortawesome/free-solid-svg-icons": "^6.2.1",
 		"@fortawesome/react-fontawesome": "^0.2.0",
 		"axios": "^1.2.2",
+		"boring-avatars": "^1.7.0",
 		"material-icons": "^1.13.1",
 		"prop-types": "^15.6.1",
 		"react": "^16.8.4",

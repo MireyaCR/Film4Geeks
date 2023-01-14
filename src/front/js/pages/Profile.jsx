@@ -7,6 +7,8 @@ import { MyFavourites } from "../component/MyFavourites.jsx";
 import { FilmsWatched } from "../component/FilmsWatched.jsx";
 import { PendingMovies } from "../component/PendingMovies.jsx";
 
+
+
 export const Profile = () => {
 
     const {store, actions } = useContext(Context);
@@ -84,27 +86,48 @@ export const Profile = () => {
         labels: categories,
         datasets:[{   //porcentaje de cada uno e los parametros
             data:percentages,  //porcentajes
-            backgroundColor: ["green","red","blue","orange","purple","brown","grey","pink"] //fondo
+            backgroundColor: [
+            'rgba(255, 99, 132, 0.6)',
+            'rgba(54, 162, 235, 0.6)',
+            'rgba(255, 206, 86, 0.6)',
+            'rgba(75, 192, 192, 0.6)',
+            'rgba(153, 102, 255, 0.6)',
+            'rgba(255, 159, 64, 0.6)',
+            'rgba(255, 99, 132, 0.6)',
+            'rgba(54, 162, 235, 0.6)',
+            'rgba(255, 206, 86, 0.6)',
+            'rgba(75, 192, 192, 0.6)',
+            'rgba(153, 102, 255, 0.6)'] //fondo
         }]
     }
     const options= {
-        responsive:true
+        responsive:true,
+        
     }
 
     return (
 
         <div className="principal-color">
             <div className="d-flex">
-                <div style={{width:"60%"}}>
+                
+                <div className=" mt-5 " style={{width:"60%", marginLeft:"150px"}}>
                     <h3 className="line">Name: <h4 style={{color:"white"}} >David</h4></h3>
                     <h3 className="line">Email: <h4 style={{color:"white"}}>dagalisteo@gmail.com</h4></h3>
                 </div>
 
-                <div>
-                    <h3>Your favourite Genders:</h3>
-                <Pie className="mt-3" data={data} options={options} />
+                <div className="avatars  mt-5">
+                    <img src="https://source.boringavatars.com/beam/Maria%20Mitchell?colors=264653,2a9d8f,e9c46a,f4a261,e76f51" alt=""/>
                 </div>
             </div>
+
+            <div className="d-flex justify-content-center">
+            
+                <div >
+                <h3 style={{marginTop:"3rem"}}>Your favourite Genders:</h3>
+                <Pie  className="mt-3" data={data} options={options} />
+                </div>
+            </div>
+            
 
             <div>
                 <h3>My favourite films</h3>
