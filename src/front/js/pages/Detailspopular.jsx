@@ -1,8 +1,9 @@
 import React, { useContext } from "react";
 import { Context } from "../store/appContext";
 import { useParams } from "react-router-dom";
-import { API_IMAGE } from './API_IMAGE'
+import { API_IMAGE } from "/workspace/Film4Geeks/src/front/js/services/API_IMAGE.js"
 
+import "../../styles/detailspopular.css";
 const Detailspopular = () => {
 
 	const { store } = useContext(Context);
@@ -14,19 +15,10 @@ const Detailspopular = () => {
         <div className="row">
             <h5 className="mb-3">{store.movies[params.index].title}</h5>
          </div> 
-         <div className="row border-rounded position-relative"style={{width: "400px", height: "500px"}}>
-            <img className="img-fluid border-rounded" src={`${API_IMAGE}${store.movies[params.index].poster_path}`} alt="image1" style={{width: "100%", height: "100%"}} />
-            <button className="btn-sm rounded-pill border-warning fas fa-play position-absolute" style={{
-                position: "absolute",
-                top: "7%",
-                left: "87%",
-                transform: "translate(-50%, -50%)",
-                zIndex: "1",
-                width:"3em",
-                height:"2em"
-            }} />
+            <div className="row-image border-rounded position-relative">
+            <img className="img-fluid" src={`${API_IMAGE}${store.movies[params.index].poster_path}`} alt="image1"/>
+            <button className="play-button fas fa-play"></button>
         </div>
-
             <div className="row" style={{width: "400px", height: "500px"}}>
                 <div >
                     <span className="fas fa-check-circle ml-2 p-1 float-left"></span>
