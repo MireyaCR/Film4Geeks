@@ -21,16 +21,16 @@ const Detailspopular = () => {
         </div>
         <div className="row" style={{width: "400px", height: "45px"}}>
             <div>
-                <span className="fas fa-check-circle ml-3 p-1"></span>
-                <span className="fas fa-star ml-3 p-1"></span>
-                <span className="fas fa-flag ml-3 p-1"></span> 
-                <span className="far fa-clock p-1"></span>                
+                <span className="fas fa-check-circle ml-3 mt-1 p-2"></span>
+                <span className="fas fa-star ml-3 mt-1 p-2"></span>
+                <span className="fas fa-flag ml-3 mt-1 p-2"></span> 
+                <span className="far fa-clock mt-1 p-2"></span>                
             </div>
         </div>
-        <div className="row"> 
+        <div className="row mt-2"> 
             <h6>SYNOPSIS</h6>                
         </div>
-        <div className="row">
+        <div className="row ">
             <p>{store.movies[params.index].overview}</p> 
             <h6>FILM RATING</h6>
             <p>clasificación</p>
