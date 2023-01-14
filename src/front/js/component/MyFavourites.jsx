@@ -28,21 +28,39 @@ export const MyFavourites = () => {
 	};
 
     return (
-        <div className="text-center d-flex flex-wrap">
-            <AliceCarousel responsive={responsive} autoPlay autoPlayInterval="1500"> 
-        {
-			store.favourites.map((favourite, index) => 
+    //     <div className="text-center d-flex flex-wrap">
+    //         <AliceCarousel responsive={responsive} autoPlay autoPlayInterval="1500"> 
+    //     {
+	// 		store.favourites.map((favourite, index) => 
 				 
-                <div key={index}>
-                        <div className='ind me-1'>
-							<Link to={`/details_favourites/${index}`}>
-								<img src={favourite} className='grid' style={{height:"400px"}}/>
-							</Link>
-                        </div> 
-                </div>
-			)
-		}
-        </AliceCarousel>
-    </div>
-    )
-}
+    //             <div key={index}>
+    //                     <div className='ind me-1'>
+	// 						<Link to={`/details_favourites/${index}`}>
+	// 							<img src={favourite} className='grid' style={{height:"400px"}}/>
+	// 						</Link>
+    //                     </div> 
+    //             </div>
+	// 		)
+	// 	}
+    //     </AliceCarousel>
+    // </div>
+
+<div className="container mt-5">
+		
+		<div className="d-flex justify-content-around mx-2">
+			<AliceCarousel responsive={responsive} autoPlay autoPlayInterval="1500"> 
+			{store.favourites.map((favourite, index) => (   
+			<div key={index}>   
+				<div key={index} className='ind me-1'>
+					{/* <Link to={`/details/${index}`}> */}
+						<img className="card-img-top" src={favourite}/>
+					{/* </Link>  */}
+				</div>
+				
+			</div>   
+			))}
+			</AliceCarousel>
+		</div>
+		</div>)}
+
+    
