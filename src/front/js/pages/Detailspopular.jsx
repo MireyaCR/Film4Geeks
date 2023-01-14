@@ -1,8 +1,7 @@
 import React, { useContext } from "react";
 import { Context } from "../store/appContext";
 import { useParams } from "react-router-dom";
-
-const API_IMAGE = 'https://image.tmdb.org/t/p/w500/'
+import { API_IMAGE } from './API_IMAGE'
 
 const Detailspopular = () => {
 
@@ -16,7 +15,7 @@ const Detailspopular = () => {
             <h5 className="mb-3">{store.movies[params.index].title}</h5>
          </div> 
          <div className="row border-rounded position-relative"style={{width: "400px", height: "500px"}}>
-            <img className="img-fluid border-rounded" src={`https://image.tmdb.org/t/p/w500/${store.movies[params.index].poster_path}`} alt="image1" style={{width: "100%", height: "100%"}} />
+            <img className="img-fluid border-rounded" src={`${API_IMAGE}${store.movies[params.index].poster_path}`} alt="image1" style={{width: "100%", height: "100%"}} />
             <button className="btn-sm rounded-pill border-warning fas fa-play position-absolute" style={{
                 position: "absolute",
                 top: "7%",
@@ -33,7 +32,7 @@ const Detailspopular = () => {
                     <span className="fas fa-check-circle ml-2 p-1 float-left"></span>
                     <span className="fas fa-star ml-2 p-1 float-left"></span>
                     <span className="fas fa-flag ml-2 p-1 float-left"></span>  
-                     
+
                     <span className="far fa-clock p-1 float-right"></span>                
                 </div>
             </div>
