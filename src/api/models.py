@@ -19,8 +19,8 @@ class User(db.Model):
 
 class Favourites(db.Model):
     id = db.Column(db.Integer, primary_key=True) 
-    userId = db.Column(db.Integer, db.Foreignkey("user.id"))
-    filmId = db.Column(db.Integer, db.Foreignkey("film.id"))
+    userId = db.Column(db.Integer, db.ForeignKey("user.id"))
+    filmId = db.Column(db.Integer, db.ForeignKey("film.id"))
     fav_films = db.relationship(Film)
     user = db.relationship(User)
 
@@ -37,8 +37,8 @@ class Favourites(db.Model):
 
 class Seen(db.Model):
     id = db.Column(db.Integer, primary_key=True) 
-    userId = db.Column(db.Integer, db.Foreignkey("user.id"))
-    filmId = db.Column(db.Integer, db.Foreignkey("film.id"))
+    userId = db.Column(db.Integer, db.ForeignKey("user.id"))
+    filmId = db.Column(db.Integer, db.ForeignKey("film.id"))
     seen_films = db.relationship(Film)
     user = db.relationship(User)
 
@@ -55,8 +55,8 @@ class Seen(db.Model):
 
 class Pending(db.Model):
     id = db.Column(db.Integer, primary_key=True) 
-    userId = db.Column(db.Integer, db.Foreignkey("user.id"))
-    filmId = db.Column(db.Integer, db.Foreignkey("film.id"))
+    userId = db.Column(db.Integer, db.ForeignKey("user.id"))
+    filmId = db.Column(db.Integer, db.ForeignKey("film.id"))
     pending_films = db.relationship(Film)
     user = db.relationship(User)
 
