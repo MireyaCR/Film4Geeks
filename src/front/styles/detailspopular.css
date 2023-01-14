@@ -18,19 +18,18 @@
     left: 95%;
     transform: translate(-50%, -50%);
     z-index: 1;
-    width: 3em; /* Aumentar tamaño del botón */
+    width: 3em; 
     height: 3em;
-    border-radius: 50%; /* Agregar borde redondeado */
+    border-radius: 50%; 
     border: none;
     background-size: cover;
-    color: white; /* Utilizar un color de texto atractivo */
-    box-shadow: 0px 0px 10px 2px #f0ad4e; /* Agregar sombra */
+    color:  #f0ad4e; 
+    box-shadow: none; 
 }
-.play-button:hover { /* Agregar efecto hover */
-        box-shadow: none; /* Eliminar sombra */
-    
+.play-button:hover { 
+        box-shadow: 0px 0px 10px 2px #f0ad4e;   
 }
-.play-button:active { /* Agregar transición suave */
-    transform: scale(1);
-    transition: transform 0.2s ease-out;
+
+.far.fa-clock {
+    float: right;
 }

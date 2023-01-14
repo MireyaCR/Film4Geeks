@@ -19,30 +19,28 @@ const Detailspopular = () => {
             <img className="img-fluid" src={`${API_IMAGE}${store.movies[params.index].poster_path}`} alt="image1"/>
             <button className="play-button fas fa-play"></button>
         </div>
-            <div className="row" style={{width: "400px", height: "500px"}}>
-                <div >
-                    <span className="fas fa-check-circle ml-2 p-1 float-left"></span>
-                    <span className="fas fa-star ml-2 p-1 float-left"></span>
-                    <span className="fas fa-flag ml-2 p-1 float-left"></span>  
-
-                    <span className="far fa-clock p-1 float-right"></span>                
-                </div>
+        <div className="row" style={{width: "400px", height: "45px"}}>
+            <div>
+                <span className="fas fa-check-circle ml-3 p-1"></span>
+                <span className="fas fa-star ml-3 p-1"></span>
+                <span className="fas fa-flag ml-3 p-1"></span> 
+                <span className="far fa-clock p-1"></span>                
             </div>
-            <div className="row ms-2"> 
-                <h6>SYNOPSIS</h6>                
-            </div>
-            <div className="row ms-2">
-                <p>{store.movies[params.index].overview}</p> 
-                <h6>FILM RATING</h6>
-                <p>clasificación</p>
-                <h6>GENRE</h6>                
-                <p>nombre de los actores</p>
-                <h6>DIRECTOR:</h6>
-                <p>nombre del director</p>
-                <h6>CASTING</h6>
-                <p>nombre de los actores</p>
-                
-            </div>            
+        </div>
+        <div className="row"> 
+            <h6>SYNOPSIS</h6>                
+        </div>
+        <div className="row">
+            <p>{store.movies[params.index].overview}</p> 
+            <h6>FILM RATING</h6>
+            <p>clasificación</p>
+            <h6>GENRE</h6>                
+            <p>nombre de los actores</p>
+            <h6>DIRECTOR:</h6>
+            <p>nombre del director</p>
+            <h6>CASTING</h6>
+            <p>nombre de los actores</p>
+         </div>            
 	</div>
     );
 };
