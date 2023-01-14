@@ -15,18 +15,18 @@ const Detailspopular = () => {
         <div className="row">
             <h5 className="mb-3">{store.movies[params.index].title}</h5>
          </div> 
-         <div className="row position-relative"style={{width: "400px", height: "500px"}}>
-    <img src={`https://image.tmdb.org/t/p/w500/${store.movies[params.index].poster_path}`} alt="image1" className="img-fluid border-rounded "style={{width: "100%", height: "100%"}} />
-    <button className="btn border-circle btn-warning fas fa-play position-absolute" style={{
-        position: "absolute",
-        top: "50%",
-        left: "50%",
-        transform: "translate(-50%, -50%)",
-        zIndex: "1",
-        width:"5em",
-        height:"5em"
-    }} />
-</div>
+         <div className="row border-rounded position-relative"style={{width: "400px", height: "500px"}}>
+            <img className="img-fluid" src={`https://image.tmdb.org/t/p/w500/${store.movies[params.index].poster_path}`} alt="image1" style={{width: "100%", height: "100%"}} />
+            <button className="btn-sm rounded-pill border-warning fas fa-play position-absolute" style={{
+                position: "absolute",
+                top: "90%",
+                left: "18%",
+                transform: "translate(-50%, -50%)",
+                zIndex: "1",
+                width:"3em",
+                height:"2em"
+            }} />
+        </div>
 
             <div className="row">
                 <div >
