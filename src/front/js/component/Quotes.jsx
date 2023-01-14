@@ -1,41 +1,36 @@
-import React, {useContext, useEffect} from "react";
+import React, {useContext, useEffect,useState} from "react";
 import { Context } from "../store/appContext";
 import quotes from '/workspace/Film4Geeks/quotes.json'
 import 'react-alice-carousel/lib/alice-carousel.css';
 
-
-
 import '../../styles/home.css'
 
 const Quotes = () => {
-	
-	const quoteStart = Math.floor(Math.random()*quotes.length)
-	const quoteEnd = quoteStart + 1
-	const {store, actions } = useContext(Context);
 
+	const [quote, setQuote] = useState()
+
+	useEffect(()=> {
+		const quoteStart = Math.floor(Math.random()*quotes.length)
+		setQuote(quotes[quoteStart])
+	},[])
 
 	return (
 	
-	<div className="text-center">
-	
-		<div>
-			{
-				quotes.slice(quoteStart, quoteEnd).map((quote, index) => {
-					return (
-					<div key={index} className='quote'>
-						<div className='column'> 
-							<span className="p-0"><i>"{quote.quote}"</i></span><br></br>
-							<span>{quote.movie}</span><br></br>
-							<span>{quote.year}</span>
-						</div>
-					</div>	
-					)
-				})
-			}
+		<div className="text-center">
+			<div>
+				{
+					quote ?
+						<div className='quote'>
+							<div className='column'> 
+								<span className="p-0"><i>"{quote.quote}"</i></span><br></br>
+								<span>{quote.movie}</span><br></br>
+								<span>{quote.year}</span>
+							</div>
+						</div>	
+					:""	
+				}
+			</div>
 		</div>
-	</div>
-
 	)
 }
-
 export default Quotes
