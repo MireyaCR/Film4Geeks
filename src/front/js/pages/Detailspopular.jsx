@@ -9,15 +9,26 @@ const Detailspopular = () => {
 	const { store } = useContext(Context);
 	let params = useParams()
 	console.log(store.movie)
+
 	return (
-        <div className="container">       
-            <h1>{store.movies[params.index].title}</h1> 
-            <div className="row ms-2">imagenes
-                <img src={`https://image.tmdb.org/t/p/w500/${store.movies[params.index].poster_path}`} alt="POSTER"/> 
-                <button>reproducir trailer</button>
-                <img src={`https://image.tmdb.org/t/p/w500/${store.movies[params.index].cartel_path}`} alt="CARTEL"/>                
-            </div>  
-            <div className="row ms-2">iconos derecha e izquierda
+        <div className="container mt-3">        
+        <div className="row">
+            <h5 className="mb-3">{store.movies[params.index].title}</h5>
+         </div> 
+         <div className="row position-relative"style={{width: "400px", height: "500px"}}>
+    <img src={`https://image.tmdb.org/t/p/w500/${store.movies[params.index].poster_path}`} alt="image1" className="img-fluid border-rounded "style={{width: "100%", height: "100%"}} />
+    <button className="btn border-circle btn-warning fas fa-play position-absolute" style={{
+        position: "absolute",
+        top: "50%",
+        left: "50%",
+        transform: "translate(-50%, -50%)",
+        zIndex: "1",
+        width:"5em",
+        height:"5em"
+    }} />
+</div>
+
+            <div className="row">
                 <div >
                     <img src="" alt="Ver mas tarde" />
                     <img src="" alt="Visto" />
