@@ -109,15 +109,17 @@ export const Profile = () => {
 
         <div className="principal-color">
             <div className="d-flex">
-                
-                <div className=" mt-5 " style={{width:"60%", marginLeft:"150px"}}>
-                    <h3 className="line">Name: <h4 style={{color:"white"}} >David</h4></h3>
-                    <h3 className="line">Email: <h4 style={{color:"white"}}>dagalisteo@gmail.com</h4></h3>
-                </div>
 
-                <div className="avatars  mt-5">
+            <div className="avatars  mt-3">
                     <img src="https://source.boringavatars.com/beam/Maria%20Mitchell?colors=264653,2a9d8f,e9c46a,f4a261,e76f51" alt=""/>
                 </div>
+                
+                <div className=" mt-4 " style={{width:"60%", marginLeft:"40px"}}>
+                    <h4 className="line">Name: <h5 style={{color:"white"}} >David</h5></h4>
+                    <h4 className="line">Email: <h5 style={{color:"white"}}>dagalisteo@gmail.com</h5></h4>
+                </div>
+
+                
             </div>
 
             <div className="d-flex justify-content-center">
