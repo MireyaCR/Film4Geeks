@@ -27,27 +27,22 @@ export const FilmsWatched = () => {
 	};
 
     return (
-
-        <div className="text-center d-flex flex-wrap">
-            <AliceCarousel responsive={responsive} autoPlay autoPlayInterval="1500"> 
-        {
-			store.seen.map((seen, index) => 
-				 
-                <div key={index}>
-                        <div className='ind me-1'>
-							<Link to={`/details/${index}`}>
-                                
-								    <img src={seen[0]} className='grid' style={{height:"400px"}}/>
-                                
+		<div className="container mt-5">
+			<div className="d-flex justify-content-around mx-2">
+				<AliceCarousel responsive={responsive} autoPlay autoPlayInterval="1500"> 
+				{
+				store.seen.map((seen, index) => 
+					<div key={index}>
+						<div key={index} className='ind me-1'>
+							<Link to={`/details/${index}`}>	
+								<img src={seen[0]} className='grid' style={{height:"400px"}}/>	
 							</Link>
-                        
-                        </div>
-                       
-                 </div>
-				
-			)
-		}
-        </AliceCarousel>
-    </div>
+						</div>
+					</div>	
+				)
+				}
+				</AliceCarousel>
+			</div>
+		</div>
     )
 }
