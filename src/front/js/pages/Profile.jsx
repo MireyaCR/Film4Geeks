@@ -97,11 +97,14 @@ export const Profile = () => {
             'rgba(54, 162, 235, 0.6)',
             'rgba(255, 206, 86, 0.6)',
             'rgba(75, 192, 192, 0.6)',
-            'rgba(153, 102, 255, 0.6)'] //fondo
+            'rgba(153, 102, 255, 0.6)'
+            ], //fondo
+            
         }]
     }
     const options= {
         responsive:true,
+        aspectRatio:1.5
         
     }
 
@@ -112,23 +115,25 @@ export const Profile = () => {
 
             <div className="avatars  mt-3">
                     <img src="https://source.boringavatars.com/beam/Maria%20Mitchell?colors=264653,2a9d8f,e9c46a,f4a261,e76f51" alt=""/>
-                </div>
+            </div>
                 
                 <div className=" mt-4 " style={{width:"60%", marginLeft:"40px"}}>
                     <h4 className="line">Name: <h5 style={{color:"white"}} >David</h5></h4>
                     <h4 className="line">Email: <h5 style={{color:"white"}}>dagalisteo@gmail.com</h5></h4>
                 </div>
 
+                <div >
+                <h5 style={{marginTop:"3rem"}}>Your favourite Genders:</h5>
+                <Pie style={{border:"1px solid white", borderRadius:"10%"}}  data={data} options={options} />
+                </div>
+
                 
             </div>
 
-            <div className="d-flex justify-content-center">
+            {/* <div className="d-flex justify-content-center"> */}
             
-                <div >
-                <h3 style={{marginTop:"3rem"}}>Your favourite Genders:</h3>
-                <Pie  className="mt-3" data={data} options={options} />
-                </div>
-            </div>
+                
+            {/* </div> */}
             
 
             <div>
