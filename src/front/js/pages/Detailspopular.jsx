@@ -1,47 +1,64 @@
-import React, { useContext } from "react";
-import { Context } from "../store/appContext";
+import React, { useContext,useState } from "react";
+// import { Context } from "../store/appContext";
 import { useParams } from "react-router-dom";
 import { API_IMAGE } from "/workspace/Film4Geeks/src/front/js/services/API_IMAGE.js"
 
 import "../../styles/detailspopular.css";
-const Detailspopular = () => {
 
-	const { store } = useContext(Context);
+const Detailspopular = () => {
+    
+    // const { store } = useContext(Context);
 	let params = useParams()
-	console.log(store.movie)
+    const [popularMovie, setPopularMovie] = useState(null);
+	
+    async function fetchMovieData() {
+        const apiKey = process.env.TMDB_API;
+        const url = `https://api.themoviedb.org/3/movie/${params.index}?api_key=${apiKey}`;
+        const response = await fetch(url);
+        const data = await response.json();
+        console.log(data)
+        setPopularMovie(data);
+    }
+    if (!popularMovie) {
+        fetchMovieData();
+        return <div>Loading...</div>;
+    }              
 
 	return (
         <div className="container mt-3">        
-        <div className="row">
-            <h5 className="mb-3">{store.movies[params.index].title}</h5>
-         </div> 
-            <div className="row-image border-rounded position-relative">
-            <img className="img-fluid" src={`${API_IMAGE}${store.movies[params.index].poster_path}`} alt="image1"/>
-            <button className="play-button fas fa-play"></button>
-        </div>
-        <div className="row" style={{width: "400px", height: "45px"}}>
-            <div>
-                <span className="fas fa-check-circle ml-3 mt-1 p-2"></span>
-                <span className="fas fa-star ml-3 mt-1 p-2"></span>
-                <span className="fas fa-flag ml-3 mt-1 p-2"></span> 
-                <span className="far fa-clock mt-1 p-2"></span>                
+          <div className="row">
+            <div className="col-md-6">
+              <div className="row-image border-rounded position-relative">
+                <img className="img-fluid" src={`${API_IMAGE}${popularMovie.poster_path}`} alt="image1" />
+                <button className="play-button fas fa-play"></button>
+              </div>
+              <div className="row gutter">
+                <div className="p-0 d-flex align-items-center">
+                  <span className="fas fa-check-circle mr-3"></span>
+                  <span className="fas fa-star mr-3"></span>
+                  <span className="fas fa-flag mr-3"></span> 
+                  <span className="far fa-clock mr-3"> {popularMovie.runtime} min. </span>                
+                </div>
+              </div>
             </div>
+            <div className="col-md-6">
+              
+              <div className="row reduced-line-height text-border-shine">
+                <h5 className="mt-1 text-color-h5">{popularMovie.title}</h5>
+                <p><small className="text-color-small">SYNOPSIS</small></p>   
+                <p>{popularMovie.overview}</p> 
+                <p><small className="text-color-small">FILM RATING</small></p>
+                <p>{popularMovie.adult?`+18`:'All Audience'}</p>
+                <p><small className="text-color-small">GENRE</small></p>                
+                <p>nombre de los actores</p>
+                <p><small className="text-color-small">DIRECTOR</small></p>
+                <p>nombre del director</p>
+                <p><small className="text-color-small">CASTING</small></p>
+                <p>nombre de los actores</p>
+              </div>
+            </div>
+          </div>
         </div>
-        <div className="row mt-2"> 
-            <h6>SYNOPSIS</h6>                
-        </div>
-        <div className="row ">
-            <p>{store.movies[params.index].overview}</p> 
-            <h6>FILM RATING</h6>
-            <p>clasificación</p>
-            <h6>GENRE</h6>                
-            <p>nombre de los actores</p>
-            <h6>DIRECTOR:</h6>
-            <p>nombre del director</p>
-            <h6>CASTING</h6>
-            <p>nombre de los actores</p>
-         </div>            
-	</div>
-    );
+      );
 };
 export default Detailspopular
