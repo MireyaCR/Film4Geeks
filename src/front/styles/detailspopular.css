@@ -14,12 +14,12 @@
 }
 .play-button {
     position: absolute;
-    top: 5%;
-    left: 95%;
+    top: 4%;
+    left: 94%;
     transform: translate(-50%, -50%);
     z-index: 1;
-    width: 3em; 
-    height: 3em;
+    width: 2em; 
+    height: 2em;
     border-radius: 50%; 
     border: none;
     background-size: cover;
