@@ -1,5 +1,5 @@
 import React, { useContext,useState } from "react";
-// import { Context } from "../store/appContext";
+
 import { useParams } from "react-router-dom";
 import { API_IMAGE } from "/workspace/Film4Geeks/src/front/js/services/API_IMAGE.js"
 
@@ -7,20 +7,28 @@ import "../../styles/detailspopular.css";
 
 const Detailspopular = () => {
     
-    // const { store } = useContext(Context);
 	let params = useParams()
     const [popularMovie, setPopularMovie] = useState(null);
+    const [actorsMovie, setActorsMovie]=useState(null);
 	
     async function fetchMovieData() {
         const apiKey = process.env.TMDB_API;
         const url = `https://api.themoviedb.org/3/movie/${params.index}?api_key=${apiKey}`;
         const response = await fetch(url);
         const data = await response.json();
-        console.log(data)
         setPopularMovie(data);
+    }
+    async function fetchActorsMovieData() {
+        const apiKey = process.env.TMDB_API;
+        const url = `https://api.themoviedb.org/3/movie/${params.index}/credits?api_key=${apiKey}`;
+        const response = await fetch(url);
+        const data = await response.json();
+        console.log(data)
+        setActorsMovie(data);
     }
     if (!popularMovie) {
         fetchMovieData();
+        fetchActorsMovieData();
         return <div>Loading...</div>;
     }              
     const genre = popularMovie.genres.map(function (value) {        
@@ -28,6 +36,12 @@ const Detailspopular = () => {
     });
     const genres = genre.join(',')
 
+    //  const filteredActors = actorsMovie.cast.filter(actor => actor.known_for_department === "Acting");
+    //  const casting = filteredActors.map(actor => actor.name).join(', ');
+
+    // const filteredDirector = actorsMovie.filter(name => cast.known_for_department === "Directing");
+    // const director = filteredActors.map(director =>filteredDirector.name).join(', ');
+    
 	return (
         <div className="container mt-3">        
           <div className="row justify-content-center">
@@ -37,11 +51,11 @@ const Detailspopular = () => {
                 <button className="play-button fas fa-play"></button>
               </div>
               <div className="row gutter">
-                <div className="d-flex p-1">
-                  <span className="fas fa-check-circle mr-3"></span>
-                  <span className="fas fa-star mr-3"></span>
-                  <span className="fas fa-flag mr-3"></span> 
-                  <span className="far fa-clock"> {popularMovie.runtime} min. </span>                
+                <div className=" d-flex bd-highlight mb-3">
+                  <span className="fas fa-check-circle p-2 bd-highlight"></span>
+                  <span className="fas fa-star p-2 bd-highlight"></span>
+                  <span className="fas fa-flag p-2 bd-highlight"></span> 
+                  <span className="far fa-clock ml-auto p-2 bd-highlight"> {popularMovie.runtime} min. </span>                
                 </div>
               </div>
             </div>
@@ -57,7 +71,7 @@ const Detailspopular = () => {
                 <p><small className="text-color-small">DIRECTOR</small></p>
                 <p>nombre del director</p>
                 <p><small className="text-color-small">CASTING</small></p>
-                <p>nombre de los actores</p>
+                <p>casting</p>
               </div>
             </div>
           </div>
