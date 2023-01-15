@@ -23,6 +23,10 @@ const Detailspopular = () => {
         fetchMovieData();
         return <div>Loading...</div>;
     }              
+    const genre = popularMovie.genres.map(function (value) {        
+        return value.name; 
+    });
+    const genres = genre.join(',')
 
 	return (
         <div className="container mt-3">        
@@ -41,8 +45,7 @@ const Detailspopular = () => {
                 </div>
               </div>
             </div>
-            <div className="col-md-6 col-12 p-1">
-              
+            <div className="col-md-6 col-12 p-1">              
               <div className="p-1 reduced-line-height text-border-shine">
                 <h5 className="mt-1 text-color-h5">{popularMovie.title}</h5>
                 <p><small className="text-color-small">SYNOPSIS</small></p>   
@@ -50,7 +53,7 @@ const Detailspopular = () => {
                 <p><small className="text-color-small">FILM RATING</small></p>
                 <p>{popularMovie.adult?`+18`:'All Audience'}</p>
                 <p><small className="text-color-small">GENRE</small></p>                
-                <p>nombre de los actores</p>
+                <p>{genres}</p>
                 <p><small className="text-color-small">DIRECTOR</small></p>
                 <p>nombre del director</p>
                 <p><small className="text-color-small">CASTING</small></p>
