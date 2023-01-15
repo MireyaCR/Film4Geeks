@@ -1,6 +1,6 @@
 .row-image {
-    width: 400px;
-    height: 500px;
+    width: 365px;
+    height: 510px;
     border-radius: 10px;
     position: relative;
 }
@@ -34,8 +34,8 @@
     float: right;
 }
 .gutter {
-    padding-left: 0.5rem;
-    padding-right: 0rem;
+    padding-left: 0rem;
+    padding-right: 3rem;
   }
 .reduced-line-height {
     line-height: 1;
