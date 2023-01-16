@@ -12,3 +12,11 @@
  .ind:hover { 
     transform: scale(0.9);   
 }
+
+hr {
+    margin: 30px 0;
+    
+    height: 1px;
+    border: none;
+    background: -webkit-gradient(linear, 0 0, 100% 0, from(transparent), to(transparent), color-stop(50%, orange));
+}

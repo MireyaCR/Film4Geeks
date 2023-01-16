@@ -118,63 +118,37 @@ export const Profile = () => {
 
         <div className="principal-color">
             
-            {/* <div className=" row justify-content-center align-items-center p-3 " style={{border:"1px solid white"}}>
+            <div className=" row justify-content-center align-items-center p-3 mx-3 mb-4 ">
 
-                <div className="avatars col-md-4 item text-center reduced-line-height-left m-2 p-2 ">
-                    <img src="https://source.boringavatars.com/beam/Maria%20Mitchell?colors=264653,2a9d8f,e9c46a,f4a261,e76f51" alt=""/>
+                <div className="col-md-5">
+                    <div className="avatars text-center reduced-line-height-left m-2 p-2 ">
+                        <img src="https://source.boringavatars.com/beam/Maria%20Mitchell?colors=264653,2a9d8f,e9c46a,f4a261,e76f51" alt=""/>
+                    </div>
+
+                    <div className="text-center m-2 p-2 reduced-line-height-right"  >
+                        <h4 >Name: </h4><h5 style={{color:"white"}} >David</h5>
+                        <h4 >Email: </h4><h5 style={{color:"white"}}>dagalisteo@gmail.com</h5>
+                    </div>
                 </div>
                 
-                <div className="col item text-center m-2 p-2 reduced-line-height-right"  >
-                    <h4 >Name: </h4><h5 style={{color:"white"}} >David</h5>
-                    <h4 >Email: </h4><h5 style={{color:"white"}}>dagalisteo@gmail.com</h5>
+                <div className="col-md-6 item m-2 p-2 reduced-line-height-left">
+                    <h6 >Your favourite Genders:</h6>
+                    <Pie  data={data} options={options} />
                 </div>
-
-                <div className="col-md-4 item m-2 p-2 reduced-line-height-left">
-                <h5 >Your favourite Genders:</h5>
-                <Pie   data={data} options={options} />
-                </div>
-
-            </div> */}
-
-
-            <div className=" row justify-content-center align-items-center p-3 " style={{border:"1px solid white"}}>
-
-            <div className="col-md-5">
-                <div className="avatars text-center reduced-line-height-left m-2 p-2 ">
-                    <img src="https://source.boringavatars.com/beam/Maria%20Mitchell?colors=264653,2a9d8f,e9c46a,f4a261,e76f51" alt=""/>
-                </div>
-
-                <div className="text-center m-2 p-2 reduced-line-height-right"  >
-                    <h4 >Name: </h4><h5 style={{color:"white"}} >David</h5>
-                    <h4 >Email: </h4><h5 style={{color:"white"}}>dagalisteo@gmail.com</h5>
-                </div>
-            </div>
-            
-            <div className="col-md-6 item m-2 p-2 reduced-line-height-left">
-            <h6 >Your favourite Genders:</h6>
-            <Pie  data={data} options={options} />
-            </div>
 
             </div>
-
-
-
-
-
+            <hr></hr>
+                    <h3 className="text-center">My favourite films</h3>
+                    <MyFavourites/>
+                    <hr></hr>
+                
+                    <h3 className="text-center">Films I want to see</h3>
+                    <PendingMovies/>
+                    <hr></hr>
             
-                <h3>My favourite films</h3>
-                <MyFavourites/>
-            
-
-            
-                <h3>Films I want to see</h3>
-                <PendingMovies/>
-            
-            
-          
-                <h3>Films watched</h3>
-                <FilmsWatched/>
-            
+                    <h3 className="text-center">Films watched</h3>
+                    <FilmsWatched/>
+                    <hr></hr>
         </div>
     )
 }
