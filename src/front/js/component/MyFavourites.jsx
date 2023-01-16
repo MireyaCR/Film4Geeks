@@ -14,16 +14,16 @@ export const MyFavourites = () => {
 
     const responsive = {
 		2000: {
-		items: 7,
+		items: 10,
 		},
 		1200: {
-		items: 5,
+		items: 10,
 		},
 		800: {
-		items: 2,
+		items: 10,
 		},
 		0: {
-		items: 1,
+		items: 10,
 		},
 	};
 
@@ -46,14 +46,14 @@ export const MyFavourites = () => {
     // </div>
 
 		<div className="container mt-5">
-			<div className="d-flex justify-content-around mx-2">
+			<div className="d-flex mx-2">
 				<AliceCarousel responsive={responsive} autoPlay autoPlayInterval="1500"> 
 					{
 					store.favourites.map((favourite, index) => (   
 						<div key={index}>   
-							<div key={index} className='ind me-1'>
+							<div key={index} className='ind'>
 								{/* <Link to={`/details/${index}`}> */}
-									<img className='grid' style={{height:"400px"}} src={favourite}/>
+									<img className='grid' style={{height:"15rem"}} src={favourite}/>
 								{/* </Link>  */}
 							</div>
 						</div>   
