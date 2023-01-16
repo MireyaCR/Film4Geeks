@@ -3,7 +3,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import ScrollToTop from "./component/scrollToTop";
 
 import  Home  from "./pages/Home.jsx";
-import { Demo } from "./pages/demo";
+import Detailspopular from "./pages/Detailspopular.jsx";
 import { Single } from "./pages/single";
 import injectContext from "./store/appContext";
 
@@ -32,14 +32,14 @@ const Layout = () => {
                     <Navbar />
                     <Routes>
                         <Route element={<Home />} path="/" />
-                        <Route element={<Demo />} path="/demo" />
+                        {/* <Route element={<Demo />} path="/demo" /> */}
                         <Route element={<Single />} path="/single/:theid" />
                         <Route element={<h1>Not found!</h1>} />
                         <Route element={<Login/>} path="/login"/>
                         <Route element={<SignUp/>} path="/signup" />
                         <Route element={<Profile/>} path="/profile"/>
-                        <Route path="/details/:index" element={<Details />} /> {/* /*Borrar antes de pushear/* */}
-                        <Route path="/details_favourites/:index" element={<DetailsFavourites />} /> {/* /*Borrar antes de pushear/* */}
+                        <Route path="/detailspopular/:index" element={<Detailspopular/>}/>
+
                     </Routes>
                     <Footer />
                 </ScrollToTop>

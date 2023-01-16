@@ -87,6 +87,7 @@
 		"react-alice-carousel": "^2.7.0",
 		"react-chartjs-2": "^5.1.0",
 		"react-dom": "^16.8.4",
+		"react-modal": "^3.16.1",
 		"react-polyfills": "0.0.1",
 		"react-router-dom": "^6.3.0",
 		"react-youtube": "^10.1.0"

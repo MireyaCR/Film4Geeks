@@ -19,12 +19,14 @@ const Navbar = () => {
            
            <div className="collapse navbar-collapse mx-0 justify-content-end" id="navbarSupportedContent" role="button">
               
-                   <ul className="navbar-nav m-0" href="#">
+                   <ul className="navbar-nav m-0">
                    <li className="nav-item active">
+
                        <Link className="nav-link link-warning " to={"/"}>Home<span className="sr-only">(current)</span></Link>
                    </li>
                    <li className="nav-item ">
                        <Link className="nav-link link-warning" to={"/profile"}>Profile</Link>
+
                    </li>
                    <li className="nav-item">
                        <a className="nav-link link-warning" href="#">Search</a>
