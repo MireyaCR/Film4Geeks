@@ -31,10 +31,7 @@ const Detailspopular = () => {
         fetchActorsMovieData();
         return <div>Loading...</div>;
     }              
-    const genre = popularMovie.genres.map(function (value) {        
-        return value.name; 
-    });
-    const genres = genre.join(',')
+    const genres = popularMovie.genres.map(value => value.name).join(', ');
 
     //  const filteredActors = actorsMovie.cast.filter(actor => actor.known_for_department === "Acting");
     //  const casting = filteredActors.map(actor => actor.name).join(', ');
@@ -51,11 +48,12 @@ const Detailspopular = () => {
                 <button className="play-button fas fa-play"></button>
               </div>
               <div className="row gutter">
-                <div className=" d-flex bd-highlight mb-3">
-                  <span className="fas fa-check-circle p-2 bd-highlight"></span>
-                  <span className="fas fa-star p-2 bd-highlight"></span>
-                  <span className="fas fa-flag p-2 bd-highlight"></span> 
-                  <span className="far fa-clock ml-auto p-2 bd-highlight"> {popularMovie.runtime} min. </span>                
+                <div className=" d-flex flex-row mb-3">
+                  {/* aqui deberia de haber 3 componentes uno por cada icono */}
+                  <span className="fas fa-check-circle p-2"></span>
+                  <span className="fas fa-star p-2 "></span>
+                  <span className="fas fa-flag p-2 "></span> 
+                  <span className="far fa-clock ms-auto p-2 "> {popularMovie.runtime} min. </span>                
                 </div>
               </div>
             </div>
