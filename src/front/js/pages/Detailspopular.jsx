@@ -1,4 +1,4 @@
-import React, { useContext,useState } from "react";
+import React, { useEffect,useState } from "react";
 
 import { useParams } from "react-router-dom";
 import { API_IMAGE } from "/workspace/Film4Geeks/src/front/js/services/API_IMAGE.js"
@@ -10,34 +10,65 @@ const Detailspopular = () => {
 	let params = useParams()
     const [popularMovie, setPopularMovie] = useState(null);
     const [actorsMovie, setActorsMovie]=useState(null);
+    const [trailer, setTrailer]=useState(null);
 	
-    async function fetchMovieData() {
-        const apiKey = process.env.TMDB_API;
-        const url = `https://api.themoviedb.org/3/movie/${params.index}?api_key=${apiKey}`;
-        const response = await fetch(url);
-        const data = await response.json();
-        setPopularMovie(data);
-    }
+    useEffect(() => {
+      async function fetchMovieData() {
+          const apiKey = process.env.TMDB_API;
+          const url = `https://api.themoviedb.org/3/movie/${params.index}?api_key=${apiKey}`;
+          const response = await fetch(url);
+          const data = await response.json();
+          setPopularMovie(data);
+      }
+      if (!popularMovie) {
+          fetchMovieData();
+      }
+  }, []);
+
+  useEffect(() => {
     async function fetchActorsMovieData() {
-        const apiKey = process.env.TMDB_API;
-        const url = `https://api.themoviedb.org/3/movie/${params.index}/credits?api_key=${apiKey}`;
-        const response = await fetch(url);
-        const data = await response.json();
-        console.log(data)
-        setActorsMovie(data);
+      const apiKey = process.env.TMDB_API;
+      const url = `https://api.themoviedb.org/3/movie/${params.index}/credits?api_key=${apiKey}`;
+      const response = await fetch(url);
+      const data = await response.json();
+      console.log(data)
+      setActorsMovie(data);
+  }
+    if (!actorsMovie) {
+      fetchActorsMovieData();
     }
+}, []);
+
+useEffect(() => {
+  async function fetchTrailler() {
+    const apiKey = process.env.TMDB_API;
+    const url = `https://api.themoviedb.org/3/movie/${params.index}/videos?api_key=${apiKey}`;
+    const response = await fetch(url);
+    const data = await response.json();
+    console.log(data)
+    setTrailer(data);
+}
+  if (!trailer) {
+    fetchTrailler();
+  }
+}, []);
+   
     if (!popularMovie) {
-        fetchMovieData();
-        fetchActorsMovieData();
         return <div>Loading...</div>;
     }              
     const genres = popularMovie.genres.map(value => value.name).join(', ');
 
-    //  const filteredActors = actorsMovie.cast.filter(actor => actor.known_for_department === "Acting");
-    //  const casting = filteredActors.map(actor => actor.name).join(', ');
+    let casting = '';
+    let director='';
 
-    // const filteredDirector = actorsMovie.filter(name => cast.known_for_department === "Directing");
-    // const director = filteredActors.map(director =>filteredDirector.name).join(', ');
+    if(actorsMovie){
+     const filteredActors = actorsMovie.cast.filter((actor,i) => actor.known_for_department === "Acting" && i<10);
+     casting = filteredActors.map((actor) => actor.name).join(', ');    
+
+     const filteredDirector = actorsMovie.crew.filter(d=> d.job === "Director");
+     director = filteredDirector.map((d => d.name)).join(', ');
+     }
+
     
 	return (
         <div className="container mt-3">        
@@ -67,9 +98,9 @@ const Detailspopular = () => {
                 <p><small className="text-color-small">GENRE</small></p>                
                 <p>{genres}</p>
                 <p><small className="text-color-small">DIRECTOR</small></p>
-                <p>nombre del director</p>
+                <p>{director}</p>
                 <p><small className="text-color-small">CASTING</small></p>
-                <p>casting</p>
+                <p>{casting}</p>
               </div>
             </div>
           </div>
