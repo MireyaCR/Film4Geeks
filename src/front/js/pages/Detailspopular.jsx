@@ -45,7 +45,7 @@ const Detailspopular = () => {
 	return (
         <div className="container mt-3">        
           <div className="row justify-content-center">
-            <div className="col-md-6 col-12 p-1">
+            <div className="col-md-5 col-12 p-2">
               <div className="row-image border-rounded position-relative">
                 <img className="img-fluid" src={`${API_IMAGE}${popularMovie.poster_path}`} alt="image1" />
                 <button className="play-button fas fa-play"></button>
@@ -59,7 +59,7 @@ const Detailspopular = () => {
                 </div>
               </div>
             </div>
-            <div className="col-md-6 col-12 p-1">              
+            <div className="col-md-6 col-12 p-2">              
               <div className="p-1 reduced-line-height text-border-shine">
                 <h5 className="mt-1 text-color-h5">{popularMovie.title}</h5>
                 <p><small className="text-color-small">SYNOPSIS</small></p>   
