@@ -48,9 +48,9 @@ const ComingSoon = () => {
 			{store.comingSoon.map((movie, index) => (    
 				<div key={index}> 
 					<div key={index} className='ind me-1'>
-					{/* <Link to={`/coming_soon/${index}`}> */}
+					<Link to={`/detailspopular/${movie.id}`}>
 						<img className="card-img-top" src={API_IMAGE+movie.poster_path} />
-					{/* </Link> */}
+					</Link>
 					</div>
 					
 					<div className="d-flex justify-content-around p-1">
