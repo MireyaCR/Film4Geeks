@@ -1,5 +1,5 @@
-import React, { useEffect,useState } from "react";
-
+import React, { useEffect,useState,useRef } from "react";
+import Modal from 'react-modal';
 import { useParams } from "react-router-dom";
 import { API_IMAGE } from "/workspace/Film4Geeks/src/front/js/services/API_IMAGE.js"
 
@@ -11,6 +11,7 @@ const Detailspopular = () => {
     const [popularMovie, setPopularMovie] = useState(null);
     const [actorsMovie, setActorsMovie]=useState(null);
     const [trailer, setTrailer]=useState(null);
+    const videoRef = useRef(null);
 	
     useEffect(() => {
       async function fetchMovieData() {
@@ -42,7 +43,7 @@ const Detailspopular = () => {
 useEffect(() => {
   async function fetchTrailler() {
     const apiKey = process.env.TMDB_API;
-    const url = `https://api.themoviedb.org/3/movie/${params.index}/videos?api_key=${apiKey}`;
+    const url = `https://api.themoviedb.org/3/movie/${params.index}/videos?api_key=${apiKey}&language=en-US`;
     const response = await fetch(url);
     const data = await response.json();
     console.log(data)
@@ -60,6 +61,10 @@ useEffect(() => {
 
     let casting = '';
     let director='';
+    let trailerUrl = '';
+    if (trailer) {
+        trailerUrl = trailer.results[0].key;
+    }
 
     if(actorsMovie){
      const filteredActors = actorsMovie.cast.filter((actor,i) => actor.known_for_department === "Acting" && i<10);
@@ -76,11 +81,13 @@ useEffect(() => {
             <div className="col-md-5 col-12 p-2">
               <div className="row-image border-rounded position-relative">
                 <img className="img-fluid" src={`${API_IMAGE}${popularMovie.poster_path}`} alt="image1" />
-                <button className="play-button fas fa-play"></button>
+                <button className="play-button" onClick={() => {videoRef.current.play();}}>
+                   <i className="fas fa-play"></i>
+               </button>
+               <iframe ref={videoRef} id="trailer-player" title="trailer" width="560" height="315" src={`https://www.youtube.com/embed/${trailerUrl}`} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
               </div>
               <div className="row gutter">
-                <div className=" d-flex flex-row mb-3">
-                  {/* aqui deberia de haber 3 componentes uno por cada icono */}
+                <div className=" d-flex flex-row mb-3">                  
                   <span className="fas fa-check-circle p-2"></span>
                   <span className="fas fa-star p-2 "></span>
                   <span className="fas fa-flag p-2 "></span> 
