@@ -82,6 +82,7 @@
 		"axios": "^1.2.2",
 		"boring-avatars": "^1.7.0",
 		"material-icons": "^1.13.1",
+		"modal": "^1.2.0",
 		"prop-types": "^15.6.1",
 		"react": "^16.8.4",
 		"react-alice-carousel": "^2.7.0",

@@ -6,6 +6,7 @@ import profileCss from "../../styles/profile.css"
 import { MyFavourites } from "../component/MyFavourites.jsx";
 import { FilmsWatched } from "../component/FilmsWatched.jsx";
 import { PendingMovies } from "../component/PendingMovies.jsx";
+import { text } from "@fortawesome/fontawesome-svg-core";
 
 
 
@@ -87,69 +88,93 @@ export const Profile = () => {
         datasets:[{   //porcentaje de cada uno e los parametros
             data:percentages,  //porcentajes
             backgroundColor: [
-            'rgba(255, 99, 132, 0.6)',
-            'rgba(54, 162, 235, 0.6)',
-            'rgba(255, 206, 86, 0.6)',
-            'rgba(75, 192, 192, 0.6)',
-            'rgba(153, 102, 255, 0.6)',
-            'rgba(255, 159, 64, 0.6)',
-            'rgba(255, 99, 132, 0.6)',
-            'rgba(54, 162, 235, 0.6)',
-            'rgba(255, 206, 86, 0.6)',
-            'rgba(75, 192, 192, 0.6)',
-            'rgba(153, 102, 255, 0.6)'
+            'rgba(255, 99, 132, 5)',
+            'rgba(255, 159, 64, 5)',
+            'rgba(255, 205, 86, 5)',
+            'rgba(75, 192, 192, 5)',
+            'rgba(54, 162, 235, 5)',
+            'rgba(153, 102, 255, 5)',
+            'rgba(201, 203, 207, 5)',
+            'rgba(54, 162, 235, 5)',
+            'rgba(255, 206, 86, 5)',
+            'rgba(75, 192, 192, 5)',
+            'rgba(153, 102, 255, 5)',
+            'rgba(255, 159, 64, 5)',
+            'rgba(255, 99, 132, 5)',
+            'rgba(54, 162, 235, 5)',
+            'rgba(255, 206, 86, 5)',
+            'rgba(75, 192, 192, 5)',
+            'rgba(153, 102, 255, 5)'
             ], //fondo
-            
+            borderColor:"rgb(255, 206, 71)",
         }]
     }
     const options= {
         responsive:true,
-        aspectRatio:1.5
-        
+        aspectRatio:2, 
     }
 
     return (
 
         <div className="principal-color">
-            <div className="d-flex">
+            
+            {/* <div className=" row justify-content-center align-items-center p-3 " style={{border:"1px solid white"}}>
 
-            <div className="avatars  mt-3">
+                <div className="avatars col-md-4 item text-center reduced-line-height-left m-2 p-2 ">
                     <img src="https://source.boringavatars.com/beam/Maria%20Mitchell?colors=264653,2a9d8f,e9c46a,f4a261,e76f51" alt=""/>
-            </div>
+                </div>
                 
-                <div className=" mt-4 " style={{width:"60%", marginLeft:"40px"}}>
-                    <h4 className="line">Name: <h5 style={{color:"white"}} >David</h5></h4>
-                    <h4 className="line">Email: <h5 style={{color:"white"}}>dagalisteo@gmail.com</h5></h4>
+                <div className="col item text-center m-2 p-2 reduced-line-height-right"  >
+                    <h4 >Name: </h4><h5 style={{color:"white"}} >David</h5>
+                    <h4 >Email: </h4><h5 style={{color:"white"}}>dagalisteo@gmail.com</h5>
                 </div>
 
-                <div >
-                <h5 style={{marginTop:"3rem"}}>Your favourite Genders:</h5>
-                <Pie style={{border:"1px solid white", borderRadius:"10%"}}  data={data} options={options} />
+                <div className="col-md-4 item m-2 p-2 reduced-line-height-left">
+                <h5 >Your favourite Genders:</h5>
+                <Pie   data={data} options={options} />
                 </div>
 
-                
+            </div> */}
+
+
+            <div className=" row justify-content-center align-items-center p-3 " style={{border:"1px solid white"}}>
+
+            <div className="col-md-5">
+                <div className="avatars text-center reduced-line-height-left m-2 p-2 ">
+                    <img src="https://source.boringavatars.com/beam/Maria%20Mitchell?colors=264653,2a9d8f,e9c46a,f4a261,e76f51" alt=""/>
+                </div>
+
+                <div className="text-center m-2 p-2 reduced-line-height-right"  >
+                    <h4 >Name: </h4><h5 style={{color:"white"}} >David</h5>
+                    <h4 >Email: </h4><h5 style={{color:"white"}}>dagalisteo@gmail.com</h5>
+                </div>
+            </div>
+            
+            <div className="col-md-6 item m-2 p-2 reduced-line-height-left">
+            <h6 >Your favourite Genders:</h6>
+            <Pie  data={data} options={options} />
             </div>
 
-            {/* <div className="d-flex justify-content-center"> */}
-            
-                
-            {/* </div> */}
-            
+            </div>
 
-            <div>
+
+
+
+
+            
                 <h3>My favourite films</h3>
                 <MyFavourites/>
-            </div>
+            
 
-            <div>
+            
                 <h3>Films I want to see</h3>
                 <PendingMovies/>
-            </div>
             
-            <div>
+            
+          
                 <h3>Films watched</h3>
                 <FilmsWatched/>
-            </div>
+            
         </div>
     )
 }
