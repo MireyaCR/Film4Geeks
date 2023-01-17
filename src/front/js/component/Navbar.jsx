@@ -21,20 +21,20 @@ const Navbar = () => {
               
                    <ul className="navbar-nav m-0">
                    <li className="nav-item active">
-                       <a className="nav-link link-warning " href="/">Home<span className="sr-only">(current)</span></a>
+                       <Link className="nav-link link-warning " to="/">Home</Link>
                    </li>
-                   <li className="nav-item ">
-                       <a className="nav-link link-warning" href="/demo">Profile</a>
+                   {/* <li className="nav-item ">
+                       <Link className="nav-link link-warning" to="/Profile">Profile</Link>
+                   </li> */}
+                   <li className="nav-item">
+                       <Link className="nav-link link-warning" to="/Search">Search</Link>
                    </li>
                    <li className="nav-item">
-                       <a className="nav-link link-warning" href="#">Search</a>
-                   </li>
-                   <li className="nav-item">
-                       <a className="nav-link link-warning" href="#">Starring</a>
+                        <Link className="nav-link link-warning" to="#">Starring</Link>
                    </li> 
                    <li className="nav-item">
-                     <i className="fa fa-power-off p-1"></i>
-                   </li>                                          
+                        <Link className="nav-link link-warning" to="#"><i className="fa fa-power-off"></i></Link>
+                   </li>                                                         
                </ul>
                
            </div>
