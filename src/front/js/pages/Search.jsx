@@ -1,48 +1,50 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 
-function Search() {
-  const [searchValue, setSearchValue] = useState('');
-  const [searchResults, setSearchResults] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState(null);
-  const apiKey = process.env.TMDB_API;
+function Search(){
+const [searchValue, setSearchValue] = useState('');
+const [searchResults, setSearchResults] = useState([]);
+const [isLoading, setIsLoading] = useState(false);
+const [error, setError] = useState(null);  
 
-  useEffect(() => {
-    if(searchValue === '') {
-      setSearchResults([]);
-      return;
-    }
+const search = () => { 
+
+    const apiKey = process.env.TMDB_API;
     setIsLoading(true);
-    setError(null);
-    
-    fetch(`https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&q=${searchValue}`)
+
+    fetch(`https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${searchValue}&language=en-US&page=1&include_adult=false`)
       .then(response => response.json())
       .then(data => {
-        setSearchResults(data);
-        setIsLoading(false);
+        if(data.error){
+            setError(data.error);
+        }else{
+            setSearchResults(data.results);
+        }
+         setIsLoading(false);
       })
       .catch(error => {
         setError(error);
         setIsLoading(false);
-      });
-  }, [searchValue]);
-  
+      }); 
+};  
   return (
     <div>
-      <input type="text" placeholder="Ingrese su busqueda" value={searchValue} onChange={e => setSearchValue(e.target.value)}/>
-      {isLoading && <div>Cargando...</div>}
-      {error && <div>{error.message}</div>}
-      {
-        searchResults.map(result => (
+      <input type="text" placeholder="Please enter your query" value={searchValue} onChange={e => setSearchValue(e.target.value)}/>
+      <button onClick={search}>Search</button>
+      {isLoading && <div>Loading...</div>}
+      {error && <div>{error.message}</div>}      
+      {searchResults.length >0 && searchResults.map(result => (
           <div key={result.id}>
             <h2>{result.title}</h2>
             <p>{result.release_date}</p>
-            <p>{result.overwiw}</p>
+            <p>{result.overview}</p>
           </div>
-        ))
-      }
+        ))}
     </div>
   );
 }
-
 export default Search;
+
+
+
+
+
