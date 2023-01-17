@@ -13,6 +13,7 @@ import { Footer } from "./component/footer";
 import { Login } from "./pages/Login.jsx";
 import { SignUp } from "./pages/SignUp.jsx";
 
+
 //create your first component
 const Layout = () => {
     //the basename is used when your project is published in a subdirectory and not in the root of the domain
@@ -23,7 +24,9 @@ const Layout = () => {
         <div>
             <BrowserRouter basename={basename}>
                 <ScrollToTop>
+                
                     <Navbar />
+                   
                     <Routes>
                         <Route element={<Home />} path="/" />
                         {/* <Route element={<Demo />} path="/demo" /> */}

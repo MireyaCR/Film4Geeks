@@ -3,6 +3,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
 			token:null,
+			message: null,
 			movies: [],
 			comingSoon: [],
 			favourites: [],
@@ -53,6 +54,28 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}catch(error) {
 					console.error("There was an error!!!",error)
 				}
+			},
+
+			logout:()=>{
+				const token = sessionStorage.removeItem("token")
+				console.log("login out")
+				store.token = null
+				
+			},
+
+			appendToken: () => {
+				const store = getStore()
+				const opts = {
+					headers: {
+						Authorization: "Bearer " + store.token
+					}
+				}
+				fetch('https://3001-mireyacr-film4geeks-acs1s55h7yi.ws-eu82.gitpod.io/api/token', opts)
+				.then(response => 
+					response.json()
+				)
+				.then(data => setStore({message: data.message}))
+				.catch(error => (console.log("error", error)))
 			},
 
 			

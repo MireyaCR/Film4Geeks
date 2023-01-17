@@ -66,3 +66,15 @@ def validate_password(password):
         raise AssertionError("Invalid format password")
 
     return password
+
+
+
+@api.route("/token", methods=["GET"])
+@jwt_required()
+def get_token():
+    email = get_jwt_identity()
+    dictionary = {
+        "message": "Welcome " + email + "!" 
+    }
+
+    return jsonify(dictionary)
