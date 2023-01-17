@@ -28,11 +28,22 @@ def signup():
         return jsonify({"msg":"user registered successfully"}),201
 
 
-
-
-
-
-
+#Token
+@api.route("/token", methods=["POST"])
+def create_token():
+    body= request.get_json()
+    if validate_email(body["email"]) and validate_password(body["password"]):
+        email = request.json.get("email", None)
+        password = request.json.get("password", None)
+    # Query your database for username and password
+        user = User.query.filter_by(email=email).first()
+    if email != email or password !=password:
+        # the user was not found on the database
+        return jsonify({"msg": "Bad username or password"}), 401
+    
+    # create a new token with the user id inside
+    access_token = create_access_token(identity=email)
+    return jsonify( access_token = access_token)
 
 
 

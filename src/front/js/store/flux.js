@@ -2,6 +2,7 @@ const API_KEY = process.env.TMDB_API;
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
+			token:null,
 			movies: [],
 			comingSoon: [],
 			favourites: [],
@@ -11,6 +12,54 @@ const getState = ({ getStore, getActions, setStore }) => {
 		},
 		actions: {
 
+
+
+			syncTokenFromSessionStore: () => {
+				const token = sessionStorage.getItem("token");
+				console.log("Aplication just loaded, synching the session storage token ")
+				if(token && token != "" && token != undefined)setStore({token:token})
+			},
+
+			login: async (email, password) => {
+				var myHeaders = new Headers();
+				myHeaders.append("Content-Type", "application/json");
+		
+				var raw = JSON.stringify({
+				"email": email,
+				"password": password
+				});
+		
+				var requestOptions = {
+				method: 'POST',
+				headers: myHeaders,
+				body: raw,
+				redirect: 'follow'
+				};
+		
+				try {
+					const resp = await fetch("https://3001-mireyacr-film4geeks-acs1s55h7yi.ws-eu82.gitpod.io/api/token", requestOptions)
+	
+					if (resp.status !== 200){
+						alert("There has been some error")
+						return false
+					}
+
+					const data = await resp.json()
+					console.log("esto viene del backend",data)
+					sessionStorage.setItem("token",data.access_token)
+					setStore({token:data.access_token})
+						return true
+		
+				}catch(error) {
+					console.error("There was an error!!!",error)
+				}
+			},
+
+			
+
+
+
+			// LLamadas a la API
 			fetchMovies: async () => {
 				const API_URL = `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&primary_release_year=2022&include_video=true`;
 
@@ -95,7 +144,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 				setStore({ pending: store.pending.filter(movie => movie !== item) });
 			},
 
-				
+			
+
+
 			
 
 		}
