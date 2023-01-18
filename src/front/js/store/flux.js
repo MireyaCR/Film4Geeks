@@ -38,7 +38,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				};
 		
 				try {
-					const resp = await fetch("https://3001-mireyacr-film4geeks-kqiv9k1ni39.ws-eu82.gitpod.io/api/token", requestOptions)
+					const resp = await fetch("https://3001-mireyacr-film4geeks-acs1s55h7yi.ws-eu83.gitpod.io/api/token", requestOptions)
 	
 					if (resp.status !== 200){
 						alert("There has been some error")
@@ -70,7 +70,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 						Authorization: "Bearer " + store.token
 					}
 				}
-				fetch('https://3001-mireyacr-film4geeks-kqiv9k1ni39.ws-eu82.gitpod.io/api/token', opts)
+				fetch('https://3001-mireyacr-film4geeks-acs1s55h7yi.ws-eu83.gitpod.io/api/token', opts)
 				.then(response => 
 					response.json()
 				)
@@ -143,11 +143,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 					},
 					body: JSON.stringify({
 						film_id : id,
-	
 					})
 				};
 				try{
-				const resp = await fetch("https://3001-mireyacr-film4geeks-kqiv9k1ni39.ws-eu82.gitpod.io/api/user/seen", opts)
+				const resp = await fetch("https://3001-mireyacr-film4geeks-acs1s55h7yi.ws-eu83.gitpod.io/api/user/seen", opts)
 	
 				const data = await resp.json()	
 				}
@@ -167,11 +166,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 					},
 					body: JSON.stringify({
 						film_id : id,
-
 					})
 				};
 				try{
-				const resp = await fetch("https://3001-mireyacr-film4geeks-kqiv9k1ni39.ws-eu82.gitpod.io/api/user/favourite", opts)
+				const resp = await fetch("https://3001-mireyacr-film4geeks-acs1s55h7yi.ws-eu83.gitpod.io/api/user/favourite", opts)
 	
 				const data = await resp.json()	
 				}
@@ -193,7 +191,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					})
 				};
 				try{
-				const resp = await fetch("https://3001-mireyacr-film4geeks-kqiv9k1ni39.ws-eu82.gitpod.io/api/user/pending", opts)
+				const resp = await fetch("https://3001-mireyacr-film4geeks-acs1s55h7yi.ws-eu83.gitpod.io/api/user/pending", opts)
 	
 				const data = await resp.json()	
 				}
