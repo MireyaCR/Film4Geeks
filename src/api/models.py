@@ -1,4 +1,8 @@
 from flask_sqlalchemy import SQLAlchemy
+from flask_jwt_extended import create_access_token
+from flask_jwt_extended import get_jwt_identity
+from flask_jwt_extended import jwt_required
+
 
 db = SQLAlchemy()
 
@@ -23,9 +27,9 @@ class User(db.Model):
 class Favourite(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
-    user = db.relationship(User)
-    film_id = db.Column(db.Integer,unique=True, nullable=False )
-    
+    user = db.relationship('User', backref='favourite', lazy = True)
+    film_id = db.Column(db.Integer, nullable=False)
+
 
     def __repr__(self):
         return f'<Favourite {self.id}>'
@@ -38,13 +42,31 @@ class Favourite(db.Model):
             # do not serialize the password, its a security breach
         }
 
+class Seen(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    user = db.relationship('User', backref='seen', lazy = True)
+    film_id = db.Column(db.Integer, nullable=False)
+
+    
+    def __repr__(self):
+        return f'<Seen {self.id}>'
+
+    def serialize(self):
+        return {
+            "id": self.id,
+            "user_id": self.user_id,
+            "film_id": self.film_id
+            # do not serialize the password, its a security breach
+        }
+
 
 class Pending(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
-    user = db.relationship(User)
-    film_id = db.Column(db.Integer,unique=True, nullable=False )
-    
+    user = db.relationship('User', backref='pending', lazy = True)
+    film_id = db.Column(db.Integer, nullable=False)
+
 
     def __repr__(self):
         return f'<Pending {self.id}>'
@@ -57,20 +79,3 @@ class Pending(db.Model):
             # do not serialize the password, its a security breach
         }
 
-class Seen(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
-    user = db.relationship(User)
-    film_id = db.Column(db.Integer,unique=True, nullable=False )
-    
-
-    def __repr__(self):
-        return f'<Seen {self.id}>'
-
-    def serialize(self):
-        return {
-            "id": self.id,
-            "user_id": self.user_id,
-            "film_id": self.film_id,
-            # do not serialize the password, its a security breach
-        }

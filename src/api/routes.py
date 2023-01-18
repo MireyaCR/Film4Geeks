@@ -78,3 +78,47 @@ def get_token():
     }
 
     return jsonify(dictionary)
+
+@api.route('/user/seen', methods=['POST'])
+@jwt_required()
+def add_seen_to_db():
+    body = request.json
+    email = get_jwt_identity()
+    user = User.query.filter_by(email=email).first()
+    print(user.id)
+    seen = Seen(film_id=body['film_id'], user_id=user.id)
+   
+    db.session.add(seen)
+    db.session.commit()
+
+    return jsonify({"message": "success"}), 200
+
+
+@api.route('/user/favourite', methods=['POST'])
+@jwt_required()
+def add_fav_to_db():
+    body = request.json
+    email = get_jwt_identity()
+    user = User.query.filter_by(email=email).first()
+    print(user.id)
+    favourite = Favourite(film_id=body['film_id'], user_id=user.id)
+   
+    db.session.add(favourite)
+    db.session.commit()
+
+    return jsonify({"message": "success"}), 200
+
+
+@api.route('/user/pending', methods=['POST'])
+@jwt_required()
+def add_pending_to_db():
+    body = request.json
+    email = get_jwt_identity()
+    user = User.query.filter_by(email=email).first()
+    print(user.id)
+    pending = Pending(film_id=body['film_id'], user_id=user.id)
+   
+    db.session.add(pending)
+    db.session.commit()
+
+    return jsonify({"message": "success"}), 200
