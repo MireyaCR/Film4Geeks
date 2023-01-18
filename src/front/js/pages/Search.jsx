@@ -38,16 +38,20 @@ function Search() {
 
   return (
     <div className="container mx-auto">
-      <div className="d-flex justify-content-center mt-4 mb-3">
-            <input type="text" className="ms-3 rounded-pill text-center text-warning text-sm inputclass" placeholder="Please enter your query" aria-label="Recipient's username" value={searchValue}    
+      <div className="d-flex flex-row-sm justify-content-center mt-4 mb-3">
+        <div className="col-sm-6">
+            <input type="text" className="ms-5 rounded-pill text-center text-warning text-sm inputclass" placeholder="Please enter your query" aria-label="Recipient's username" value={searchValue}    
               onChange={(e) => setSearchValue(e.target.value)}
               onKeyUp={(e) => e.key === "Enter" && search()}
             />
+        </div>
+        <div className="col-sm-6">
             <button
               className="btn btn-custom rounded-pill btn-shadow text-center text-sm"type="button" onClick={()=>searchValue && search()}disabled={!searchValue}>Search
             </button>
             {isLoading && <div>Loading...</div>}
             {error && <div>{error.message}</div>}
+          </div>
       </div>
       <div className="d-flex flex-wrap flex-row">
         {searchResults.length > 0 ? (
