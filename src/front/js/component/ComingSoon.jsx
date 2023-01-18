@@ -38,7 +38,20 @@ const ComingSoon = () => {
 		},
 	};
 
-	
+	const handleAddSeen = (id) => {
+		actions.setSeen(API_IMAGE+store.movie)
+		actions.addDbSeen(id)
+	}
+
+	const handleAddFav = (id) => {
+		actions.setFavourites(API_IMAGE+store.movie)
+		actions.addDbFav(id)
+	}
+
+	const handleAddPending = (id) => {
+		actions.setPending(API_IMAGE+store.movie)
+		actions.addDbPending(id)
+	}
 
 
 	return (
@@ -58,15 +71,14 @@ const ComingSoon = () => {
 					
 					<div className="d-flex justify-content-around p-1">
 
-						 {store.seen.includes(API_IMAGE+movie.poster_path) ? <span title="Already seen" className="added"><i className="fas fa-check-circle"></i></span> : (
-						<button onClick={() => actions.setSeen(API_IMAGE+movie.poster_path)} className='seen' title="Add to your seen list"><i className="far fa-check-circle"></i></button>
+					{store.seen.includes(API_IMAGE+movie.poster_path) ? <span title="Already seen" className="added"><i className="fas fa-check-circle"></i></span> : (
+						<button onClick={()=>{handleAddSeen(movie.id)}} className='seen' title="Add to your seen list"><i className="far fa-check-circle"></i></button>
 						)}
 						{store.favourites.includes(API_IMAGE+movie.poster_path) ? <span title="Added to favourites" className="added"><i className="fas fa-star"></i></span> : (
-						<button onClick={() => actions.setFavourites(API_IMAGE+movie.poster_path)} className='fav' title="Add to your favourites list"><i className="far fa-star"></i></button>
+						<button onClick={()=>{handleAddFav(movie.id)}}  className='fav' title="Add to your favourites list"><i className="far fa-star"></i></button>
 						)}
 						{store.pending.includes(API_IMAGE+movie.poster_path) ? <span title="Added to movies I want to see" className="added"><i className="fas fa-flag"></i></span> : (
-						<button onClick={() => actions.setPending(API_IMAGE+movie.poster_path)} className='pended' title="Add to your pending list"><i className="far fa-flag"></i></button>
-
+						<button onClick={()=>{handleAddPending(movie.id)}}  className='pended' title="Add to your pending list"><i className="far fa-flag"></i></button>
 						)} 
 				</div>
 			</div>    

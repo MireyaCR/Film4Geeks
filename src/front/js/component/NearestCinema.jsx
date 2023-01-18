@@ -9,7 +9,7 @@ const apiURL = process.env.GOOGLE_API
 const NearestCinema = () => {
 	const [currentLocation, setCurrentLocation] = useState({})
 	const [type, setType] = useState([])
-	console.log(currentLocation)
+	
 
 	const geoLocationJS = () => {
 		navigator.geolocation.getCurrentPosition((position) => {
