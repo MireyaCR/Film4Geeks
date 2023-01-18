@@ -94,19 +94,37 @@ def add_seen_to_db():
     return jsonify({"message": "success"}), 200
 
 
-@api.route('/user/favourite', methods=['POST'])
+@api.route('/user/favourite', methods=['POST', 'GET'])
 @jwt_required()
 def add_fav_to_db():
-    body = request.json
-    email = get_jwt_identity()
-    user = User.query.filter_by(email=email).first()
-    print(user.id)
-    favourite = Favourite(film_id=body['film_id'], user_id=user.id)
-   
-    db.session.add(favourite)
-    db.session.commit()
+    if request.method == 'POST':
+        body = request.json
+        email = get_jwt_identity()
+        user = User.query.filter_by(email=email).first()
+        print(user.id)
+        favourite = Favourite(film_id=body['film_id'], user_id=user.id)
+    
+        db.session.add(favourite)
+        db.session.commit()
+        return jsonify({"message": "success"}), 200
 
-    return jsonify({"message": "success"}), 200
+    if request.method == 'GET':
+        email = get_jwt_identity()
+        user = User.query.filter_by(email=email).first()
+        favourite = Favourite.query.filter_by(user_id = user.id)
+        favourite = list(map(lambda x: x.serialize_fav(), favourite))
+        response_body = favourite
+        return jsonify(response_body),200
+
+@api.route('/prueba', methods=[ 'GET'])
+def handle_hello():
+    prueba = Favourite.query.all()
+    prueba = list(map(lambda x: x.serialize_fav(), prueba))
+    response_body = prueba
+    return jsonify(response_body),200
+    
+
+  
 
 
 @api.route('/user/pending', methods=['POST'])

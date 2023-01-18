@@ -34,7 +34,7 @@ class Favourite(db.Model):
     def __repr__(self):
         return f'<Favourite {self.id}>'
 
-    def serialize(self):
+    def serialize_fav(self):
         return {
             "id": self.id,
             "user_id": self.user_id,
