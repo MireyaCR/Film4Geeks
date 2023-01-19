@@ -9,7 +9,10 @@ from flask_jwt_extended import create_access_token
 from flask_jwt_extended import get_jwt_identity
 from flask_jwt_extended import jwt_required
 from sqlalchemy.orm import validates
+import requests
 import re
+import os
+TMDB_API = os.getenv("TMDB_API")
 
 api = Blueprint('api', __name__)
 
@@ -112,8 +115,15 @@ def add_fav_to_db():
         email = get_jwt_identity()
         user = User.query.filter_by(email=email).first()
         favourite = Favourite.query.filter_by(user_id = user.id)
-        favourite = list(map(lambda x: x.serialize_fav(), favourite))
-        response_body = favourite
+
+        response_body = []
+        for film in favourite:
+            response = requests.get(f'https://api.themoviedb.org/3/movie/{film.film_id}?api_key={TMDB_API}')
+            data = response.json()
+            favorite_data = film.serialize_fav()
+            favorite_data['image_url'] = f'https://image.tmdb.org/t/p/w500/{data.get("poster_path")}'
+            response_body.append(favorite_data)
+
         return jsonify(response_body),200
 
 @api.route('/prueba', methods=[ 'GET'])
