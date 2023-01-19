@@ -6,7 +6,9 @@ import { API_IMAGE } from "/workspace/Film4Geeks/src/front/js/services/API_IMAGE
 import "../../styles/detailspopular.css";
 
 const Detailspopular = () => {
+
   let params = useParams();
+  
   const [popularMovie, setPopularMovie] = useState(null);
   const [actorsMovie, setActorsMovie] = useState(null);
   const [trailer, setTrailer] = useState(null);

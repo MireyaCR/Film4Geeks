@@ -1,0 +1,38 @@
+
+  @media (max-width: 576px) {
+    .card-img-left {
+      width: 100%;
+      height: auto;
+      float: none;
+    }
+  }
+ .colores{    
+    border-radius: 10px;
+    color: #ec8208;
+    box-shadow: 2px 2px 10px #ffa500;   
+ }
+ 
+ .card-container {
+    height:200px;
+    overflow: hidden;
+  }
+  
+.rounded-input {
+  border-top-left-radius: 50px;
+  border-bottom-left-radius: 50px;
+  transition: none;
+  box-shadow: none;
+} 
+
+.btn-rounded{
+  border-radius: 50px;
+}
+.btn-orange-gradient{
+  background: linear-gradient(to right, #ffa600, #ff5722);
+}
+.carline{
+  line-height: 1;
+}
+.card-body{
+  background-color: #132f4c;
+}
