@@ -1,17 +1,4 @@
-.btn-custom {
-    background: linear-gradient(to bottom, #ffa600, #ff7d00);
-    border: none;
-    color: white;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    position: relative;
-    left: -50px;
-    width: 150px;
-    height: 40px;
-  }
+
   @media (max-width: 576px) {
     .card-img-left {
       width: 100%;
@@ -29,12 +16,17 @@
     height:200px;
     overflow: hidden;
   }
-  .inputclass{    
-    border-radius: 50rem;   
-    border-bottom: 0;
-    padding: 5px;
-    color:#ffa500;
-    width: 150px;
-    height: 40px;
-    font-size: smaller;
-  }
+  
+.rounded-input {
+  border-top-left-radius: 50px;
+  border-bottom-left-radius: 50px;
+  transition: none;
+  box-shadow: none;
+} 
+
+.btn-rounded{
+  border-radius: 50px;
+}
+.btn-orange-gradient{
+  background: linear-gradient(to right, #ffa600, #ff5722);
+}
