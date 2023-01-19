@@ -8,7 +8,7 @@
   }
  .colores{    
     border-radius: 10px;
-    color: #ffa500;
+    color: #ec8208;
     box-shadow: 2px 2px 10px #ffa500;   
  }
  
@@ -32,4 +32,7 @@
 }
 .carline{
   line-height: 1;
+}
+.card-body{
+  background-color: #132f4c;
 }

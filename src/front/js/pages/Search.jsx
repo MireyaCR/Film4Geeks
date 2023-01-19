@@ -49,7 +49,7 @@ function Search() {
         <div className="input-group mt-3">
           <input
             type="text"
-            className="form-control rounded-input"
+            className="form-control rounded-input text-warning"
             placeholder="Please enter your query"
             value={searchValue}
             onChange={(e) => setSearchValue(e.target.value)}
