@@ -13,7 +13,7 @@ import { Footer } from "./component/footer";
 
 import { Login } from "./pages/Login.jsx";
 import { SignUp } from "./pages/SignUp.jsx";
-
+import Wellcome from "./component/Wellcome.jsx";
 
 //create your first component
 const Layout = () => {
@@ -24,12 +24,11 @@ const Layout = () => {
     return (
         <div>
             <BrowserRouter basename={basename}>
-                <ScrollToTop>
-                
-                    <Navbar />
-                   
-                    <Routes>
-                        <Route element={<Home />} path="/" />
+                <ScrollToTop>                
+                    <Navbar/>
+                      <Routes>
+                        <Route element={<Wellcome/>} path="/Wellcome" />
+                        <Route element={<Home />} path="/home" />
                         {/* <Route element={<Demo />} path="/demo" /> */} 
                         <Route element={<Single />} path="/single/:theid" />
                         <Route element={<Search />} path="/search" />
