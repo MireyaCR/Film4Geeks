@@ -82,19 +82,36 @@ def get_token():
 
     return jsonify(dictionary)
 
-@api.route('/user/seen', methods=['POST'])
+@api.route('/user/seen', methods=['POST', 'GET'])
 @jwt_required()
 def add_seen_to_db():
-    body = request.json
-    email = get_jwt_identity()
-    user = User.query.filter_by(email=email).first()
-    print(user.id)
-    seen = Seen(film_id=body['film_id'], user_id=user.id)
-   
-    db.session.add(seen)
-    db.session.commit()
+    if request.method == 'POST':
+        body = request.json
+        email = get_jwt_identity()
+        user = User.query.filter_by(email=email).first()
+        print(user.id)
+        seen = Seen(film_id=body['film_id'], user_id=user.id)
+    
+        db.session.add(seen)
+        db.session.commit()
 
-    return jsonify({"message": "success"}), 200
+        return jsonify({"message": "success"}), 200
+
+
+    if request.method == 'GET':
+        email = get_jwt_identity()
+        user = User.query.filter_by(email=email).first()
+        seen = Seen.query.filter_by(user_id = user.id)
+
+        response_body = []
+        for film in favourite:
+            response = requests.get(f'https://api.themoviedb.org/3/movie/{film.film_id}?api_key={TMDB_API}')
+            data = response.json()
+            seen_data = film.serialize_seen()
+            sen_data['image_url'] = f'https://image.tmdb.org/t/p/w500/{data.get("poster_path")}'
+            response_body.append(seen_data)
+
+        return jsonify(response_body),200
 
 
 @api.route('/user/favourite', methods=['POST', 'GET'])

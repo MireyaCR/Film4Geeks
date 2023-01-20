@@ -4,7 +4,7 @@ import { Pie } from 'react-chartjs-2';
 import 'chart.js/auto';
 import profileCss from "../../styles/profile.css"
 import { MyFavourites } from "../component/MyFavourites.jsx";
-import { FilmsWatched } from "../component/FilmsWatched.jsx";
+import { FilmsSeen } from "../component/FilmsSeen.jsx";
 import { PendingMovies } from "../component/PendingMovies.jsx";
 import { text } from "@fortawesome/fontawesome-svg-core";
 
@@ -146,8 +146,8 @@ export const Profile = () => {
                     <PendingMovies/>
                     <hr></hr>
             
-                    <h3 className="text-center">Films watched</h3>
-                    <FilmsWatched/>
+                    <h3 className="text-center">Films seen</h3>
+                    <FilmsSeen/>
                     <hr></hr>
         </div>
     )
