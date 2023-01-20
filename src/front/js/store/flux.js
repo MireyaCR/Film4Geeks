@@ -38,7 +38,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				};
 		
 				try {
-					const resp = await fetch("https://3001-mireyacr-film4geeks-acs1s55h7yi.ws-eu83.gitpod.io/api/token", requestOptions)
+					const resp = await fetch(process.env.BACKEND_URL+"/api/token", requestOptions)
 	
 					if (resp.status !== 200){
 						alert("There has been some error")
@@ -70,7 +70,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 						Authorization: "Bearer " + store.token
 					}
 				}
-				fetch('https://3001-mireyacr-film4geeks-acs1s55h7yi.ws-eu83.gitpod.io/api/token', opts)
+				fetch(process.env.BACKEND_URL+"/api/token", opts)
 				.then(response => 
 					response.json()
 				)
@@ -146,7 +146,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					})
 				};
 				try{
-				const resp = await fetch("https://3001-mireyacr-film4geeks-acs1s55h7yi.ws-eu83.gitpod.io/api/user/seen", opts)
+				const resp = await fetch(process.env.BACKEND_URL+"/api/user/seen", opts)
 	
 				const data = await resp.json()	
 				}
@@ -169,7 +169,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					})
 				};
 				try{
-				const resp = await fetch("https://3001-mireyacr-film4geeks-acs1s55h7yi.ws-eu83.gitpod.io/api/user/favourite", opts)
+				const resp = await fetch(process.env.BACKEND_URL+"/api/user/favourite", opts)
 	
 				const data = await resp.json()	
 				}
@@ -191,7 +191,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					})
 				};
 				try{
-				const resp = await fetch("https://3001-mireyacr-film4geeks-acs1s55h7yi.ws-eu83.gitpod.io/api/user/pending", opts)
+				const resp = await fetch(process.env.BACKEND_URL+"/api/user/pending", opts)
 	
 				const data = await resp.json()	
 				}
