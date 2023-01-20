@@ -59,7 +59,7 @@ class Seen(db.Model):
     def __repr__(self):
         return f'<Seen {self.id}>'
 
-    def serialize(self):
+    def serialize_seen(self):
         return {
             "id": self.id,
             "user_id": self.user_id,
@@ -82,7 +82,7 @@ class Pending(db.Model):
     def __repr__(self):
         return f'<Pending {self.id}>'
 
-    def serialize(self):
+    def serialize_pending(self):
         return {
             "id": self.id,
             "user_id": self.user_id,

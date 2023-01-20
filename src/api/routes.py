@@ -126,27 +126,47 @@ def add_fav_to_db():
 
         return jsonify(response_body),200
 
+
+    
+
+
+@api.route('/user/pending', methods=['POST', 'GET'])
+@jwt_required()
+def add_pending_to_db():
+    if request.method == 'POST':
+        body = request.json
+        email = get_jwt_identity()
+        user = User.query.filter_by(email=email).first()
+        print(user.id)
+        pending = Pending(film_id=body['film_id'], user_id=user.id)
+   
+        db.session.add(pending)
+        db.session.commit()
+
+        return jsonify({"message": "success"}), 200
+
+
+    if request.method == 'GET':
+        email = get_jwt_identity()
+        user = User.query.filter_by(email=email).first()
+        pending = Pending.query.filter_by(user_id = user.id)
+
+        response_body = []
+        for film in favourite:
+            response = requests.get(f'https://api.themoviedb.org/3/movie/{film.film_id}?api_key={TMDB_API}')
+            data = response.json()
+            pending_data = film.serialize_pending()
+            pending_data['image_url'] = f'https://image.tmdb.org/t/p/w500/{data.get("poster_path")}'
+            response_body.append(pending_data)
+
+        return jsonify(response_body),200
+
+
+
+# Metodo de prueba para la llamada, borrar al finalizar 
 @api.route('/prueba', methods=[ 'GET'])
 def handle_hello():
     prueba = Favourite.query.all()
     prueba = list(map(lambda x: x.serialize_fav(), prueba))
     response_body = prueba
     return jsonify(response_body),200
-    
-
-  
-
-
-@api.route('/user/pending', methods=['POST'])
-@jwt_required()
-def add_pending_to_db():
-    body = request.json
-    email = get_jwt_identity()
-    user = User.query.filter_by(email=email).first()
-    print(user.id)
-    pending = Pending(film_id=body['film_id'], user_id=user.id)
-   
-    db.session.add(pending)
-    db.session.commit()
-
-    return jsonify({"message": "success"}), 200
