@@ -215,7 +215,7 @@ def get_info():
     for film in seen:
         response = requests.get(f'https://api.themoviedb.org/3/movie/{film.film_id}?api_key={TMDB_API}')
         data = response.json()
-        seen_data = film.serialize_seen()
+        seen_data ={} 
         seen_data["genres"] = data.get("genres")
         response_body.append(seen_data)
         

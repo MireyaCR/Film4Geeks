@@ -12,29 +12,72 @@ export const HeroProfile = () => {
     const [userInfo, setUserInfo] = useState([])
     const [categories, setCategories] = useState([])
     const [percentages, setPercentages] =useState([])
+    const [allGenres, setAllGenres] = useState([])
 
     
-    //  useEffect(()=> {
-    //      setGenres(Object.keys(typesGenres))
-    //      getPieInfo()
+    useEffect(()=> {
+        console.log("llamada getuserinfo")
+        getUserInfo()
+        
             
-    // },[store.seen])
+     },[])
 
 // Llamada al backend
     const getUserInfo = async () => {
         const options = {
-          method: "GET",
-          headers: {
+            method: "GET",
+            headers: {
             Authorization: "Bearer " + store.token,
-          },
+            },
         };
         const url_to_get_info =
           process.env.BACKEND_URL + "/api/user";
         const response = await fetch(url_to_get_info, options);
         const data = await response.json();
-        setUserInfo(data);
-      };
+        setUserInfo(data);  
+        console.log("userinfo:>>",data)   
+        getGenres()
 
+    };
+
+        let genreObject = {}
+        let percentageArray = []
+        let count = 0
+        const getGenres = () => {
+            console.log("getgenres Userinfo",userInfo)
+            for (let i = 0; i < userInfo.length; i++) {
+                let currentItem = userInfo[i];
+                if (typeof currentItem === "object" && currentItem.hasOwnProperty("genres")) {
+                    count++
+                    let genres = currentItem.genres;
+                    for (let j = 0; j < genres.length; j++) {
+                        if(genres[j].name in genreObject){
+                            genreObject[genres[j].name] = genreObject[genres[j].name] +1
+                        }else {
+                         genreObject[genres[j].name]= 1      
+                        }   
+                    }
+                }
+            }
+            for (const property in genreObject) {
+                let appearCount = genreObject[property]
+                let percentage = appearCount*100/count
+                percentageArray.push(percentage)
+            }
+            let arrayCategories= Object.keys(genreObject)  
+            setAllGenres(arrayCategories)
+            setPercentages(percentageArray)
+        }
+
+   
+    // console.log("percentaje", percentages)
+    // console.log("genres",allGenres)
+
+
+      
+    
+    
+    
     
 // Funcion diagrama
     const typesGenres = {
@@ -59,53 +102,14 @@ export const HeroProfile = () => {
         37:"western"
     }
 
-    
 
-    const getPieInfo=()=>{
-        // let objetoCategorias = {}
-        // let categoryNames = []
-        // let percentageArray = []
-
-        // for(let i = 0; i<store.seen.length; i++) {
-        //     if(store.seen[i][1] in objetoCategorias) {
-        //         objetoCategorias[store.seen[i][1]] = objetoCategorias[store.seen[i][1]] +1
-        //     }else {
-        //         objetoCategorias[store.seen[i][1]] = 1 
-        //     }
-        // }
-        // console.log("categorias valor diagrama",objetoCategorias)
-
-        // let arrayCategories= Object.keys(objetoCategorias)
-        // console.log("arraycategories",arrayCategories)
-
-        // for(let i=0; i<arrayCategories.length; i++) {
-        //     let category = arrayCategories[i]
-        //     //generar array de nombres categorias
-        //     if(category in typesGenres ) {
-        //        categoryNames.push(typesGenres[category])
-        //     }else{
-        //         categoryNames.push("Genre " + category)
-        //     }
-        //     //generar array de porcentajes
-        //     let appearCount = objetoCategorias[category]
-        //     let percentage = appearCount*100/store.seen.length
-        //     percentageArray.push(percentage)
-        // }
-        // setCategories(categoryNames)
-        // setPercentages(percentageArray)
-
-    }
-
-
-
-    //console.log("categorias>>", categories)
-    console.log("esto es userInfo",userInfo)
+    // console.log("esto es userInfo",userInfo)
   
 
 
 // Atributos de Pie
     const data= {
-        labels: categories,
+        labels: allGenres,
         datasets:[{   //porcentaje de cada uno e los parametros
             data:percentages,  //porcentajes
             backgroundColor: [
@@ -158,6 +162,7 @@ export const HeroProfile = () => {
                 </div>
 
             <button onClick={()=>{getUserInfo()}}>get user info</button>
+            <button onClick={getGenres}>genres</button>
             </div>
     )
 }
