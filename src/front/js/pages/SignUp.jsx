@@ -28,7 +28,7 @@ export const SignUp = () => {
         body: raw,
         redirect: 'follow'
         };
-        
+
         fetch(process.env.BACKEND_URL+"/api/signup", requestOptions)
         .then(response => response.text())
         .then(result => console.log(result))

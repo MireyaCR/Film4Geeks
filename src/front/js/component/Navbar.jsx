@@ -39,17 +39,19 @@ const Navbar = () => {
                    <li className="nav-item ">
                        <Link className="nav-link link-warning" to="/profile">Profile</Link>
                    </li>
-                   <li className="nav-item">
+                    <li className="nav-item">
                        <Link className="nav-link link-warning" to="/Search">Search</Link>
                    </li>
                    <li className="nav-item">
                         <Link className="nav-link link-warning" to="#">Starring</Link>
                    </li> 
                   
-                   <li className="nav-item">
+                   <li className="nav-item">                   
+
                         <Link className="nav-link link-warning" to="#" onClick={handleClick}><i className="fa fa-power-off"></i></Link>
                    </li>
             </ul>
+ dev
                
            </div>
 		</nav>
