@@ -56,7 +56,7 @@
     background-color:#D29435 ;
     border-radius: 20px;
     padding: 3px;
-    width: 30%;
+    width: 10%;
     font-weight: bold;
     text-align: center;
     
@@ -64,16 +64,13 @@
     
 }
 }
-@media (max-width: 2000px){
+@media (max-width: 3000px){
     .button {
         background-color:#D29435 ;
         border-radius: 20px;
         padding: 3px;
-        width: 30%;
+        width: 10%;
         font-weight: bold;
-       
-        
-        
     }
     }
 

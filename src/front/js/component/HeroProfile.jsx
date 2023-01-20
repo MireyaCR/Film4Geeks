@@ -162,7 +162,7 @@ export const HeroProfile = () => {
                 </div>
 
             <button onClick={()=>{getUserInfo()}}>get user info</button>
-            <button onClick={getGenres}>genres</button>
+           
             </div>
     )
 }
