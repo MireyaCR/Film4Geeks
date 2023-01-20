@@ -51,7 +51,6 @@ const Navbar = () => {
                         <Link className="nav-link link-warning" to="#" onClick={handleClick}><i className="fa fa-power-off"></i></Link>
                    </li>
             </ul>
- dev
                
            </div>
 		</nav>
