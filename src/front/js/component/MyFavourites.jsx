@@ -6,7 +6,6 @@ import 'react-alice-carousel/lib/alice-carousel.css';
 import '../../styles/profileCards.css'
 import { element } from "prop-types";
 
-
 export const MyFavourites = () => {
 
     const {store, actions } = useContext(Context);

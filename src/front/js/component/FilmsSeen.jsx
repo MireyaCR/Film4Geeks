@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import AliceCarousel from 'react-alice-carousel';
 import 'react-alice-carousel/lib/alice-carousel.css';
 import '../../styles/profileCards.css'
-
+import { element } from "prop-types";
 
 export const FilmsSeen = () => {
 
@@ -18,9 +18,9 @@ export const FilmsSeen = () => {
 			Authorization: "Bearer " + store.token,
 		  },
 		};
-		const url_to_get_favorites =
-		  process.env.BACKEND_URL + "/api/user/favourite";
-		const response = await fetch(url_to_get_favorites, options);
+		const url_to_get_seen =
+		  process.env.BACKEND_URL + "/api/user/seen";
+		const response = await fetch(url_to_get_seen, options);
 		const data = await response.json();
 		setFilmsSeen(data);
 	};

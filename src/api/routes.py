@@ -104,11 +104,11 @@ def add_seen_to_db():
         seen = Seen.query.filter_by(user_id = user.id)
 
         response_body = []
-        for film in favourite:
+        for film in seen:
             response = requests.get(f'https://api.themoviedb.org/3/movie/{film.film_id}?api_key={TMDB_API}')
             data = response.json()
             seen_data = film.serialize_seen()
-            sen_data['image_url'] = f'https://image.tmdb.org/t/p/w500/{data.get("poster_path")}'
+            seen_data['image_url'] = f'https://image.tmdb.org/t/p/w500/{data.get("poster_path")}'
             response_body.append(seen_data)
 
         return jsonify(response_body),200
@@ -169,7 +169,7 @@ def add_pending_to_db():
         pending = Pending.query.filter_by(user_id = user.id)
 
         response_body = []
-        for film in favourite:
+        for film in pending:
             response = requests.get(f'https://api.themoviedb.org/3/movie/{film.film_id}?api_key={TMDB_API}')
             data = response.json()
             pending_data = film.serialize_pending()
@@ -181,9 +181,21 @@ def add_pending_to_db():
 
 
 # Metodo de prueba para la llamada, borrar al finalizar 
-@api.route('/prueba', methods=[ 'GET'])
+@api.route('/prueba', methods=['GET'])
 def handle_hello():
     prueba = Favourite.query.all()
     prueba = list(map(lambda x: x.serialize_fav(), prueba))
     response_body = prueba
     return jsonify(response_body),200
+
+
+@api.route('/user', methods=['GET'])
+@jwt_required()
+def get_info():
+        # body = request.json
+        email = get_jwt_identity()
+        user = User.query.filter_by(email=email).first()
+        user= list(map(lambda x: x.serialize(), user))
+        response_body= user.id
+
+        return jsonify(response_body), 200

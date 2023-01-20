@@ -11,8 +11,25 @@ export const HeroProfile = () => {
 
     const {store, actions } = useContext(Context);
     const [genres, setGenres] = useState([])
+    const [userInfo, setUserInfo] = useState([])
     const [categories, setCategories] = useState([])
     const [percentages, setPercentages] =useState([])
+
+
+    const getUserInfo = async () => {
+        const options = {
+          method: "GET",
+          headers: {
+            Authorization: "Bearer " + store.token,
+          },
+        };
+        const url_to_get_info =
+          process.env.BACKEND_URL + "/api/prueba";
+        const response = await fetch(url_to_get_info, options);
+        const data = await response.json();
+        setUserInfo(data);
+      };
+    
    
     const typesGenres = {
         28:"action",
@@ -37,6 +54,7 @@ export const HeroProfile = () => {
     }
 
     console.log("esto es array>>>>>>>>>",store.seen)
+    
 
     const funcion=()=>{
         let objetoCategorias = {}
@@ -72,13 +90,14 @@ export const HeroProfile = () => {
         setPercentages(percentageArray)
     }
 
-    useEffect(()=> {
-        setGenres(Object.keys(typesGenres))
-        funcion()    
-    },[store.seen])
+    // useEffect(()=> {
+    //     setGenres(Object.keys(typesGenres))
+    //     funcion()   
+    // },[store.seen])
 
 
     console.log("categorias>>", categories)
+    console.log("esto es usser",userInfo)
 
     const data= {
         labels: categories,
@@ -130,6 +149,7 @@ export const HeroProfile = () => {
                     <Pie  data={data} options={options} />
                 </div>
 
+            <button onClick={getUserInfo}>get user info</button>
             </div>
     )
 }

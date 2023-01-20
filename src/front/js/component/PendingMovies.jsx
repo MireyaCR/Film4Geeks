@@ -18,9 +18,9 @@ export const PendingMovies = () => {
 			Authorization: "Bearer " + store.token,
 		  },
 		};
-		const url_to_get_favorites =
-		  process.env.BACKEND_URL + "/api/user/favourite";
-		const response = await fetch(url_to_get_favorites, options);
+		const url_to_get_pending =
+		  process.env.BACKEND_URL + "/api/user/pending";
+		const response = await fetch(url_to_get_pending, options);
 		const data = await response.json();
 		setPending(data);
 	};
