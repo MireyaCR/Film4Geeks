@@ -191,11 +191,11 @@ def handle_hello():
 
 @api.route('/user', methods=['GET'])
 @jwt_required()
-def get_info():
-        # body = request.json
-        email = get_jwt_identity()
-        user = User.query.filter_by(email=email).first()
-        user= list(map(lambda x: x.serialize(), user))
-        response_body= user.id
-
-        return jsonify(response_body), 200
+def get_info():  
+    email = get_jwt_identity()
+    user = User.query.filter_by(email=email).first()
+    response_body= {
+        "name":user.name,
+        "email":user.email
+    }
+    return jsonify(response_body), 200

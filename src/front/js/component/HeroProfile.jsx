@@ -24,7 +24,7 @@ export const HeroProfile = () => {
           },
         };
         const url_to_get_info =
-          process.env.BACKEND_URL + "/api/prueba";
+          process.env.BACKEND_URL + "/api/user";
         const response = await fetch(url_to_get_info, options);
         const data = await response.json();
         setUserInfo(data);
@@ -90,10 +90,11 @@ export const HeroProfile = () => {
         setPercentages(percentageArray)
     }
 
-    // useEffect(()=> {
-    //     setGenres(Object.keys(typesGenres))
-    //     funcion()   
-    // },[store.seen])
+     useEffect(()=> {
+         setGenres(Object.keys(typesGenres))
+         funcion()
+            
+    },[store.seen])
 
 
     console.log("categorias>>", categories)
@@ -139,8 +140,8 @@ export const HeroProfile = () => {
                     </div>
 
                     <div className="text-center m-2 p-2 reduced-line-height-right"  >
-                        <h4 >Name: </h4><h5 style={{color:"white"}} >David</h5>
-                        <h4 >Email: </h4><h5 style={{color:"white"}}>dagalisteo@gmail.com</h5>
+                        <h4 >Name: </h4><h5 style={{color:"white"}} >{userInfo.name}</h5>
+                        <h4 >Email: </h4><h5 style={{color:"white"}}>{userInfo.email}</h5>
                     </div>
                 </div>
                 
@@ -149,7 +150,7 @@ export const HeroProfile = () => {
                     <Pie  data={data} options={options} />
                 </div>
 
-            <button onClick={getUserInfo}>get user info</button>
+            <button onClick={()=>{getUserInfo()}}>get user info</button>
             </div>
     )
 }
