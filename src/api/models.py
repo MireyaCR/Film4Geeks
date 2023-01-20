@@ -30,6 +30,10 @@ class Favourite(db.Model):
     user = db.relationship('User', backref='favourite', lazy = True)
     film_id = db.Column(db.Integer, nullable=False)
 
+    __table_args__ = (
+        db.UniqueConstraint('user_id', 'film_id', name='unique_favourite_id'),
+    )
+
 
     def __repr__(self):
         return f'<Favourite {self.id}>'
@@ -48,6 +52,9 @@ class Seen(db.Model):
     user = db.relationship('User', backref='seen', lazy = True)
     film_id = db.Column(db.Integer, nullable=False)
 
+    __table_args__ = (
+        db.UniqueConstraint('user_id', 'film_id', name='unique_seen_id'),
+    )
     
     def __repr__(self):
         return f'<Seen {self.id}>'
@@ -66,6 +73,10 @@ class Pending(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     user = db.relationship('User', backref='pending', lazy = True)
     film_id = db.Column(db.Integer, nullable=False)
+
+    __table_args__ = (
+        db.UniqueConstraint('user_id', 'film_id', name='unique_pending_id'),
+    )
 
 
     def __repr__(self):

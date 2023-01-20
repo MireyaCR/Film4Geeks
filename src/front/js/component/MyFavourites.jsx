@@ -1,16 +1,31 @@
-import React, {useContext} from "react";
+import React, {useContext,useState} from "react";
 import { Context } from '../store/appContext';
 import { Link } from "react-router-dom";
 import AliceCarousel from 'react-alice-carousel';
 import 'react-alice-carousel/lib/alice-carousel.css';
 import '../../styles/profileCards.css'
+import { element } from "prop-types";
 
 
 export const MyFavourites = () => {
 
     const {store, actions } = useContext(Context);
-
+	const [films, setFilms] = useState([]);
 	
+	const getFavourites = async () => {
+		const options = {
+		  method: "GET",
+		  headers: {
+			Authorization: "Bearer " + store.token,
+		  },
+		};
+		const url_to_get_favorites =
+		  process.env.BACKEND_URL + "/api/user/favourite";
+		const response = await fetch(url_to_get_favorites, options);
+		const data = await response.json();
+		setFilms(data);
+	};
+
 
     const responsive = {
 		2000: {
@@ -28,39 +43,23 @@ export const MyFavourites = () => {
 	};
 
     return (
-    //     <div className="text-center d-flex flex-wrap">
-    //         <AliceCarousel responsive={responsive} autoPlay autoPlayInterval="1500"> 
-    //     {
-	// 		store.favourites.map((favourite, index) => 
-				 
-    //             <div key={index}>
-    //                     <div className='ind me-1'>
-	// 						<Link to={`/details_favourites/${index}`}>
-	// 							<img src={favourite} className='grid' style={{height:"400px"}}/>
-	// 						</Link>
-    //                     </div> 
-    //             </div>
-	// 		)
-	// 	}
-    //     </AliceCarousel>
-    // </div>
+        <div className="text-center d-flex flex-wrap">
+            <AliceCarousel responsive={responsive} autoPlay autoPlayInterval="1500"> 
+				{
+					films.map((favourite, index) => 
+						<div key={index}>
+							<div className='ind me-1'>
+								<Link to={`/detailspopular/${favourite.film_id}`}>
+									<img src={favourite.image_url} className='grid' style={{height:"400px"}}/>
+								</Link>
+							</div> 
+						</div>)
+				}
+         	</AliceCarousel>
+			<button onClick={() => {getFavourites();}}>My favourites</button>
+     	</div>   
 
-		<div className="container mt-5">
-			<div className="d-flex mx-2">
-				<AliceCarousel responsive={responsive} autoPlay autoPlayInterval="1500"> 
-					{
-					store.favourites.map((favourite, index) => (   
-						<div key={index}>   
-							<div key={index} className='ind'>
-								{/* <Link to={`/details/${index}`}> */}
-									<img className='grid' style={{height:"15rem"}} src={favourite}/>
-								{/* </Link>  */}
-							</div>
-						</div>   
-					))}
-				</AliceCarousel>
-			</div>
-		</div>
+      
 	)
 }
 
