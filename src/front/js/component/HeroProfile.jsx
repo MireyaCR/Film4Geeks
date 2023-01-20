@@ -8,14 +8,19 @@ import { text } from "@fortawesome/fontawesome-svg-core";
 
 export const HeroProfile = () => {
 
-
     const {store, actions } = useContext(Context);
-    const [genres, setGenres] = useState([])
     const [userInfo, setUserInfo] = useState([])
     const [categories, setCategories] = useState([])
     const [percentages, setPercentages] =useState([])
 
+    
+    //  useEffect(()=> {
+    //      setGenres(Object.keys(typesGenres))
+    //      getPieInfo()
+            
+    // },[store.seen])
 
+// Llamada al backend
     const getUserInfo = async () => {
         const options = {
           method: "GET",
@@ -29,8 +34,9 @@ export const HeroProfile = () => {
         const data = await response.json();
         setUserInfo(data);
       };
+
     
-   
+// Funcion diagrama
     const typesGenres = {
         28:"action",
         12:"adventure",
@@ -53,53 +59,51 @@ export const HeroProfile = () => {
         37:"western"
     }
 
-    console.log("esto es array>>>>>>>>>",store.seen)
     
 
-    const funcion=()=>{
-        let objetoCategorias = {}
-        let categoryNames = []
-        let percentageArray = []
+    const getPieInfo=()=>{
+        // let objetoCategorias = {}
+        // let categoryNames = []
+        // let percentageArray = []
 
-        for(let i = 0; i<store.seen.length; i++) {
-            if(store.seen[i][1] in objetoCategorias) {
-                objetoCategorias[store.seen[i][1]] = objetoCategorias[store.seen[i][1]] +1
-            }else {
-                objetoCategorias[store.seen[i][1]] = 1 
-            }
-        }
-        console.log("categorias valor diagrama",objetoCategorias)
+        // for(let i = 0; i<store.seen.length; i++) {
+        //     if(store.seen[i][1] in objetoCategorias) {
+        //         objetoCategorias[store.seen[i][1]] = objetoCategorias[store.seen[i][1]] +1
+        //     }else {
+        //         objetoCategorias[store.seen[i][1]] = 1 
+        //     }
+        // }
+        // console.log("categorias valor diagrama",objetoCategorias)
 
-        let arrayCategories= Object.keys(objetoCategorias)
-        console.log("arraycategories",arrayCategories)
+        // let arrayCategories= Object.keys(objetoCategorias)
+        // console.log("arraycategories",arrayCategories)
 
-        for(let i=0; i<arrayCategories.length; i++) {
-            let category = arrayCategories[i]
-            //generar array de nombres categorias
-            if(category in typesGenres ) {
-               categoryNames.push(typesGenres[category])
-            }else{
-                categoryNames.push("Genre " + category)
-            }
-            //generar array de porcentajes
-            let appearCount = objetoCategorias[category]
-            let percentage = appearCount*100/store.seen.length
-            percentageArray.push(percentage)
-        }
-        setCategories(categoryNames)
-        setPercentages(percentageArray)
+        // for(let i=0; i<arrayCategories.length; i++) {
+        //     let category = arrayCategories[i]
+        //     //generar array de nombres categorias
+        //     if(category in typesGenres ) {
+        //        categoryNames.push(typesGenres[category])
+        //     }else{
+        //         categoryNames.push("Genre " + category)
+        //     }
+        //     //generar array de porcentajes
+        //     let appearCount = objetoCategorias[category]
+        //     let percentage = appearCount*100/store.seen.length
+        //     percentageArray.push(percentage)
+        // }
+        // setCategories(categoryNames)
+        // setPercentages(percentageArray)
+
     }
 
-     useEffect(()=> {
-         setGenres(Object.keys(typesGenres))
-         funcion()
-            
-    },[store.seen])
 
 
-    console.log("categorias>>", categories)
-    console.log("esto es usser",userInfo)
+    //console.log("categorias>>", categories)
+    console.log("esto es userInfo",userInfo)
+  
 
+
+// Atributos de Pie
     const data= {
         labels: categories,
         datasets:[{   //porcentaje de cada uno e los parametros
@@ -131,6 +135,9 @@ export const HeroProfile = () => {
         aspectRatio:2, 
     }
 
+
+
+
     return (
         <div className=" row justify-content-center align-items-center p-3 mx-3 mb-4 ">
 
@@ -140,8 +147,8 @@ export const HeroProfile = () => {
                     </div>
 
                     <div className="text-center m-2 p-2 reduced-line-height-right"  >
-                        <h4 >Name: </h4><h5 style={{color:"white"}} >{userInfo.name}</h5>
-                        <h4 >Email: </h4><h5 style={{color:"white"}}>{userInfo.email}</h5>
+                        <h4 >Name: </h4><h5 style={{color:"white"}} >{userInfo[0]}</h5>
+                        <h4 >Email: </h4><h5 style={{color:"white"}}>{userInfo[1]}</h5>
                     </div>
                 </div>
                 

@@ -109,6 +109,7 @@ def add_seen_to_db():
             data = response.json()
             seen_data = film.serialize_seen()
             seen_data['image_url'] = f'https://image.tmdb.org/t/p/w500/{data.get("poster_path")}'
+            seen_data["genres"] = data.get("genres")
             response_body.append(seen_data)
 
         return jsonify(response_body),200
@@ -189,13 +190,51 @@ def handle_hello():
     return jsonify(response_body),200
 
 
+# @api.route('/user', methods=['GET'])
+# @jwt_required()
+# def get_info():  
+#     email = get_jwt_identity()
+#     user = User.query.filter_by(email=email).first()
+#     response_body= {
+#         "name":user.name,
+#         "email":user.email
+#     }
+#     return jsonify(response_body), 200
+
 @api.route('/user', methods=['GET'])
 @jwt_required()
 def get_info():  
     email = get_jwt_identity()
     user = User.query.filter_by(email=email).first()
-    response_body= {
-        "name":user.name,
-        "email":user.email
-    }
+    seen = Seen.query.filter_by(user_id = user.id)
+    name = user.name
+    email = user.email
+    response_body = []
+    response_body.append(name)
+    response_body.append(email)
+    for film in seen:
+        response = requests.get(f'https://api.themoviedb.org/3/movie/{film.film_id}?api_key={TMDB_API}')
+        data = response.json()
+        seen_data = film.serialize_seen()
+        seen_data["genres"] = data.get("genres")
+        response_body.append(seen_data)
+        
     return jsonify(response_body), 200
+
+
+@api.route('/user/genres', methods=['GET'])
+@jwt_required()
+def get_genres():
+    email = get_jwt_identity()
+    user = User.query.filter_by(email=email).first()
+    seen = Seen.query.filter_by(user_id = user.id)
+
+    response_body = []
+    for film in seen:
+        response = requests.get(f'https://api.themoviedb.org/3/movie/{film.film_id}?api_key={TMDB_API}')
+        data = response.json()
+        seen_data = film.serialize_seen()
+
+        seen_data["genres"] = data.get("genres")
+        response_body.append(seen_data)
+    return jsonify(response_body),200

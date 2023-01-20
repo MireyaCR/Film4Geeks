@@ -41,6 +41,7 @@ export const FilmsSeen = () => {
 		},
 	};
 
+
     return (
 		<div className="text-center d-flex flex-wrap">
             <AliceCarousel responsive={responsive} autoPlay autoPlayInterval="1500"> 
