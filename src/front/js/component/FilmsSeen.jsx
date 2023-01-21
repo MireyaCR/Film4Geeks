@@ -1,4 +1,4 @@
-import React, {useContext, useState} from "react";
+import React, {useContext, useEffect, useState} from "react";
 import { Context } from '../store/appContext';
 import { Link } from "react-router-dom";
 import AliceCarousel from 'react-alice-carousel';
@@ -10,6 +10,10 @@ export const FilmsSeen = () => {
 
     const {store, actions } = useContext(Context);
 	const [filmsSeen, setFilmsSeen] = useState([]);
+
+	useEffect(()=> {
+		getFilmsSeen()
+	},[])
 	
 	const getFilmsSeen = async () => {
 		const options = {
@@ -26,37 +30,23 @@ export const FilmsSeen = () => {
 	};
 
 
-    const responsive = {
-		2000: {
-		items: 7,
-		},
-		1200: {
-		items: 5,
-		},
-		800: {
-		items: 2,
-		},
-		0: {
-		items: 1,
-		},
-	};
 
 
     return (
-		<div className="text-center d-flex flex-wrap">
-            <AliceCarousel responsive={responsive} autoPlay autoPlayInterval="1500"> 
+		<div className="container text-center d-flex flex-wrap justify-content-center">
+            
 				{
 					filmsSeen.map((seen, index) => 
 						<div key={index}>
 							<div className='ind me-1'>
 								<Link to={`/detailspopular/${seen.film_id}`}>
-									<img src={seen.image_url} className='grid' style={{height:"400px"}}/>
+									<img src={seen.image_url} className='grid' style={{height:"10rem"}}/>
 								</Link>
 							</div> 
 						</div>)
 				}
-         	</AliceCarousel>
-			<button onClick={() => {getFilmsSeen();}}>Films seen</button>
+         	
+			
      	</div>
     )
 }

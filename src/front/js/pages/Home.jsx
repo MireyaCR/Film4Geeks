@@ -8,17 +8,20 @@ import NearestCinema from "../component/NearestCinema.jsx";
 // import 'react-alice-carousel/lib/alice-carousel.css';
 import logo from "../../img/LOGO.png";
 import {Context } from "../store/appContext"
+import { useNavigate } from "react-router-dom";
 
 const API_IMAGE = 'https://image.tmdb.org/t/p/w500/'
 
 const Home = () => {
 
-	// const {store, actions} = useContext(Context)
-
-	// useEffect(() => {
-	// 	if(store.token){actions.appendToken()}
+	const {store, actions} = useContext(Context)
+	const navigate = useNavigate()
 	
-	// 	}, [store.token])
+	useEffect(() => {
+	 	if(!store.token)
+		navigate("/login")
+	
+	}, [store.token])
 	
 	return (
 		<section>

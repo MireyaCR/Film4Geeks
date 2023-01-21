@@ -18,7 +18,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			syncTokenFromSessionStore: () => {
 				const token = sessionStorage.getItem("token");
 				console.log("Aplication just loaded, synching the session storage token ")
-				if(token && token != "" && token != undefined)setStore({token:token})
+				setStore({token:token})
 			},
 
 			login: async (email, password) => {

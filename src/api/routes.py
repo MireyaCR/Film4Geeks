@@ -4,7 +4,6 @@ This module takes care of starting the API Server, Loading the DB and Adding the
 from flask import Flask, request, jsonify, url_for, Blueprint
 from api.models import db, User, Favourite, Pending, Seen
 from api.utils import generate_sitemap, APIException
-
 from flask_jwt_extended import create_access_token
 from flask_jwt_extended import get_jwt_identity
 from flask_jwt_extended import jwt_required
@@ -12,6 +11,8 @@ from sqlalchemy.orm import validates
 import requests
 import re
 import os
+
+
 TMDB_API = os.getenv("TMDB_API")
 
 api = Blueprint('api', __name__)
@@ -50,37 +51,6 @@ def create_token():
 
 
 
-
-@validates("email")
-def validate_email(email):
-    if not email:
-        raise AssertionError("Email not provided")
-    if not re.match("[^@]+@[^@]+.[^@]+", email):
-        raise AssertionError("Invalid format email")
-
-    return email
-
-
-@validates("password")
-def validate_password(password):
-    if not password:
-        raise AssertionError("Password not provided")
-    if not re.match('[A-Z]|[A-Z]', password):
-        raise AssertionError("Invalid format password")
-
-    return password
-
-
-
-@api.route("/token", methods=["GET"])
-@jwt_required()
-def get_token():
-    email = get_jwt_identity()
-    dictionary = {
-        "message": "Welcome " + email + "!" 
-    }
-
-    return jsonify(dictionary)
 
 @api.route('/user/seen', methods=['POST', 'GET'])
 @jwt_required()
@@ -146,8 +116,6 @@ def add_fav_to_db():
 
 
     
-
-
 @api.route('/user/pending', methods=['POST', 'GET'])
 @jwt_required()
 def add_pending_to_db():
@@ -181,60 +149,54 @@ def add_pending_to_db():
 
 
 
-# Metodo de prueba para la llamada, borrar al finalizar 
-@api.route('/prueba', methods=['GET'])
-def handle_hello():
-    prueba = Favourite.query.all()
-    prueba = list(map(lambda x: x.serialize_fav(), prueba))
-    response_body = prueba
-    return jsonify(response_body),200
-
-
-# @api.route('/user', methods=['GET'])
-# @jwt_required()
-# def get_info():  
-#     email = get_jwt_identity()
-#     user = User.query.filter_by(email=email).first()
-#     response_body= {
-#         "name":user.name,
-#         "email":user.email
-#     }
-#     return jsonify(response_body), 200
-
 @api.route('/user', methods=['GET'])
 @jwt_required()
 def get_info():  
+    print("prueba")
     email = get_jwt_identity()
     user = User.query.filter_by(email=email).first()
     seen = Seen.query.filter_by(user_id = user.id)
     name = user.name
     email = user.email
-    response_body = []
-    response_body.append(name)
-    response_body.append(email)
+    response_body = {}
+    response_body["name"]= name
+    response_body["email"] = email
+    genres = []
     for film in seen:
         response = requests.get(f'https://api.themoviedb.org/3/movie/{film.film_id}?api_key={TMDB_API}')
         data = response.json()
         seen_data ={} 
-        seen_data["genres"] = data.get("genres")
-        response_body.append(seen_data)
-        
+        genres.extend([element["name"] for element in data.get("genres")])
+    genres_list = list(set(genres))
+    genres_data = []
+    for i in genres_list:
+        genres_data.append(genres.count(i))
+       
+    response_body["genres"]= {
+        "genres": genres_list,
+        "genres_data": genres_data
+    }
+
     return jsonify(response_body), 200
 
 
-@api.route('/user/genres', methods=['GET'])
-@jwt_required()
-def get_genres():
-    email = get_jwt_identity()
-    user = User.query.filter_by(email=email).first()
-    seen = Seen.query.filter_by(user_id = user.id)
 
-    response_body = []
-    for film in seen:
-        response = requests.get(f'https://api.themoviedb.org/3/movie/{film.film_id}?api_key={TMDB_API}')
-        data = response.json()
-        seen_data = film.serialize_seen()
+# Validaciones
+@validates("email")
+def validate_email(email):
+    if not email:
+        raise AssertionError("Email not provided")
+    if not re.match("[^@]+@[^@]+.[^@]+", email):
+        raise AssertionError("Invalid format email")
 
-        seen_data["genres"] = data.get("genres")
-        response_body.append(seen_data)
-    return jsonify(response_body),200
+    return email
+
+
+@validates("password")
+def validate_password(password):
+    if not password:
+        raise AssertionError("Password not provided")
+    if not re.match('[A-Z]|[A-Z]', password):
+        raise AssertionError("Invalid format password")
+
+    return password

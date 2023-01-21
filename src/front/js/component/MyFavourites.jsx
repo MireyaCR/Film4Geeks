@@ -1,4 +1,4 @@
-import React, {useContext,useState} from "react";
+import React, {useContext,useEffect,useState} from "react";
 import { Context } from '../store/appContext';
 import { Link } from "react-router-dom";
 import AliceCarousel from 'react-alice-carousel';
@@ -10,6 +10,10 @@ export const MyFavourites = () => {
 
     const {store, actions } = useContext(Context);
 	const [favouriteFilms, setFavouriteFilms] = useState([]);
+
+	useEffect(()=> {
+		getFavourites()
+	},[])
 	
 	const getFavourites = async () => {
 		const options = {
@@ -26,36 +30,22 @@ export const MyFavourites = () => {
 	};
 
 
-    const responsive = {
-		2000: {
-		items: 10,
-		},
-		1200: {
-		items: 10,
-		},
-		800: {
-		items: 10,
-		},
-		0: {
-		items: 10,
-		},
-	};
+
 
     return (
-        <div className="text-center d-flex flex-wrap">
-            <AliceCarousel responsive={responsive} autoPlay autoPlayInterval="1500"> 
+        <div className="container text-center d-flex flex-wrap justify-content-center">
+            
 				{
 					favouriteFilms.map((favourite, index) => 
 						<div key={index}>
 							<div className='ind me-1'>
 								<Link to={`/detailspopular/${favourite.film_id}`}>
-									<img src={favourite.image_url} className='grid' style={{height:"400px"}}/>
+									<img src={favourite.image_url} className='grid' style={{height:"10rem"}}/>
 								</Link>
 							</div> 
 						</div>)
 				}
-         	</AliceCarousel>
-			<button onClick={() => {getFavourites();}}>My favourites</button>
+         
      	</div>   
 
       
