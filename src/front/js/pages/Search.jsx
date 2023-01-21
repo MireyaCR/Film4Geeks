@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import "../../styles/search.css";
 import { API_IMAGE } from "/workspace/Film4Geeks/src/front/js/services/API_IMAGE.js";
 import imgerror from "/workspace/Film4Geeks/src/front/img/Imagenerror.png";
+import { Link } from "react-router-dom";
 
 function Search() {
   const {store, actions} = useContext(Context)
@@ -86,18 +87,20 @@ function Search() {
                   className="card-container d-flex justify-content-end colores"
                   style={{ height: "200px" }}
                 >
-                  <img
-                    className="img-fluid "
-                    src={`${API_IMAGE}${result.poster_path}`}
-                    style={{
-                      objectFit: "cover",
-                      width: "150px",
-                      height: "200px",
-                      maxWidth: "100%",
-                      maxHeight: "200px",
-                    }}
-                    alt=""
-                  ></img>
+                  <Link to={`/detailspopular/${result.id}`}>
+                    <img
+                      className="img-fluid "
+                      src={`${API_IMAGE}${result.poster_path}`}
+                      style={{
+                        objectFit: "cover",
+                        width: "150px",
+                        height: "200px",
+                        maxWidth: "100%",
+                        maxHeight: "200px",
+                      }}
+                      alt=""
+                    ></img>
+                  </Link>
                   <div className="card-body ml-auto">
                     <h5 className="card-title-right carline">{result.title}</h5>
                     <p className="cadr-text-right carline text-warning">
