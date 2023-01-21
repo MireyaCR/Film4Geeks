@@ -29,7 +29,7 @@ export const SignUp = () => {
         redirect: 'follow'
         };
 
-        fetch(process.env.BACKEND_URL+"/api/signup", requestOptions)
+        fetch("https://3001-mireyacr-film4geeks-xdpdhzxnh28.ws-eu83.gitpod.io/api/signup", requestOptions)
         .then(response => response.text())
         .then(result => console.log(result))
         .catch(error => console.log('error', error));
