@@ -12,10 +12,14 @@ export const HeroProfile = () => {
     const [categories, setCategories] = useState([])
     const [percentages, setPercentages] =useState([])
     const [allGenres, setAllGenres] = useState([])
+    const [show, setShow] = useState(false)
+    const [name, setName] = useState()
+    const [email, setEmail] = useState()
+    var info = {}
 
     useEffect(()=> {
         getUserInfo()
-     },[])
+     },[show])
 
 // Llamada al backend
     const getUserInfo =  () => {
@@ -52,7 +56,37 @@ export const HeroProfile = () => {
         });
     setAllGenres(genreArray)
     setPercentages(percentageArray)    
-        }
+    }
+
+
+    const putName = () => {
+        info.name = document.getElementById("name").value
+        console.log("Esta es mi info", info)
+        var myHeaders = new Headers();
+        var requestOptions = {
+        method: 'PUT',
+        
+        headers: {
+            "Content-Type": "application/json",
+            Authorization: "Bearer " + store.token   
+        },
+        body: JSON.stringify({
+            name : info.name,
+        }),
+        redirect: 'follow'
+        };
+
+        fetch(process.env.BACKEND_URL+"/api/name", requestOptions)
+        .then(response => response.text())
+        .then(result => {
+            result
+            setShow(false)
+        })
+        .catch(error => console.log('error', error));
+        
+    }
+
+
 
     console.log("esto es userInfo",userInfo)
   
@@ -99,15 +133,20 @@ export const HeroProfile = () => {
                     </div>
 
                     <div className="text-center m-2 p-2 reduced-line-height-right"  >
-                        <h4 >Name: </h4><h5 style={{color:"white"}} >{userInfo.name}</h5>
-                        <h4 >Email: </h4><h5 style={{color:"white"}}>{userInfo.email}</h5>
+                        <h4 >Name: </h4><h5 style={{color:"white"}} >{userInfo.name} <i 
+                                                                                        onClick={()=>setShow(true)} className="fas fa-edit" style={{color:"#ffa500"}}
+                                                                                        ></i>
+                                                                                            {show ? 
+                                                                                            <div><input onChange = {(e)=>setName(e.target.value)} value = {name} type= "text" id = "name" /><i className="fas fa-times" onClick={()=>setShow(false)}></i><i className="fas fa-check" onClick={putName}></i></div>
+                                                                                            :""}</h5>
+                        <h4 >Email: </h4><h5 style={{color:"white"}}>{userInfo.email}  </h5>
                     </div>
                 </div>
 
                 <div className="col-md-6 item m-2 p-2 reduced-line-height-left">
                     <h6 >Your favourite Genders:</h6>
                     <Pie  data={data} options={options} />
-                    <button style={{borderRadius:"10%", backgroundColor:"#ffa500"}} onClick={getGenres}>Ver info</button>
+                    {/* <button style={{borderRadius:"10%", backgroundColor:"#ffa500"}} onClick={getGenres}>Ver info</button> */}
                 </div>
 
         </div>

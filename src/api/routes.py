@@ -152,33 +152,43 @@ def add_pending_to_db():
 @api.route('/user', methods=['GET'])
 @jwt_required()
 def get_info():  
-    print("prueba")
+    if request.method == 'GET':
+        print("prueba")
+        email = get_jwt_identity()
+        user = User.query.filter_by(email=email).first()
+        seen = Seen.query.filter_by(user_id = user.id)
+        name = user.name
+        email = user.email
+        response_body = {}
+        response_body["name"]= name
+        response_body["email"] = email
+        genres = []
+        for film in seen:
+            response = requests.get(f'https://api.themoviedb.org/3/movie/{film.film_id}?api_key={TMDB_API}')
+            data = response.json()
+            seen_data ={} 
+            genres.extend([element["name"] for element in data.get("genres")])
+        genres_list = list(set(genres))
+        genres_data = []
+        for i in genres_list:
+            genres_data.append(genres.count(i))
+        
+        response_body["genres"]= {
+            "genres": genres_list,
+            "genres_data": genres_data
+        }
+        return jsonify(response_body), 200
+
+
+@api.route('/name', methods=['PUT'])
+@jwt_required()
+def update_name(): 
     email = get_jwt_identity()
+    body = request.get_json()
     user = User.query.filter_by(email=email).first()
-    seen = Seen.query.filter_by(user_id = user.id)
-    name = user.name
-    email = user.email
-    response_body = {}
-    response_body["name"]= name
-    response_body["email"] = email
-    genres = []
-    for film in seen:
-        response = requests.get(f'https://api.themoviedb.org/3/movie/{film.film_id}?api_key={TMDB_API}')
-        data = response.json()
-        seen_data ={} 
-        genres.extend([element["name"] for element in data.get("genres")])
-    genres_list = list(set(genres))
-    genres_data = []
-    for i in genres_list:
-        genres_data.append(genres.count(i))
-       
-    response_body["genres"]= {
-        "genres": genres_list,
-        "genres_data": genres_data
-    }
-
-    return jsonify(response_body), 200
-
+    user.name = body["name"]
+    db.session.commit()
+    return jsonify(user.serialize()), 200
 
 
 # Validaciones
