@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import {Context } from "../store/appContext"
 
 
+
 import "../../styles/detailspopular.css";
 
 const Detailspopular = () => {
@@ -102,16 +103,18 @@ const Detailspopular = () => {
     }
 };
 
+
+
   return (
     <div className="container mt-3">
       <div className="row justify-content-center">
         <div className="col-md-5 col-12 p-2">
           <div className="row-image border-rounded position-relative">
-            <img
-              className="img-fluid"
-              src={`${API_IMAGE}${popularMovie.poster_path}`}
-              alt="image1"
-            />
+              <img
+                className="img-fluid"
+                src={`${API_IMAGE}${popularMovie.poster_path}`}
+                alt="image1"
+              />
             <button className="play-button" onClick={handleClick}>
             <i className={`fas ${icon}`}></i>       
             </button>            
