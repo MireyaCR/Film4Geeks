@@ -89,14 +89,14 @@ export const SignUp = () => {
                         <div className="p-2">
                             <h3>Email</h3>
                             <label ></label>
-                            <input className="input" type="email"  placeholder="Email"/>
-                            <input className={`form-control ${isValidEmail ? "" : "is-invalid"}`} required onBlur={handleBlurEmail} type = "text" id="email" placeholder="Email" />
+                            {/* <input className="input" type="email"  placeholder="Email"/> */}
+                            <input className={`input form-control ${isValidEmail ? "input" : "is-invalid"}`} required onBlur={handleBlurEmail} type = "email" id="email" placeholder="Email" />
                         </div>
                         <div className="p-2">
                             <h3>Password</h3>
                             <label></label>
-                            <input className="input" type="password" placeholder="Password"/>
-                            <input className={`form-control ${isValidPassword ? "" :"is-invalid"}`} required onBlur={handleBlurPassword} type ="password" id="password" placeholder="Password" />
+                            {/* <input className="input" type="password" placeholder="Password"/> */}
+                            <input className={`input form-control ${isValidPassword ? "" :"is-invalid"}`} required onBlur={handleBlurPassword} type ="password" id="password" placeholder="Password" />
                         </div>
                         {/* <div className="p-2">
                             <h3>Repeat Your Password</h3>
@@ -105,9 +105,9 @@ export const SignUp = () => {
                         </div> */}
                         
                         
-                        <div className="format" >
+                        {/* <div className="format" >  */}
                             <button onClick={()=>{sendInfo()}} type="submit" className="button" value="Send">Send</button>
-                        </div>
+                        {/* </div>  */}
                         
                     </form>
                     

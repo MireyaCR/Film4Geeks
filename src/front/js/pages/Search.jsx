@@ -1,14 +1,25 @@
-import React, { useState } from "react";
+import React, {useContext, useState, useEffect } from "react";
+import {Context } from "../store/appContext"
+import { useNavigate } from "react-router-dom";
 import "../../styles/search.css";
 import { API_IMAGE } from "/workspace/Film4Geeks/src/front/js/services/API_IMAGE.js";
 import imgerror from "/workspace/Film4Geeks/src/front/img/Imagenerror.png";
 
 function Search() {
+  const {store, actions} = useContext(Context)
   const [searchValue, setSearchValue] = useState("");
   const [searchResults, setSearchResults] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
   const [searched, setSearched] = useState(false);
+
+  const navigate = useNavigate()
+	
+	useEffect(() => {
+	 	if(!store.token)
+		navigate("/login")
+	
+	}, [store.token])
  
 
   const search = () => {

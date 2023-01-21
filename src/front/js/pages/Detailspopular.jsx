@@ -1,13 +1,26 @@
-import React, { useEffect, useState} from "react";
+import React, {useContext, useEffect, useState} from "react";
 import Modal from 'react-modal';
 import { useParams } from "react-router-dom";
 import { API_IMAGE } from "/workspace/Film4Geeks/src/front/js/services/API_IMAGE.js";
+import { useNavigate } from "react-router-dom";
+import {Context } from "../store/appContext"
+
 
 import "../../styles/detailspopular.css";
 
 const Detailspopular = () => {
+  
+  const {store, actions} = useContext(Context)
 
   let params = useParams();
+
+  const navigate = useNavigate()
+	
+	useEffect(() => {
+	 	if(!store.token)
+		navigate("/login")
+	
+	}, [store.token])
   
   const [popularMovie, setPopularMovie] = useState(null);
   const [actorsMovie, setActorsMovie] = useState(null);

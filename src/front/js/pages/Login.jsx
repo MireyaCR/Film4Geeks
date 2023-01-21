@@ -79,25 +79,25 @@ export const Login = () => {
                             <div className="p-2">
                                 <h3>Email</h3>
                                 <label ></label>
-                                <input className="input" type="email"  placeholder="Email"/>
-                                <input className={`form-control ${isValidEmail ? "" : "is-invalid"}`} required onBlur={handleBlurEmail} type = "text" id="email" placeholder="Email" onChange = {(e)=>setEmail(e.target.value)} value = {email}/>
+                                {/* <input className="input" type="email"  placeholder="Email"/> */}
+                                <input className={`input form-control ${isValidEmail ? "" : "is-invalid"}`} required onBlur={handleBlurEmail} type = "email" id="email" placeholder="Email" onChange = {(e)=>setEmail(e.target.value)} value = {email}/>
                             </div>
                             <div className="p-2">
                                 <h3>Password</h3>
                                 <label></label>
-                                <input className="input" type="password" placeholder="Password"/>
-                                <input className={`form-control ${isValidPassword ? "" :"is-invalid"}`} required onBlur={handleBlurPassword} type ="password" id="password" placeholder="Password" onChange = {(e)=>setPassword(e.target.value)} value = {password}/>
+                                {/* <input className="input" type="password" placeholder="Password"/> */}
+                                <input className={`input form-control ${isValidPassword ? "" :"is-invalid"}`} required onBlur={handleBlurPassword} type ="password" id="password" placeholder="Password" onChange = {(e)=>setPassword(e.target.value)} value = {password}/>
                             </div>
                             
-                            <div className="format" >
+                            {/* <div className="format" > */}
                                 <button type="submit" className="button" onClick={handleClick}>Send</button>
-                            </div>
+                            {/* </div> */}
                             
                         </div>
 
                     )}
 
-                    <div className=" mt-4" >
+                    <div className=" mt-5" >
                             <p className="ms-2">Forgot your Password?</p>
                     </div>
 

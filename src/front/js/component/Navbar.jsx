@@ -37,7 +37,7 @@ const Navbar = () => {
                        <Link className="nav-link link-warning " to="/">Home</Link>
                    </li>
                    <li className="nav-item ">
-                       <Link className="nav-link link-warning" to="/Profile">Profile</Link>
+                       <Link className="nav-link link-warning" to="/profile">Profile</Link>
                    </li>
                     <li className="nav-item">
                        <Link className="nav-link link-warning" to="/Search">Search</Link>
@@ -51,7 +51,6 @@ const Navbar = () => {
                         <Link className="nav-link link-warning" to="#" onClick={handleClick}><i className="fa fa-power-off"></i></Link>
                    </li>
             </ul>
- dev
                
            </div>
 		</nav>
