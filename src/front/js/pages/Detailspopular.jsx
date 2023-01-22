@@ -4,8 +4,7 @@ import { useParams } from "react-router-dom";
 import { API_IMAGE } from "/workspace/Film4Geeks/src/front/js/services/API_IMAGE.js";
 import { useNavigate } from "react-router-dom";
 import {Context } from "../store/appContext"
-
-
+import Toolbar_ from "../component/Toolbar_.jsx"
 
 import "../../styles/detailspopular.css";
 
@@ -121,9 +120,10 @@ const Detailspopular = () => {
           </div>
           <div className="row gutter">
             <div className=" d-flex flex-row mb-3">
-              <span className="fas fa-check-circle p-2"></span>
+              {/* <span className="fas fa-check-circle p-2"></span>
               <span className="fas fa-star p-2 "></span>
-              <span className="fas fa-flag p-2 "></span>
+              <span className="fas fa-flag p-2 "></span> */}
+              <Toolbar_></Toolbar_>
               <span className="far fa-clock ms-auto p-2 ">
                 {" "}
                 {popularMovie.runtime} min.{" "}
