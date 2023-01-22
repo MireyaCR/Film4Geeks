@@ -1,11 +1,9 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import {Context } from "../store/appContext"
 import { useNavigate } from "react-router-dom";
 import * as yup from "yup";
 import loginImage from "../../img/loginImage.png"
 import loginCss from "../../styles/login.css"
-
-
 
 export const Login = () => {
 
@@ -15,24 +13,37 @@ export const Login = () => {
     const [isValidEmail, setIsValidEmail] = useState(true)
     const [isValidPassword, setIsValidPassword] = useState(true)
 
+    useEffect(()=> {
+       
+        console.log("comprobacion token",store.token)
+        if (store.token){
+            navigate("/")
+            console.log("llevo a home")
+        }
+       
+    },[store.token])
+
     const navigate = useNavigate()
 
     const handleClickSignUp = () => {
         navigate("/signUp")
     }
 
-    console.log("This is your token", store.token)
-
-    const handleClick = () => {
-    if (isValidEmail && isValidPassword )
-
-        actions.login(email, password)
-        
+    
+    let login
+    const handleClick = async () => {
+        if(isValidEmail && isValidPassword )
+            login = await actions.login(email, password)
+            if(login ) {
+                navigate("/")
+                
+            }else {
+                console.log("Inicio de sesión fallido");
+            } 
     }
 
-    if (store.token && store.token != "" && store.token != undefined){
-        navigate("/")
-    }
+    
+    
 
 
     let schemaEmail = yup.object().shape({
@@ -58,8 +69,6 @@ export const Login = () => {
         .then(value => setIsValidPassword(true))
         .catch((error)=>{setIsValidPassword(false)})
     }
-
-
 
 
     return (
@@ -97,12 +106,10 @@ export const Login = () => {
 
                     )}
 
-                    <div className=" mt-5" >
-                            <p className="ms-2">Forgot your Password?</p>
-                    </div>
+                    
 
                     <div className="text-center mt-5">
-                        <h3 className="register" onClick={handleClickSignUp}>Not user yet? Sign Up</h3>
+                        <h3 className="register" onClick={handleClickSignUp}>Still not signed up? Click here.</h3>
                     </div>
                 </div>
             </div>
@@ -110,3 +117,4 @@ export const Login = () => {
         </div>
     )
 }
+
