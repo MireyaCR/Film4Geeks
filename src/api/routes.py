@@ -51,7 +51,6 @@ def create_token():
 
 
 
-
 @api.route('/user/seen', methods=['POST', 'GET'])
 @jwt_required()
 def add_seen_to_db():
@@ -59,7 +58,7 @@ def add_seen_to_db():
         body = request.json
         email = get_jwt_identity()
         user = User.query.filter_by(email=email).first()
-        print(user.id)
+        
         seen = Seen(film_id=body['film_id'], user_id=user.id)
     
         db.session.add(seen)
@@ -69,20 +68,31 @@ def add_seen_to_db():
 
 
     if request.method == 'GET':
+
+        film_id=request.args.get("film_id",default="",type=int)
         email = get_jwt_identity()
+        
         user = User.query.filter_by(email=email).first()
         seen = Seen.query.filter_by(user_id = user.id)
 
         response_body = []
-        for film in seen:
-            response = requests.get(f'https://api.themoviedb.org/3/movie/{film.film_id}?api_key={TMDB_API}')
-            data = response.json()
-            seen_data = film.serialize_seen()
-            seen_data['image_url'] = f'https://image.tmdb.org/t/p/w500/{data.get("poster_path")}'
-            seen_data["genres"] = data.get("genres")
-            response_body.append(seen_data)
 
-        return jsonify(response_body),200
+        if film_id=="" :
+            seen= Seen.query.filter_by(user_id = user.id)
+            for film in seen:
+                response = requests.get(f'https://api.themoviedb.org/3/movie/{film.film_id}?api_key={TMDB_API}')
+                data = response.json()
+                seen_data = film.serialize_seen()
+                seen_data['image_url'] = f'https://image.tmdb.org/t/p/w500/{data.get("poster_path")}'
+                seen_data["genres"] = data.get("genres")
+                response_body.append(seen_data)
+            return jsonify(response_body),200
+        else:
+            seen= Seen.query.filter_by(film_id=film_id, user_id=user.id).first()
+            if seen:
+                return jsonify({"message":"Seen found", "status":200}),200
+            else :
+                return jsonify({"message":"Seen not found", "status": 404}),404
 
 
 @api.route('/user/favourite', methods=['POST', 'GET'])
@@ -92,7 +102,7 @@ def add_fav_to_db():
         body = request.json
         email = get_jwt_identity()
         user = User.query.filter_by(email=email).first()
-        print(user.id)
+       
         favourite = Favourite(film_id=body['film_id'], user_id=user.id)
     
         db.session.add(favourite)
@@ -100,19 +110,32 @@ def add_fav_to_db():
         return jsonify({"message": "success"}), 200
 
     if request.method == 'GET':
+        
+        film_id=request.args.get("film_id",default="",type=int)
         email = get_jwt_identity()
+       
         user = User.query.filter_by(email=email).first()
-        favourite = Favourite.query.filter_by(user_id = user.id)
-
+        
         response_body = []
-        for film in favourite:
-            response = requests.get(f'https://api.themoviedb.org/3/movie/{film.film_id}?api_key={TMDB_API}')
-            data = response.json()
-            favorite_data = film.serialize_fav()
-            favorite_data['image_url'] = f'https://image.tmdb.org/t/p/w500/{data.get("poster_path")}'
-            response_body.append(favorite_data)
-
-        return jsonify(response_body),200
+        
+        if film_id== "" :
+            favourite = Favourite.query.filter_by(user_id = user.id)
+            for film in favourite:
+                response = requests.get(f'https://api.themoviedb.org/3/movie/{film.film_id}?api_key={TMDB_API}')
+                data = response.json()
+                favorite_data = film.serialize_fav()
+                favorite_data['image_url'] = f'https://image.tmdb.org/t/p/w500/{data.get("poster_path")}'
+                response_body.append(favorite_data)
+            
+            return jsonify(response_body),200    
+        else:
+            favourite = Favourite.query.filter_by(film_id = film_id, user_id = user.id).first()
+            if favourite:
+                return jsonify({"message":"Favourite found", "status": 200}),200
+            else:
+                return jsonify({"message":"Favourite not found", "status": 404}),404
+            
+        
 
 
     

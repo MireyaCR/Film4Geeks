@@ -131,6 +131,51 @@ const getState = ({ getStore, getActions, setStore }) => {
 				setStore({movieOfTheDay:json.results})
 			},
 
+			getDbFav: async (film_id) => {
+				const store = getStore();
+				const opts = {
+					method: "GET",
+					headers: {
+						"Content-Type": "application/json",
+						Authorization: "Bearer " + store.token
+						
+					}
+				};
+
+				try{
+					const resp = await fetch(`${process.env.BACKEND_URL}/api/user/favourite/?film_id=${film_id}`, opts)
+					const data = await resp.json()	
+					console.log(data)
+					return data
+				}
+				catch (error){
+					console.log("there has been an error", error)
+				}
+
+			},
+			getDbSeen: async (film_id) => {
+				const store = getStore();
+				const opts = {
+					method: "GET",
+					headers: {
+						"Content-Type": "application/json",
+						Authorization: "Bearer " + store.token
+						
+					}
+				};
+
+				try{
+					const resp = await fetch(`${process.env.BACKEND_URL}/api/user/seen/?film_id=${film_id}`, opts)
+					const data = await resp.json()	
+					console.log(data)
+					return data
+				}
+				catch (error){
+					console.log("there has been an error", error)
+				}
+
+			},
+
 
 			addDbSeen: async (id) => {
 				const store = getStore();

@@ -123,7 +123,7 @@ const Detailspopular = () => {
               {/* <span className="fas fa-check-circle p-2"></span>
               <span className="fas fa-star p-2 "></span>
               <span className="fas fa-flag p-2 "></span> */}
-              <Toolbar_></Toolbar_>
+              <Toolbar_ idFilm={popularMovie.id}></Toolbar_>
               <span className="far fa-clock ms-auto p-2 ">
                 {" "}
                 {popularMovie.runtime} min.{" "}
