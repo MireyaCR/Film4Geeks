@@ -2,7 +2,7 @@ import React,{useContext, useEffect, useState} from "react"
 import { Context } from '../store/appContext';
 import { Pie } from 'react-chartjs-2';
 import 'chart.js/auto';
-import profileCss from "../../styles/profile.css"
+import "../../styles/profile.css"
 import { MyFavourites } from "../component/MyFavourites.jsx";
 import { FilmsSeen } from "../component/FilmsSeen.jsx";
 import { PendingMovies } from "../component/PendingMovies.jsx";

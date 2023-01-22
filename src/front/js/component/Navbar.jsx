@@ -1,5 +1,5 @@
  
-import React, {useContext} from "react";
+import React, {useContext, useState, useEffect} from "react";
 import {Context } from "../store/appContext"
 import { Link, useNavigate } from "react-router-dom";
 import logo from "../../img/LOGO.png";
@@ -10,12 +10,27 @@ import "../../styles/navbar.css";
 const Navbar = () => {
 
     const {store, actions} = useContext(Context)
+
+    const [theme, setTheme] = useState('light');
     const navigate = useNavigate()
 
-        const handleClick =() => {
-            navigate("login")
-            actions.logout()
-        }
+    useEffect(() => {
+        document.body.className = theme;
+    }, [theme]);
+     
+	const toggleTheme = () => {
+		if (theme === 'light') {
+		setTheme('dark');
+		} else {
+		setTheme('light');
+		};
+
+	}
+	
+    const handleClick =() => {
+        navigate("login")
+        actions.logout()
+    }
 
 
 	return (
@@ -43,13 +58,19 @@ const Navbar = () => {
                        <Link className="nav-link link-warning" to="/Search">Search</Link>
                    </li>
                    <li className="nav-item">
-                        <Link className="nav-link link-warning" to="#">Starring</Link>
+                        <Link className="nav-link link-warning" to="/starring">Starring</Link>
                    </li> 
                   
                    <li className="nav-item">                   
 
                         <Link className="nav-link link-warning" to="#" onClick={handleClick}><i className="fa fa-power-off"></i></Link>
                    </li>
+
+                   {theme === 'light' ? ( 
+				<button className="toggle" onClick={toggleTheme}><i className="fas fa-moon"></i></button>
+				) : (
+				<button className="toggle" onClick={toggleTheme}><i className="fas fa-sun"></i></button>
+				)}
             </ul>
                
            </div>
