@@ -122,9 +122,6 @@ const Detailspopular = () => {
           </div>
           <div className="row gutter">
             <div className=" d-flex flex-row mb-3">
-              {/* <span className="fas fa-check-circle p-2"></span>
-              <span className="fas fa-star p-2 "></span>
-              <span className="fas fa-flag p-2 "></span> */}
               <Toolbar_ idFilm={popularMovie.id}></Toolbar_>
               <span className="far fa-clock ms-auto p-2 ">
                 {" "}

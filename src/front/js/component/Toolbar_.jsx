@@ -63,7 +63,7 @@ const Toolbar_ = (props) => {
   return (
     <div className="container">
       <button
-        className={seen ? "fas fa-check p-2 yes" : "fas fa-check p2 no"}
+        className={seen ? "fas fa-check p-2 m-1 yes" : "fas fa-check p-2 m-1 no"}
         onClick={() => {
         //   if (favo) {
         //     deleteFavo();
@@ -73,7 +73,7 @@ const Toolbar_ = (props) => {
         }}
       ></button>
       <button
-        className={favo ? "fas fa-star p-2 yes" : "far fa-star p-2 no"}
+        className={favo ? "fas fa-star p-2 m-1 yes" : "far fa-star p-2 m-1 no"}
         onClick={() => {
             if (favo) {
                 deleteFavo();
@@ -83,7 +83,7 @@ const Toolbar_ = (props) => {
         }}
       ></button>
       <button
-        className={pend ? "fas fa-flag p-2 yes" : "far fa-flag p-2 no"}
+        className={pend ? "fas fa-flag p-2 m-1 yes" : "far fa-flag p-2 m-1 no"}
         onClick={() => {
           if (pend) {
             // actions.deleteFav(props.idFilm)
