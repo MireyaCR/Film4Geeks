@@ -41,18 +41,21 @@ export const HeroProfile = () => {
         let count = 0
         let genreArray = []
 
-        for (let i = 0; i < userInfo.genres.genres.length; i++) {
-            genreArray.push(userInfo.genres.genres[i]);
+        console.log("hero",userInfo)
+        if (userInfo?.genres?.genres) {
+            for (let i = 0; i < userInfo.genres.genres.length; i++) {
+                genreArray.push(userInfo.genres.genres[i]);
+            }
+                
+            let sum = userInfo.genres.genres_data.reduce((a, b) => a + b, 0);
+                userInfo.genres.genres_data.forEach(function(value, i) {
+                let percent = (value / sum) * 100;
+                percentageArray.push(percent)
+            });
+            setAllGenres(genreArray)
+            setPercentages(percentageArray)    
         }
-              
-        let sum = userInfo.genres.genres_data.reduce((a, b) => a + b, 0);
-            userInfo.genres.genres_data.forEach(function(value, i) {
-            let percent = (value / sum) * 100;
-            percentageArray.push(percent)
-        });
-    setAllGenres(genreArray)
-    setPercentages(percentageArray)    
-        }
+    }
 
     console.log("esto es userInfo",userInfo)
   

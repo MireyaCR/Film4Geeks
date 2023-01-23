@@ -11,6 +11,7 @@ const Toolbar_ = (props) => {
   const { store, actions } = useContext(Context);
 
   useEffect(() => {
+
     const getFavourite = async () => {
       try {
         const data = await actions.getDbFav(props.idFilm);
@@ -60,16 +61,55 @@ const Toolbar_ = (props) => {
     }
   };
 
+  const addSeen = async () => {
+    const data = await actions.addDbSeen(props.idFilm);
+    if (data.status === 200) {
+      setSeen(true);
+    } else {
+      console.error(data);
+    }
+  };
+
+  const deleteSeen = async () => {
+    const data = await actions.deleteSeen(props.idFilm);
+    if (data.status === 200) {
+      console.log("DELETE",data)
+      setSeen(false);
+    } else {
+      console.error("DELETE",data);
+    }
+  };
+
+  const addPending = async () => {
+    const data = await actions.addDbPending(props.idFilm);
+    console.log("post pending",data)
+    if (data.status === 200) {
+      setPend(true);
+    } else {
+      console.error(data);
+    }
+  };
+
+  const deletePending = async () => {
+    const data = await actions.deletePending(props.idFilm);
+    if (data.status === 200) {
+      console.log("DELETE",data)
+      setPend(false);
+    } else {
+      console.error("DELETE",data);
+    }
+  };
+
   return (
     <div className="container">
       <button
         className={seen ? "fas fa-check p-2 m-1 yes" : "fas fa-check p-2 m-1 no"}
         onClick={() => {
-        //   if (favo) {
-        //     deleteFavo();
-        //   } else {
-        //     addFavo();            
-        //   }
+          if (seen) {
+            deleteSeen();
+          } else {
+            addSeen();            
+          }
         }}
       ></button>
       <button
@@ -83,14 +123,12 @@ const Toolbar_ = (props) => {
         }}
       ></button>
       <button
-        className={pend ? "fas fa-flag p-2 m-1 yes" : "far fa-flag p-2 m-1 no"}
+        className={pend ? "fas fa-flag p-2 m-1 yes" : "fas fa-flag p-2 m-1 no"}
         onClick={() => {
           if (pend) {
-            // actions.deleteFav(props.idFilm)
-            // setPend(false)
+            deletePending();
           } else {
-            // actions.addDbFav(props.idFilm)
-            // setPend(true)
+            addPending();            
           }
         }}
       ></button>

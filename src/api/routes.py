@@ -51,32 +51,23 @@ def create_token():
 
 
 
-@api.route('/user/seen', methods=['POST', 'GET'])
+@api.route('/user/seen', methods=['POST', 'GET','DELETE'])
 @jwt_required()
 def add_seen_to_db():
     if request.method == 'POST':
         body = request.json
         email = get_jwt_identity()
-        user = User.query.filter_by(email=email).first()
-        
-        seen = Seen(film_id=body['film_id'], user_id=user.id)
-    
+        user = User.query.filter_by(email=email).first()        
+        seen = Seen(film_id=body['film_id'], user_id=user.id)    
         db.session.add(seen)
         db.session.commit()
-
-        return jsonify({"message": "success"}), 200
-
+        return jsonify({"message": "success","status":200}), 200
 
     if request.method == 'GET':
-
         film_id=request.args.get("film_id",default="",type=int)
-        email = get_jwt_identity()
-        
+        email = get_jwt_identity()        
         user = User.query.filter_by(email=email).first()
-        seen = Seen.query.filter_by(user_id = user.id)
-
         response_body = []
-
         if film_id=="" :
             seen= Seen.query.filter_by(user_id = user.id)
             for film in seen:
@@ -85,7 +76,7 @@ def add_seen_to_db():
                 seen_data = film.serialize_seen()
                 seen_data['image_url'] = f'https://image.tmdb.org/t/p/w500/{data.get("poster_path")}'
                 seen_data["genres"] = data.get("genres")
-                response_body.append(seen_data)
+                response_body.append(seen_data)    
             return jsonify(response_body),200
         else:
             seen= Seen.query.filter_by(film_id=film_id, user_id=user.id).first()
@@ -94,6 +85,18 @@ def add_seen_to_db():
             else :
                 return jsonify({"message":"Seen not found", "status": 404}),404
 
+    if request.method == 'DELETE':        
+        email = get_jwt_identity()
+        film_id=request.args.get("film_id",default="",type=int)
+        user = User.query.filter_by(email=email).first()
+        seen = Seen.query.filter_by(film_id=film_id, user_id=user.id).first()
+        if seen:
+            db.session.delete(seen)
+            db.session.commit()
+            return jsonify({"message":"Película borrada de vistos", "status":200}), 200
+        else:
+            return jsonify({"message": "Film not found", "status":404}), 404   
+
 
 @api.route('/user/favourite', methods=['POST', 'GET','DELETE'])
 @jwt_required()
@@ -101,23 +104,17 @@ def add_fav_to_db():
     if request.method == 'POST':
         body = request.json
         email = get_jwt_identity()
-        user = User.query.filter_by(email=email).first()
-       
-        favourite = Favourite(film_id=body['film_id'], user_id=user.id)
-    
+        user = User.query.filter_by(email=email).first()       
+        favourite = Favourite(film_id=body['film_id'], user_id=user.id)    
         db.session.add(favourite)
         db.session.commit()
         return jsonify({"message": "success","status":200}), 200
 
-    if request.method == 'GET':
-        
+    if request.method == 'GET':        
         film_id=request.args.get("film_id",default="",type=int)
-        email = get_jwt_identity()
-       
+        email = get_jwt_identity()       
         user = User.query.filter_by(email=email).first()
-        
-        response_body = []
-        
+        response_body = []        
         if film_id== "" :
             favourite = Favourite.query.filter_by(user_id = user.id)
             for film in favourite:
@@ -125,8 +122,7 @@ def add_fav_to_db():
                 data = response.json()
                 favorite_data = film.serialize_fav()
                 favorite_data['image_url'] = f'https://image.tmdb.org/t/p/w500/{data.get("poster_path")}'
-                response_body.append(favorite_data)
-            
+                response_body.append(favorite_data)            
             return jsonify(response_body),200    
         else:
             favourite = Favourite.query.filter_by(film_id = film_id, user_id = user.id).first()
@@ -149,47 +145,50 @@ def add_fav_to_db():
 
 
     
-@api.route('/user/pending', methods=['POST', 'GET'])
+@api.route('/user/pending', methods=['POST', 'GET','DELETE'])
 @jwt_required()
 def add_pending_to_db():
     if request.method == 'POST':
         body = request.json
         email = get_jwt_identity()
         user = User.query.filter_by(email=email).first()
-        print(user.id)
-        pending = Pending(film_id=body['film_id'], user_id=user.id)
-   
+        pending = Pending(film_id=body['film_id'], user_id=user.id)   
         db.session.add(pending)
         db.session.commit()
-
-        return jsonify({"message": "success"}), 200
-
+        return jsonify({"message": "success","status":200}), 200
 
     if request.method == 'GET':
-
-        film_id=request.arg.get("film_id",default="",type=int)
+        film_id=request.args.get("film_id",default="",type=int)
         email = get_jwt_identity()
-
         user = User.query.filter_by(email=email).first()
-        pending = Pending.query.filter_by(user_id = user.id)
-
-        response_body = []
-        
+        response_body = []        
         if film_id=="" :
+            pending = Pending.query.filter_by(user_id = user.id)
             for film in pending:
                 response = requests.get(f'https://api.themoviedb.org/3/movie/{film.film_id}?api_key={TMDB_API}')
                 data = response.json()
                 pending_data = film.serialize_pending()
                 pending_data['image_url'] = f'https://image.tmdb.org/t/p/w500/{data.get("poster_path")}'
                 response_body.append(pending_data)
-
             return jsonify(response_body),200
         else:
-            pending=Pendign.query.filter_by(film_id=film_id, user_id=user.id).first()
+            pending=Pending.query.filter_by(film_id=film_id, user_id=user.id).first()
             if pending:
                 return jsonify({"message":"Pending found", "status": 200}),200
             else:
                 return jsonify({"message":"Pending not found", "status": 404}),404
+
+    if request.method == 'DELETE':        
+        email = get_jwt_identity()
+        film_id=request.args.get("film_id",default="",type=int)
+        user = User.query.filter_by(email=email).first()
+        pending = Pending.query.filter_by(film_id=film_id, user_id=user.id).first()
+        if pending:
+            db.session.delete(pending)
+            db.session.commit()
+            return jsonify({"message":"Película borrada de pendientes", "status":200}), 200
+        else:
+            return jsonify({"message": "Film not found", "status":404}), 404   
 
 
 @api.route('/user', methods=['GET'])

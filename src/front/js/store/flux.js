@@ -179,7 +179,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				};
 
 				try{
-					const resp = await fetch(`${process.env.BACKEND_URL}/api/user/seen/?film_id=${film_id}`, opts)
+					const resp = await fetch(`${process.env.BACKEND_URL}/api/user/pending/?film_id=${film_id}`, opts)
 					const data = await resp.json()	
 					console.log(data)
 					return data
@@ -204,11 +204,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 				};
 				try{
 				const resp = await fetch(`${process.env.BACKEND_URL}/api/user/seen`, opts)
-	
 				const data = await resp.json()	
+				return data
 				}
 				catch (error){
-					console.log("there has been an error")
+					console.log("there has been an error",error)
 				}
 			},
 
@@ -231,7 +231,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					return data
 				}
 				catch (error){
-					console.log("there has been an error")
+					console.log("there has been an error",error)
 				}
 			},
 
@@ -250,11 +250,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 				try{
 				const resp = await fetch(`${process.env.BACKEND_URL}/api/user/pending`, opts)
 				const data = await resp.json()	
-				return data;
+				return data
 				}
 				catch (error){
-					console.log("there has been an error")
-					throw error;
+					console.log("there has been an error",error)					
 				}
 			},
 
@@ -273,6 +272,51 @@ const getState = ({ getStore, getActions, setStore }) => {
 				try{
 					const resp = await fetch(`${process.env.BACKEND_URL}/api/user/favourite/?film_id=${id}`, opts)
 					const data = await resp.json()	
+					return data
+				}
+				catch (error){
+					console.log("there has been an error", error)
+				}
+			},
+
+			deleteSeen: async(id)=>{
+				const store = getStore();
+				const opts = {
+					method: "DELETE",
+					headers: {
+						"Content-Type": "application/json",
+						Authorization: "Bearer " + store.token
+					},
+					body: JSON.stringify({
+						film_id : id,
+					})
+				};
+				try{
+					const resp = await fetch(`${process.env.BACKEND_URL}/api/user/seen/?film_id=${id}`, opts)
+					const data = await resp.json()	
+					return data
+				}
+				catch (error){
+					console.log("there has been an error", error)
+				}
+			},
+
+			deletePending: async(id)=>{
+				const store = getStore();
+				const opts = {
+					method: "DELETE",
+					headers: {
+						"Content-Type": "application/json",
+						Authorization: "Bearer " + store.token
+					},
+					body: JSON.stringify({
+						film_id : id,
+					})
+				};
+				try{
+					const resp = await fetch(`${process.env.BACKEND_URL}/api/user/pending/?film_id=${id}`, opts)
+					const data = await resp.json()	
+					console.log("flux delete pending",data)
 					return data
 				}
 				catch (error){

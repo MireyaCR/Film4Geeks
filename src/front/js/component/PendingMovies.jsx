@@ -24,9 +24,14 @@ export const PendingMovies = () => {
 		};
 		const url_to_get_pending =
 		  process.env.BACKEND_URL + "/api/user/pending";
-		const response = await fetch(url_to_get_pending, options);
-		const data = await response.json();
-		setPending(data);
+		try {
+			const response = await fetch(url_to_get_pending, options);
+			const data = await response.json();
+			setPending(data);
+		} catch (error) {
+			console.error('error pending movies', error)
+		}
+		
 	};
 
 
