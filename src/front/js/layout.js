@@ -18,6 +18,8 @@ import { Profile } from "./pages/Profile.jsx";
 
 import { Prueba } from "./pages/Prueba.jsx";
 
+import { Starring } from "./pages/Starring.jsx";
+
 //create your first component
 const Layout = () => {
     //the basename is used when your project is published in a subdirectory and not in the root of the domain
@@ -40,6 +42,7 @@ const Layout = () => {
                         <Route path="/detailspopular/:index" element={<Detailspopular/>}/>
                         <Route element={<Profile/>} path="/profile"/>
                         <Route element = {<Prueba/>}path="/prueba"/>
+                        <Route element = {<Starring/>}path="/starring"/>
                     </Routes>
                     <Footer />
                 </ScrollToTop>

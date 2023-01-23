@@ -26,3 +26,9 @@ box-shadow: 0 0 0 0;
 a:focus{
   color:#d29435;
 }
+
+.toggle {
+  background: none;
+  border: none;
+  color: rgb(255, 206, 71);
+}
