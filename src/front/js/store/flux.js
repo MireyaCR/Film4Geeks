@@ -14,7 +14,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 		actions: {
 
 
-
 			syncTokenFromSessionStore: () => {
 				const token = sessionStorage.getItem("token");
 				console.log("Aplication just loaded, synching the session storage token ")
@@ -38,7 +37,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				};
 		
 				try {
-					const resp = await fetch(process.env.BACKEND_URL+"/api/token", requestOptions)
+					const resp = await fetch(`${process.env.BACKEND_URL}/api/token`, requestOptions)
 	
 					if (resp.status !== 200){
 						alert("There has been some error")
@@ -52,7 +51,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 						return true
 		
 				}catch(error) {
-					console.error("There was an error!!!",error)
+					console.log("There was an error!!!",error)
 				}
 			},
 
@@ -70,18 +69,14 @@ const getState = ({ getStore, getActions, setStore }) => {
 						Authorization: "Bearer " + store.token
 					}
 				}
-				fetch(process.env.BACKEND_URL+"/api/token", opts)
+				fetch(`${process.env.BACKEND_URL}/api/token`, opts)
 				.then(response => 
 					response.json()
 				)
 				.then(data => setStore({message: data.message}))
 				.catch(error => (console.log("error", error)))
 			},
-
 			
-
-
-
 			// LLamadas a la API
 			fetchMovies: async () => {
 				const API_URL = `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&primary_release_year=2022&include_video=true`;
@@ -131,6 +126,68 @@ const getState = ({ getStore, getActions, setStore }) => {
 				setStore({movieOfTheDay:json.results})
 			},
 
+			getDbFav: async (film_id) => {
+				const store = getStore();
+				const opts = {
+					method: "GET",
+					headers: {
+						"Content-Type": "application/json",
+						Authorization: "Bearer " + store.token						
+					}
+				};
+
+				try{
+					const resp = await fetch(`${process.env.BACKEND_URL}/api/user/favourite/?film_id=${film_id}`, opts)
+					const data = await resp.json()	
+					console.log(data)
+					return data
+				}
+				catch (error){
+					console.log("there has been an error", error)
+				}
+			},
+
+			getDbSeen: async (film_id) => {
+				const store = getStore();
+				const opts = {
+					method: "GET",
+					headers: {
+						"Content-Type": "application/json",
+						Authorization: "Bearer " + store.token						
+					}
+				};
+
+				try{
+					const resp = await fetch(`${process.env.BACKEND_URL}/api/user/seen/?film_id=${film_id}`, opts)
+					const data = await resp.json()	
+					console.log(data)
+					return data
+				}
+				catch (error){
+					console.log("there has been an error", error)
+				}
+			},
+
+			getDbPend: async (film_id) => {
+				const store = getStore();
+				const opts = {
+					method: "GET",
+					headers: {
+						"Content-Type": "application/json",
+						Authorization: "Bearer " + store.token						
+					}
+				};
+
+				try{
+					const resp = await fetch(`${process.env.BACKEND_URL}/api/user/pending/?film_id=${film_id}`, opts)
+					const data = await resp.json()	
+					console.log(data)
+					return data
+				}
+				catch (error){
+					console.log("there has been an error", error)
+				}
+			},
 
 			addDbSeen: async (id) => {
 				const store = getStore();
@@ -146,12 +203,12 @@ const getState = ({ getStore, getActions, setStore }) => {
 					})
 				};
 				try{
-				const resp = await fetch(process.env.BACKEND_URL+"/api/user/seen", opts)
-	
+				const resp = await fetch(`${process.env.BACKEND_URL}/api/user/seen`, opts)
 				const data = await resp.json()	
+				return data
 				}
 				catch (error){
-					console.log("there has been an error")
+					console.log("there has been an error",error)
 				}
 			},
 
@@ -169,12 +226,12 @@ const getState = ({ getStore, getActions, setStore }) => {
 					})
 				};
 				try{
-				const resp = await fetch(process.env.BACKEND_URL+"/api/user/favourite", opts)
-	
-				const data = await resp.json()	
+					const resp = await fetch(`${process.env.BACKEND_URL}/api/user/favourite`, opts)
+					const data = await resp.json()	
+					return data
 				}
 				catch (error){
-					console.log("there has been an error")
+					console.log("there has been an error",error)
 				}
 			},
 
@@ -191,15 +248,82 @@ const getState = ({ getStore, getActions, setStore }) => {
 					})
 				};
 				try{
-				const resp = await fetch(process.env.BACKEND_URL+"/api/user/pending", opts)
-	
+				const resp = await fetch(`${process.env.BACKEND_URL}/api/user/pending`, opts)
 				const data = await resp.json()	
+				return data
 				}
 				catch (error){
-					console.log("there has been an error")
+					console.log("there has been an error",error)					
 				}
 			},
 
+			deleteFav: async(id)=>{
+				const store = getStore();
+				const opts = {
+					method: "DELETE",
+					headers: {
+						"Content-Type": "application/json",
+						Authorization: "Bearer " + store.token
+					},
+					body: JSON.stringify({
+						film_id : id,
+					})
+				};
+				try{
+					const resp = await fetch(`${process.env.BACKEND_URL}/api/user/favourite/?film_id=${id}`, opts)
+					const data = await resp.json()	
+					return data
+				}
+				catch (error){
+					console.log("there has been an error", error)
+				}
+			},
+
+			deleteSeen: async(id)=>{
+				const store = getStore();
+				const opts = {
+					method: "DELETE",
+					headers: {
+						"Content-Type": "application/json",
+						Authorization: "Bearer " + store.token
+					},
+					body: JSON.stringify({
+						film_id : id,
+					})
+				};
+				try{
+					const resp = await fetch(`${process.env.BACKEND_URL}/api/user/seen/?film_id=${id}`, opts)
+					const data = await resp.json()	
+					return data
+				}
+				catch (error){
+					console.log("there has been an error", error)
+				}
+			},
+
+			deletePending: async(id)=>{
+				const store = getStore();
+				const opts = {
+					method: "DELETE",
+					headers: {
+						"Content-Type": "application/json",
+						Authorization: "Bearer " + store.token
+					},
+					body: JSON.stringify({
+						film_id : id,
+					})
+				};
+				try{
+					const resp = await fetch(`${process.env.BACKEND_URL}/api/user/pending/?film_id=${id}`, opts)
+					const data = await resp.json()	
+					console.log("flux delete pending",data)
+					return data
+				}
+				catch (error){
+					console.log("there has been an error", error)
+				}
+			},
+			
 			setFavourites: (poster_path) => {
 				const store = getStore();
 				setStore({favourites: [...store.favourites, poster_path]})

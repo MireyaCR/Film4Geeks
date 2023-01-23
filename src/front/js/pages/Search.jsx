@@ -3,7 +3,7 @@ import {Context } from "../store/appContext"
 import { useNavigate } from "react-router-dom";
 import "../../styles/search.css";
 import { API_IMAGE } from "/workspace/Film4Geeks/src/front/js/services/API_IMAGE.js";
-import imgerror from "/workspace/Film4Geeks/src/front/img/Imagenerror.png";
+import img404 from "/workspace/Film4Geeks/src/front/img/Imagenerror.png"
 import { Link } from "react-router-dom";
 
 function Search() {
@@ -88,18 +88,23 @@ function Search() {
                   style={{ height: "200px" }}
                 >
                   <Link to={`/detailspopular/${result.id}`}>
-                    <img
-                      className="img-fluid "
-                      src={`${API_IMAGE}${result.poster_path}`}
-                      style={{
-                        objectFit: "cover",
-                        width: "150px",
-                        height: "200px",
-                        maxWidth: "100%",
-                        maxHeight: "200px",
-                      }}
-                      alt=""
-                    ></img>
+                    <object className="img-fluid " style={{
+                          objectFit: "cover",
+                          width: "400px",
+                          height: "200px",
+                          maxWidth: "100%",
+                          maxHeight: "100%",
+                        }} data={`${API_IMAGE}${result.poster_path}`} type="image/png">
+                      <img
+                        className="img-fluid "
+                        src={`${img404}`}style={{
+                          objectFit: "cover",
+                          width: "400px",
+                          height: "200px",
+                          maxWidth: "100%",
+                          maxHeight: "100%",}}
+                        ></img>
+                      </object>
                   </Link>
                   <div className="card-body ml-auto">
                     <h5 className="card-title-right carline">{result.title}</h5>
