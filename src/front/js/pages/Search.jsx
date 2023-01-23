@@ -90,14 +90,19 @@ function Search() {
                   <Link to={`/detailspopular/${result.id}`}>
                     <object className="img-fluid " style={{
                           objectFit: "cover",
-                          width: "150px",
+                          width: "400px",
                           height: "200px",
                           maxWidth: "100%",
-                          maxHeight: "200px",
+                          maxHeight: "100%",
                         }} data={`${API_IMAGE}${result.poster_path}`} type="image/png">
                       <img
                         className="img-fluid "
-                        src={`${img404}`}
+                        src={`${img404}`}style={{
+                          objectFit: "cover",
+                          width: "400px",
+                          height: "200px",
+                          maxWidth: "100%",
+                          maxHeight: "100%",}}
                         ></img>
                       </object>
                   </Link>
