@@ -11,7 +11,7 @@ const Navbar = () => {
 
     const {store, actions} = useContext(Context)
 
-    const [theme, setTheme] = useState('light');
+    const [theme, setTheme] = useState('dark');
     const navigate = useNavigate()
 
     useEffect(() => {
