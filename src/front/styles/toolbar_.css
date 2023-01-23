@@ -1,20 +1,10 @@
-.favi {
+.yes {
     background: none;
     border: none;
     color:  rgb(105, 205, 29);
 }
-.nofavi {
+.no {
     background: none;
     border: none;
     color:  rgb(255, 206, 71);
-}
-.see {
-    background: none;
-    border: none;
-    color:  rgb(105, 205, 29);
-}
-.nosee {
-    background: none;
-    border: none;
-    color:  rgb(248, 184, 7);
 }

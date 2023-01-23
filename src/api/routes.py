@@ -95,7 +95,7 @@ def add_seen_to_db():
                 return jsonify({"message":"Seen not found", "status": 404}),404
 
 
-@api.route('/user/favourite', methods=['POST', 'GET'])
+@api.route('/user/favourite', methods=['POST', 'GET','DELETE'])
 @jwt_required()
 def add_fav_to_db():
     if request.method == 'POST':
@@ -107,7 +107,7 @@ def add_fav_to_db():
     
         db.session.add(favourite)
         db.session.commit()
-        return jsonify({"message": "success"}), 200
+        return jsonify({"message": "success","status":200}), 200
 
     if request.method == 'GET':
         
@@ -134,8 +134,18 @@ def add_fav_to_db():
                 return jsonify({"message":"Favourite found", "status": 200}),200
             else:
                 return jsonify({"message":"Favourite not found", "status": 404}),404
-            
-        
+
+    if request.method == 'DELETE':        
+        email = get_jwt_identity()
+        film_id=request.args.get("film_id",default="",type=int)
+        user = User.query.filter_by(email=email).first()
+        favourite = Favourite.query.filter_by(film_id = film_id, user_id = user.id).first()
+        if favourite:
+            db.session.delete(favourite)
+            db.session.commit()
+            return jsonify({"message":"Película borrada de favoritos", "status":200}), 200
+        else:
+            return jsonify({"message": "Film not found", "status":404}), 404   
 
 
     
@@ -156,20 +166,30 @@ def add_pending_to_db():
 
 
     if request.method == 'GET':
+
+        film_id=request.arg.get("film_id",default="",type=int)
         email = get_jwt_identity()
+
         user = User.query.filter_by(email=email).first()
         pending = Pending.query.filter_by(user_id = user.id)
 
         response_body = []
-        for film in pending:
-            response = requests.get(f'https://api.themoviedb.org/3/movie/{film.film_id}?api_key={TMDB_API}')
-            data = response.json()
-            pending_data = film.serialize_pending()
-            pending_data['image_url'] = f'https://image.tmdb.org/t/p/w500/{data.get("poster_path")}'
-            response_body.append(pending_data)
+        
+        if film_id=="" :
+            for film in pending:
+                response = requests.get(f'https://api.themoviedb.org/3/movie/{film.film_id}?api_key={TMDB_API}')
+                data = response.json()
+                pending_data = film.serialize_pending()
+                pending_data['image_url'] = f'https://image.tmdb.org/t/p/w500/{data.get("poster_path")}'
+                response_body.append(pending_data)
 
-        return jsonify(response_body),200
-
+            return jsonify(response_body),200
+        else:
+            pending=Pendign.query.filter_by(film_id=film_id, user_id=user.id).first()
+            if pending:
+                return jsonify({"message":"Pending found", "status": 200}),200
+            else:
+                return jsonify({"message":"Pending not found", "status": 404}),404
 
 
 @api.route('/user', methods=['GET'])

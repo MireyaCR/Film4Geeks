@@ -5,6 +5,7 @@ import { API_IMAGE } from "/workspace/Film4Geeks/src/front/js/services/API_IMAGE
 import { useNavigate } from "react-router-dom";
 import {Context } from "../store/appContext"
 import Toolbar_ from "../component/Toolbar_.jsx"
+import img404 from "/workspace/Film4Geeks/src/front/img/Imagenerror.png"
 
 import "../../styles/detailspopular.css";
 
@@ -78,7 +79,7 @@ const Detailspopular = () => {
   let director = "";
   let trailerUrl = "";
   if (trailer) {
-    trailerUrl = trailer.results[0].key;
+    trailerUrl = trailer?.results[0]?.key;
   }
 
   if (actorsMovie) {
@@ -109,11 +110,12 @@ const Detailspopular = () => {
       <div className="row justify-content-center">
         <div className="col-md-5 col-12 p-2">
           <div className="row-image border-rounded position-relative">
+            <object className="img-fluid" data={`${API_IMAGE}${popularMovie.poster_path}`} type="image/png">
               <img
-                className="img-fluid"
-                src={`${API_IMAGE}${popularMovie.poster_path}`}
-                alt="image1"
+              className="img-fluid"
+                src={`${img404}`}
               />
+            </object>
             <button className="play-button" onClick={handleClick}>
             <i className={`fas ${icon}`}></i>       
             </button>            
@@ -139,9 +141,9 @@ const Detailspopular = () => {
             </p>
             <p>{popularMovie.overview}</p>
             <p>
-              <small className="text-color-small">FILM RATING</small>
+              <small className="text-color-small">RELEASE DATE</small>
             </p>
-            <p>{popularMovie.adult ? `+18` : "All Audience"}</p>
+            <p>{popularMovie.release_date}</p>
             <p>
               <small className="text-color-small">GENRE</small>
             </p>
