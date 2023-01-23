@@ -71,11 +71,11 @@ const NearestCinema = () => {
 						
 						<div key={index} className=' me-1 d-flex justify-content-center'>
 							
-							<div  style={{height: '175px'}}>
+							<div  style={{height: '300px'}}>
 									<h5 className="card-title text-center">{place.name}</h5>
-									<p className="text-center">{place.vicinity}</p>
+									<h6 className="text-center">{place.vicinity}</h6>
 									<div className="mt-1 p-2 d-flex justify-content-center text-center">
-										<a href={`https://www.google.com/maps/search/?api=1&query=${place.geometry.location.lat},${place.geometry.location.lng}`} target="_blank" className="button">
+										<a href={`https://www.google.com/maps/search/?api=1&query=${place.geometry.location.lat},${place.geometry.location.lng}`} target="_blank" className="button-nearest">
 												See on Google Maps
 										</a>
 									</div>

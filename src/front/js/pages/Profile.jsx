@@ -1,4 +1,5 @@
 import React,{useContext, useEffect, useState} from "react"
+import { useNavigate } from "react-router-dom";
 import { Context } from '../store/appContext';
 import { Pie } from 'react-chartjs-2';
 import 'chart.js/auto';
@@ -12,22 +13,31 @@ import { HeroProfile } from "../component/HeroProfile.jsx";
 
 export const Profile = () => {
 
+    const {store, actions} = useContext(Context)
+    const navigate = useNavigate()
+
+    useEffect(() => {
+        if(!store.token)
+       navigate("/login")
+   
+   }, [store.token])
+   
     return (
 
-        <div className="principal-color">
+        <div >
 
             <HeroProfile/>
             <hr></hr>
             
-            <h3 className="text-center">My favourite films</h3>
+            <h3 className="text-center py-2">My favourite films</h3>
                 <MyFavourites/>
             <hr></hr>
                 
-            <h3 className="text-center">Films I want to see</h3>
+            <h3 className="text-center py-2">Films I want to see</h3>
                 <PendingMovies/>
             <hr></hr>
             
-            <h3 className="text-center">Films seen</h3>
+            <h3 className="text-center py-2">Films I have already seen</h3>
                 <FilmsSeen/>
             <hr></hr>
         </div>

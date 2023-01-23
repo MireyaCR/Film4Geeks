@@ -1,14 +1,14 @@
-.button {
+.button-nearest {
     background-color: #d29435;
     border: none;
     width: 200px;
     border-radius: 30px;
     text-decoration: none;
     color: black;
- 
+    
 }
 
-.button:hover{
+.button-nearest:hover{
     background-color: orange;
     color: black;
 }

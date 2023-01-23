@@ -223,6 +223,15 @@ def get_info():
 
     return jsonify(response_body), 200
 
+@api.route('/name', methods=['PUT'])
+@jwt_required()
+def update_name(): 
+    email = get_jwt_identity()
+    body = request.get_json()
+    user = User.query.filter_by(email=email).first()
+    user.name = body["name"]
+    db.session.commit()
+    return jsonify(user.serialize()), 200
 
 
 # Validaciones

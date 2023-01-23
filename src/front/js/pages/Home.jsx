@@ -4,8 +4,7 @@ import Popular from "../component/Popular.jsx";
 import Quotes from "../component/Quotes.jsx";
 import ComingSoon from "../component/ComingSoon.jsx";
 import NearestCinema from "../component/NearestCinema.jsx";
-// import NearestCinema from "../component/NearestCinemas.jsx";
-// import 'react-alice-carousel/lib/alice-carousel.css';
+import 'react-alice-carousel/lib/alice-carousel.css';
 import logo from "../../img/LOGO.png";
 import {Context } from "../store/appContext"
 import { useNavigate } from "react-router-dom";
@@ -25,7 +24,7 @@ const Home = () => {
 	
 	return (
 		<section>
-			{/* <p>{store.message}</p> */}
+			
 		<div className="banner bg-image">
 			<div className="text-center">
 			<img src={logo} style={{height: "15rem"}} className="mt-4"/> 
@@ -40,7 +39,7 @@ const Home = () => {
 		<hr></hr>
 		<Recommended />
 		<hr></hr>
-		{/* <NearestCinema /> */}
+		<NearestCinema />
 	
 		</section>
 
