@@ -35,23 +35,23 @@ export const HeroProfile = () => {
             const response = await fetch(url_to_get_info, options)
             const data = await response.json();
             setUserInfo(data);
-            console.log("funcion get genres llamada", userInfo);
-            getGenres();
+            console.log("funcion get genres llamada", data);
+            getGenres(data);
             }catch (error) {      
   }}
 
   
-    const getGenres = () => {
+    const getGenres = (data) => {
         let percentageArray = []
         let genreArray = []
 
-        if (userInfo?.genres?.genres) {
-            for (let i = 0; i < userInfo.genres.genres.length; i++) {
-                genreArray.push(userInfo.genres.genres[i]);
+        if (data?.genres?.genres) {
+            for (let i = 0; i < data.genres.genres.length; i++) {
+                genreArray.push(data.genres.genres[i]);
             }
                 
-            let sum = userInfo.genres.genres_data.reduce((a, b) => a + b, 0);
-                userInfo.genres.genres_data.forEach(function(value, i) {
+            let sum = data.genres.genres_data.reduce((a, b) => a + b, 0);
+                data.genres.genres_data.forEach(function(value, i) {
                 let percent = (value / sum) * 100;
                 percentageArray.push(percent)
             });

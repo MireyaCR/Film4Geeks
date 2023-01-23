@@ -219,6 +219,8 @@ def get_info():
         "genres_data": genres_data
     }
 
+    print(response_body)
+
     return jsonify(response_body), 200
 
 

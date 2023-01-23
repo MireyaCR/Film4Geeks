@@ -70,8 +70,12 @@ const getState = ({ getStore, getActions, setStore }) => {
 					}
 				}
 				fetch(`${process.env.BACKEND_URL}/api/token`, opts)
-				.then(response => 
-					response.json()
+				.then(response => {
+					console.log("apendToken")
+					return response.json()
+				}
+					
+					
 				)
 				.then(data => setStore({message: data.message}))
 				.catch(error => (console.log("error", error)))
