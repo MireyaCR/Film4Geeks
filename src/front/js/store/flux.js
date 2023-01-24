@@ -328,47 +328,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 			},
 			
-			setFavourites: (poster_path) => {
-				const store = getStore();
-				setStore({favourites: [...store.favourites, poster_path]})
-				
-			},
-
-
-			removeFavourite: (item) => {
-				const store = getStore();
-				setStore({ favourites: store.favourites.filter(movie => movie !== item) });
-			},
-
-
-			setPending: (poster_path) => {
-				const store = getStore();
-				setStore({pending: [...store.pending, poster_path]})
-				
-			},
-
-			setSeen: (array) => {
-				
-				const store = getStore();
-				setStore({seen: [...store.seen, array]})
-				
-			},
-
-			removeSeen: (item) => {
-				const store = getStore();
-				setStore({ seen: store.seen.filter(movie => movie !== item) });
-			},
-
-			removePending: (item) => {
-				const store = getStore();
-				setStore({ pending: store.pending.filter(movie => movie !== item) });
-			},
-
-			
-
-
-			
-
 		}
 	};
 };
