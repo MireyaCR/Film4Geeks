@@ -22,6 +22,9 @@ function Search() {
 	
 	}, [store.token])
  
+  useEffect(() => {
+		window.scrollTo(0, 0)
+	  }, [])
 
   const search = () => {
     const apiKey = process.env.TMDB_API;

@@ -21,6 +21,10 @@ const Home = () => {
 		navigate("/login")
 	
 	}, [store.token])
+
+	useEffect(() => {
+		window.scrollTo(0, 0)
+	  }, [])
 	
 	return (
 		<section>
