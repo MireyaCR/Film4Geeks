@@ -6,5 +6,9 @@
 .no {
     background: none;
     border: none;
+}
+
+.dark .no {
     color:  rgb(255, 206, 71);
 }
+
