@@ -17,10 +17,7 @@ const API_IMAGE = 'https://image.tmdb.org/t/p/w500/'
 
 const Popular = () => {
 	
-	const sliceStart = Math.floor(Math.random()*15)
-	const sliceend = sliceStart + 1
-	const quoteStart = Math.floor(Math.random()*4)
-	const quoteEnd = quoteStart + 1
+
 	const {store, actions } = useContext(Context);
 	const responsive = {
 		2000: {
@@ -38,20 +35,7 @@ const Popular = () => {
 	};
 
 
-	const handleAddSeen = (id) => {
-	//	actions.setSeen(poster_path, genres_id)
-		actions.addDbSeen(id)
-	}
 
-	const handleAddFav = (id) => {
-		actions.setFavourites(API_IMAGE+store.movie)
-		actions.addDbFav(id)
-	}
-
-	const handleAddPending = (id) => {
-		actions.setPending(API_IMAGE+store.movie)
-		actions.addDbPending(id)
-	}
 
 
 	return (
@@ -64,7 +48,7 @@ const Popular = () => {
 			<div key={index}>   
 				<div key={index} className='ind me-1'>
 					<Link to={`/detailspopular/${movie.id}`}> 
-						<img className="card-img-top" src={API_IMAGE+movie.poster_path} />
+						<img className="card-img-top" src={API_IMAGE+movie.poster_path} style={{minHeight:'25rem'}}/>
 					</Link>  
 				</div>
 				<div className="d-flex justify-content-around p-1">

@@ -71,7 +71,7 @@ fetchMovies();
                 <div>
                     <div className='info p-2'>
                     <h1>{movie.title}</h1>
-                    <h4>{movie.overview}</h4>
+                    <h4 className='overview'>{movie.overview}</h4>
                         <div>
                             {trailer ? (
                               !playing ? (
