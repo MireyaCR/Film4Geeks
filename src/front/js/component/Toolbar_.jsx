@@ -101,7 +101,7 @@ const Toolbar_ = (props) => {
   };
 
   return (
-    <div className="container">
+    <div className="container d-flex justify-content-around">
       <button
         className={seen ? "fas fa-check p-2 m-1 yes" : "fas fa-check p-2 m-1 no"}
         onClick={() => {
