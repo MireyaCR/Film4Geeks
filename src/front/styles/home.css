@@ -80,12 +80,10 @@
     width: 100px;
     background-color: black;
     color: #fff;
-    text-align: center;
-  
+    text-align: center;  
     border-radius: 5px;
     padding: 5px 0;
     transition: opacity 4s ease-in-out;
-
     position: absolute;
     z-index: 1;
   
@@ -106,17 +104,16 @@
   }
 
   hr {
-    margin: 30px 0;
-    
+    margin: 30px 0;    
     height: 1px;
     border: none;
     background: -webkit-gradient(linear, 0 0, 100% 0, from(transparent), to(transparent), color-stop(50%, orange));
 }
 
 h2 {
-    font-family: 'Rowdies';
-    font-size: 40px;
-    font-weight: 100;
+    font-family: Open Sans, sans-serif;
+    font-weight: 400;
+    color: #d29435;
 }
 
 .button {

@@ -57,7 +57,7 @@ const Popular = () => {
 	return (
 	
 	<div className="container mt-5">
-		<h2 className="mb-4">Popular in 2022...</h2>
+		<h2 className="mb-4" style={{color:"#b75353",fontWeight:"bold"}}>Popular in 2022...</h2>
 		<div className="d-flex justify-content-around mx-2">
 			<AliceCarousel responsive={responsive} autoPlay autoPlayInterval="1500"> 
 			{store.movies.map((movie, index) => (   

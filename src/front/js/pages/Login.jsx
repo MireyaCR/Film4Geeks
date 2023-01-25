@@ -35,8 +35,7 @@ export const Login = () => {
         if(isValidEmail && isValidPassword )
             login = await actions.login(email, password)
             if(login ) {
-                navigate("/")
-                
+                navigate("/")                
             }else {
                 console.log("Inicio de sesión fallido");
             } 
