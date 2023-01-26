@@ -92,6 +92,7 @@
 		"react-modal": "^3.16.1",
 		"react-polyfills": "0.0.1",
 		"react-router-dom": "^6.3.0",
+		"react-speech-recognition": "^3.10.0",
 		"react-youtube": "^10.1.0",
 		"yup": "^0.32.11"
 	}

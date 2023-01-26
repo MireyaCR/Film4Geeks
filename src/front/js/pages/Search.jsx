@@ -1,11 +1,11 @@
 import React, {useContext, useState, useEffect } from "react";
-import LazyLoad from 'react-lazyload';
 import {Context } from "../store/appContext"
 import { useNavigate } from "react-router-dom";
 import "../../styles/search.css";
 import { API_IMAGE } from "/workspace/Film4Geeks/src/front/js/services/API_IMAGE.js";
 import Logo from "/workspace/Film4Geeks/src/front/img/LOGO.png"
 import { Link } from "react-router-dom";
+import SpeechRecognition from 'react-speech-recognition'
 
 function Search() {
   const {store, actions} = useContext(Context)
