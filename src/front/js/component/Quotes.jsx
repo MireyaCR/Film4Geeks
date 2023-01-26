@@ -22,7 +22,7 @@ const Quotes = () => {
 					quote ?
 						<div className='quote'>
 							<div className='column text-center'> 
-								<h5 className="p-0"><i><strong>"{quote.quote}"</strong></i></h5>
+								<h6 className="p-0"><i><strong>"{quote.quote}"</strong></i></h6>
 								<h6><small>{quote.movie}-{quote.year}</small></h6>
 								
 							</div>

@@ -64,7 +64,7 @@ const NearestCinema = () => {
 	
 	return (
 		<div className="container" >
-            	<h2 className="mb-4">Your nearest cinemas...</h2>
+            	<h3 className="mb-4" style={{color:"rgb(241 6 6)",fontWeight:"bold"}}>Your nearest cinemas...</h3>
 			<div className="d-flex justify-content-center mx-2" >
 				<AliceCarousel responsive={responsive} autoPlay autoPlayInterval="1500" > 
 				{type.map((place, index) => (    
@@ -72,8 +72,8 @@ const NearestCinema = () => {
 						<div key={index} className=' me-1 d-flex justify-content-center'>
 							
 							<div  style={{height: '300px'}}>
-									<h5 className="card-title text-center">{place.name}</h5>
-									<h6 className="text-center">{place.vicinity}</h6>
+									<h5 className="card-title text-center"style={{color:"#1c9eb8",fontWeight:"bold"}}>{place.name}</h5>
+									<h6 className="text-center" > {place.vicinity}</h6>
 									<div className="mt-1 p-2 d-flex justify-content-center text-center">
 										<a href={`https://www.google.com/maps/search/?api=1&query=${place.geometry.location.lat},${place.geometry.location.lng}`} target="_blank" className="button-nearest">
 												See on Google Maps

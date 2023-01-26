@@ -57,7 +57,7 @@ const Popular = () => {
 	return (
 	
 	<div className="container mt-5">
-		<h2 className="mb-4" style={{color:"#b75353",fontWeight:"bold"}}>Popular in 2022...</h2>
+		<h3 className="mb-4" style={{color:"rgb(241 6 6)",fontWeight:"bold"}}>Popular in 2022...</h3>
 		<div className="d-flex justify-content-around mx-2">
 			<AliceCarousel responsive={responsive} autoPlay autoPlayInterval="1500"> 
 			{store.movies.map((movie, index) => (   
@@ -68,16 +68,7 @@ const Popular = () => {
 					</Link>  
 				</div>
 				<div className="d-flex justify-content-around p-1">
-					<Toolbar_ idFilm={movie.id}></Toolbar_>
-						{/* {store.seen.includes(API_IMAGE+movie.poster_path) ? <span title="Already seen" className="added"><i className="fas fa-check-circle"></i></span> : (
-						<button onClick={()=>{handleAddSeen(movie.id)}} className='seen' title="Add to your seen list"><i className="far fa-check-circle"></i></button>
-						)}
-						{store.favourites.includes(API_IMAGE+movie.poster_path) ? <span title="Added to favourites" className="added"><i className="fas fa-star"></i></span> : (
-						<button onClick={()=>{handleAddFav(movie.id)}}  className='fav' title="Add to your favourites list"><i className="far fa-star"></i></button>
-						)}
-						{store.pending.includes(API_IMAGE+movie.poster_path) ? <span title="Added to movies I want to see" className="added"><i className="fas fa-flag"></i></span> : (
-						<button onClick={()=>{handleAddPending(movie.id)}}  className='pended' title="Add to your pending list"><i className="far fa-flag"></i></button>
-						)} 	 */}
+					<Toolbar_ idFilm={movie.id}></Toolbar_>						
 				</div>
 			</div>   
 			))}

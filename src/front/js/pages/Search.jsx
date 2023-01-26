@@ -65,7 +65,7 @@ function Search() {
           <input
             type="text"
             className="form-control rounded-input text-warning"
-            placeholder="Please enter your query"
+            placeholder="Enter the title of the movie"
             value={searchValue}
             onChange={(e) => setSearchValue(e.target.value)}
             onKeyUp={(e) => e.key === "Enter" && search()}
@@ -110,11 +110,9 @@ function Search() {
                       </object>
                   </Link>
                   <div className="card-body ml-auto">
-                    <h5 className="card-title-right carline">{result.title}</h5>
-                    <p className="cadr-text-right carline text-warning">
-                      {result.release_date}
-                    </p>
-                    <p className="card-text-right carline text-warning">
+                    <h5 className="card-title-right text-warning carline">{result.title}</h5>
+                    <p className="cadr-text-right carline"><small style={{color:'cornsilk',fontWeight:'200',fontSice:'smaller'}}>{result.release_date}</small></p>
+                    <p className="card-text-right carline" style={{color:"#1c9eb8",fontWeight:"bold"}}>
                       {sinopsys(result)}
                     </p>
                   </div>

@@ -59,7 +59,7 @@ const ComingSoon = () => {
 	
 	<div className="container mt-5">
 
-		<h2 className="mb-4">Coming Soon...</h2>
+		<h3 className="mb-4"style={{color:"rgb(241 6 6)",fontWeight:"bold"}}>Coming Soon...</h3>
 		<div className="d-flex justify-content-around mx-2">
 			<AliceCarousel responsive={responsive} autoPlay autoPlayInterval="1500"> 
 			{store.comingSoon.map((movie, index) => (    

@@ -63,7 +63,7 @@ fetchMovies();
   return (
     
       <div className="container mt-3">
-        <h2 className="mb-4">Recommended viewing...</h2>
+        <h3 className="mb-4"style={{color:"rgb(241 6 6)",fontWeight:"bold"}}>Recommended viewing...</h3>
             {movie ? (
             <div className="viewtrailer" style={{
                 backgroundImage: `url("${IMAGE_PATH}${movie.backdrop_path}")`,
