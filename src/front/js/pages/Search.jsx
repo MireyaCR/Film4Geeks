@@ -4,7 +4,7 @@ import {Context } from "../store/appContext"
 import { useNavigate } from "react-router-dom";
 import "../../styles/search.css";
 import { API_IMAGE } from "/workspace/Film4Geeks/src/front/js/services/API_IMAGE.js";
-import img404 from "/workspace/Film4Geeks/src/front/img/Imagenerror.png"
+import Logo from "/workspace/Film4Geeks/src/front/img/LOGO.png"
 import { Link } from "react-router-dom";
 
 function Search() {
@@ -60,7 +60,7 @@ function Search() {
   };
 
   return (
-    <div className="container-fluid justify-content-center">
+    <div className="container-fluid justify-content-center w-75">
       <div className="form-group">
         <div className="input-group mt-3">
           <input
@@ -83,20 +83,20 @@ function Search() {
       </div>
       <div className="d-flex flex-wrap justify-content-between">
         {searchResults.length > 0 ? (
-          <div className="card-deck">
+          <div className="card-deck justify-content-center">
             {searchResults.map((result) => (
-              <div key={result.id} className="card result-card mt-2 w-75"style={{backgroundColor:"#132f4c"}}>                             
+              <div key={result.id} className="card result-card mt-3 w-100">                             
                   <div className="row justify-content-center">
-                    <div className="col-sm-3 me-0" >  
+                    <div className="col-sm-3 justify-content-center" >  
                       <Link to={`/detailspopular/${result.id}`}>
-                        <img className="card-img-left img-fluid "  src={`${API_IMAGE}${result.poster_path}`} style={{ maxWidth: "200px",height: "200px" }} onError={(e)=>{e.target.src=img404}}></img>
+                        <img className="card-img-left img-fluid mx-auto" src={`${API_IMAGE}${result.poster_path}`} onError={(e)=>{e.target.src=Logo}}></img>
                       </Link>                   
                     </div>
                     <div className="col-sm-9 ms-0"style={{height: "100%"}}>
                         <div className="card-body w-100"style={{alignItems: "center"}}>
-                          <h6 className="card-title text-info">{result.title}</h6>
-                          <small className="text-muted">{result.release_date}</small>  
-                          <h6 className="card-text text-warning"><small>{sinopsys(result)}</small></h6>               
+                          <h5 className="card-title p-0 mt-2 text-info">{result.title}</h5>
+                          <p className="card-text p-1 text-info"style={{fontSize:'12px'}}><strong>{result.release_date}</strong></p>  
+                          <h6 className="card-text p-1 text-warning"><small>{sinopsys(result)}</small></h6>               
                         </div>                 
                       </div>
                  </div>                                 

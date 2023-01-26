@@ -25,11 +25,12 @@
   border-radius: 5px;
 } 
 .card-img {
-  max-width: 100%;
-  object-fit: contain;
+  object-fit:cover
 }
 
-
+.card{
+  border-radius: 10px;
+}
 
 
 
