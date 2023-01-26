@@ -1,4 +1,5 @@
 import React, {useContext, useState, useEffect } from "react";
+import LazyLoad from 'react-lazyload';
 import {Context } from "../store/appContext"
 import { useNavigate } from "react-router-dom";
 import "../../styles/search.css";
@@ -59,71 +60,53 @@ function Search() {
   };
 
   return (
-    <div className="container mx-auto">
+    <div className="container-fluid justify-content-center">
       <div className="form-group">
         <div className="input-group mt-3">
           <input
             type="text"
-            className="form-control rounded-input text-warning"
+            className="form-control rounded-input text-secondary"
             placeholder="Enter the title of the movie"
             value={searchValue}
             onChange={(e) => setSearchValue(e.target.value)}
             onKeyUp={(e) => e.key === "Enter" && search()}
           />
           <button
-            className="btn btn-rounded btn-orange-gradient"
+            className="btn btn-rounded btn-orange-gradient text-white fa fa-search"
             onClick={() => searchValue && search()}
             disabled={!searchValue}
-          >
-            Search
+          >        
           </button>
-          {isLoading && <div className="mt-5">"Loading..."</div>}
+          {isLoading && <div className=" fa fa-spinner fa-spin"></div>}
           {error && <div className="mx-auto mt-3">{error.message}</div>}
         </div>
       </div>
-      <div className="d-flex flex-wrap flex-row">
+      <div className="d-flex flex-wrap justify-content-between">
         {searchResults.length > 0 ? (
-          <div className="card-deck mx-auto">
+          <div className="card-deck">
             {searchResults.map((result) => (
-              <div key={result.id} className="card result-card m-2 ">
-                <div
-                  className="card-container d-flex justify-content-end colores"
-                  style={{ height: "200px" }}
-                >
-                  <Link to={`/detailspopular/${result.id}`}>
-                    <object className="img-fluid " style={{
-                          objectFit: "cover",
-                          width: "400px",
-                          height: "200px",
-                          maxWidth: "100%",
-                          maxHeight: "100%",
-                        }} data={`${API_IMAGE}${result.poster_path}`} type="image/png">
-                      <img
-                        className="img-fluid "
-                        src={`${img404}`}style={{
-                          objectFit: "cover",
-                          width: "400px",
-                          height: "200px",
-                          maxWidth: "100%",
-                          maxHeight: "100%",}}
-                        ></img>
-                      </object>
-                  </Link>
-                  <div className="card-body ml-auto">
-                    <h5 className="card-title-right text-warning carline">{result.title}</h5>
-                    <p className="cadr-text-right carline"><small style={{color:'cornsilk',fontWeight:'200',fontSice:'smaller'}}>{result.release_date}</small></p>
-                    <p className="card-text-right carline" style={{color:"#1c9eb8",fontWeight:"bold"}}>
-                      {sinopsys(result)}
-                    </p>
-                  </div>
-                </div>
+              <div key={result.id} className="card result-card mt-2 w-75"style={{backgroundColor:"#132f4c"}}>                             
+                  <div className="row justify-content-center">
+                    <div className="col-sm-3 me-0" >  
+                      <Link to={`/detailspopular/${result.id}`}>
+                        <img className="card-img-left img-fluid "  src={`${API_IMAGE}${result.poster_path}`} style={{ maxWidth: "200px",height: "200px" }} onError={(e)=>{e.target.src=img404}}></img>
+                      </Link>                   
+                    </div>
+                    <div className="col-sm-9 ms-0"style={{height: "100%"}}>
+                        <div className="card-body w-100"style={{alignItems: "center"}}>
+                          <h6 className="card-title text-info">{result.title}</h6>
+                          <small className="text-muted">{result.release_date}</small>  
+                          <h6 className="card-text text-warning"><small>{sinopsys(result)}</small></h6>               
+                        </div>                 
+                      </div>
+                 </div>                                 
               </div>
             ))}
           </div>
         ) : !searched ? (
           ""
         ) : (
-          <div className="mx-auto mt-3">"No results found"</div>
+          <h3 className="mx-auto mt-3">"No results found"</h3>
         )}
       </div>
     </div>
