@@ -6,8 +6,8 @@
 .no {
     background: none;
     border: none;
+    color:  rgb(210, 159, 18);
 }
-
 .dark .no {
     color:  rgb(255, 206, 71);
 }

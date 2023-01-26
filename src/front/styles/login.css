@@ -11,7 +11,7 @@
 
 .title {
     text-decoration:underline;
-    text-decoration-color: rgb(149,211,245);
+    text-decoration-color:"#1c9eb8";
     margin-bottom: 2rem;
     margin-top: 2rem;
 }
@@ -33,10 +33,10 @@
 .input {
     background:none;
     border:none;
-    border-bottom: 2px solid #95D3F5;
+    border-bottom: 2px solid #1c9eb8;
     width: 500px; 
     margin-bottom: 3rem;
-    color:white
+    color:cornsilk
   }
 }
 
@@ -44,10 +44,10 @@
     .input {
         background:none;
         border:none;
-        border-bottom: 2px solid #95D3F5;
+        border-bottom: 2px solid #1c9eb8;
         width: auto; 
         margin-bottom: 3rem;
-        color:white
+        color: cornsilk
       }
     }
 
@@ -76,16 +76,16 @@
     }
     }
 
-p {
+/* p {
     color:white
-}
+} */
 
 .register {
-    color: rgb(149,211,245);
+    color: #1c9eb8;
     cursor: pointer;
 }
 
 .color {
-    background-color:rgb(10, 25, 41) ;
+    background-color:#0A1929 ;
 }
 

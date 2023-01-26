@@ -1,10 +1,15 @@
-import React from 'react'
+import React, { useEffect } from "react";
 import '../../img/spiderman.png'
 import '../../img/super.png'
 import '../../img/superw.png'
 
 
 export const Starring = () => {
+
+    useEffect(() => {
+		window.scrollTo(0, 0)
+	  }, [])
+      
   return (
     <div className='container text-center mt-5'>
         <div className='d-flex justify-content-around flex-wrap'>

@@ -21,10 +21,10 @@ const Quotes = () => {
 				{
 					quote ?
 						<div className='quote'>
-							<div className='column'> 
-								<span className="p-0"><i>"{quote.quote}"</i></span><br></br>
-								<span>{quote.movie}</span><br></br>
-								<span>{quote.year}</span>
+							<div className='column text-center'> 
+								<h6 className="p-0"><i><strong>"{quote.quote}"</strong></i></h6>
+								<h6><small>{quote.movie}-{quote.year}</small></h6>
+								
 							</div>
 						</div>	
 					:""	
