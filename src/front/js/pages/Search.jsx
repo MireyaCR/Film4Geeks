@@ -3,8 +3,9 @@ import {Context } from "../store/appContext"
 import { useNavigate } from "react-router-dom";
 import "../../styles/search.css";
 import { API_IMAGE } from "/workspace/Film4Geeks/src/front/js/services/API_IMAGE.js";
-import img404 from "/workspace/Film4Geeks/src/front/img/Imagenerror.png"
+import Logo from "/workspace/Film4Geeks/src/front/img/LOGO.png"
 import { Link } from "react-router-dom";
+import SpeechRecognition from 'react-speech-recognition'
 
 function Search() {
   const {store, actions} = useContext(Context)
@@ -59,71 +60,53 @@ function Search() {
   };
 
   return (
-    <div className="container mx-auto">
+    <div className="container-fluid justify-content-center w-75">
       <div className="form-group">
         <div className="input-group mt-3">
           <input
             type="text"
-            className="form-control rounded-input text-warning"
+            className="form-control rounded-input text-secondary"
             placeholder="Enter the title of the movie"
             value={searchValue}
             onChange={(e) => setSearchValue(e.target.value)}
             onKeyUp={(e) => e.key === "Enter" && search()}
           />
           <button
-            className="btn btn-rounded btn-orange-gradient"
+            className="btn btn-rounded btn-orange-gradient text-white fa fa-search"
             onClick={() => searchValue && search()}
             disabled={!searchValue}
-          >
-            Search
+          >        
           </button>
-          {isLoading && <div className="mt-5">"Loading..."</div>}
+          {isLoading && <div className=" fa fa-spinner fa-spin"></div>}
           {error && <div className="mx-auto mt-3">{error.message}</div>}
         </div>
       </div>
-      <div className="d-flex flex-wrap flex-row">
+      <div className="d-flex flex-wrap justify-content-between">
         {searchResults.length > 0 ? (
-          <div className="card-deck mx-auto">
+          <div className="card-deck justify-content-center">
             {searchResults.map((result) => (
-              <div key={result.id} className="card result-card m-2 ">
-                <div
-                  className="card-container d-flex justify-content-end colores"
-                  style={{ height: "200px" }}
-                >
-                  <Link to={`/detailspopular/${result.id}`}>
-                    <object className="img-fluid " style={{
-                          objectFit: "cover",
-                          width: "400px",
-                          height: "200px",
-                          maxWidth: "100%",
-                          maxHeight: "100%",
-                        }} data={`${API_IMAGE}${result.poster_path}`} type="image/png">
-                      <img
-                        className="img-fluid "
-                        src={`${img404}`}style={{
-                          objectFit: "cover",
-                          width: "400px",
-                          height: "200px",
-                          maxWidth: "100%",
-                          maxHeight: "100%",}}
-                        ></img>
-                      </object>
-                  </Link>
-                  <div className="card-body ml-auto">
-                    <h5 className="card-title-right text-warning carline">{result.title}</h5>
-                    <p className="cadr-text-right carline"><small style={{color:'cornsilk',fontWeight:'200',fontSice:'smaller'}}>{result.release_date}</small></p>
-                    <p className="card-text-right carline" style={{color:"#1c9eb8",fontWeight:"bold"}}>
-                      {sinopsys(result)}
-                    </p>
-                  </div>
-                </div>
+              <div key={result.id} className="card result-card mt-3 w-100">                             
+                  <div className="row justify-content-center">
+                    <div className="col-sm-3 justify-content-center" >  
+                      <Link to={`/detailspopular/${result.id}`}>
+                        <img className="card-img-left img-fluid mx-auto" src={`${API_IMAGE}${result.poster_path}`} onError={(e)=>{e.target.src=Logo}}></img>
+                      </Link>                   
+                    </div>
+                    <div className="col-sm-9 ms-0"style={{height: "100%"}}>
+                        <div className="card-body w-100"style={{alignItems: "center"}}>
+                          <h5 className="card-title p-0 mt-2 text-info">{result.title}</h5>
+                          <p className="card-text p-1 text-info"style={{fontSize:'12px'}}><strong>{result.release_date}</strong></p>  
+                          <h6 className="card-text p-1 text-warning"><small>{sinopsys(result)}</small></h6>               
+                        </div>                 
+                      </div>
+                 </div>                                 
               </div>
             ))}
           </div>
         ) : !searched ? (
           ""
         ) : (
-          <div className="mx-auto mt-3">"No results found"</div>
+          <h3 className="mx-auto mt-3">"No results found"</h3>
         )}
       </div>
     </div>
