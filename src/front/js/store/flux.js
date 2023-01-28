@@ -185,7 +185,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				try{
 					const resp = await fetch(`${process.env.BACKEND_URL}/api/user/pending/?film_id=${film_id}`, opts)
 					const data = await resp.json()	
-					console.log(data)
+				
 					return data
 				}
 				catch (error){

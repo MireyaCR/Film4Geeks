@@ -102,8 +102,8 @@ const Toolbar_ = (props) => {
 
   return (
     <div className="container d-flex justify-content-around">
-      <button
-        className={seen ? "fas fa-check p-2 m-1 yes" : "fas fa-check p-2 m-1 no"}
+      <button title="Add to your seen list"
+        className={seen ? "fas fa-check p-2 m-1 yes-seen" : "fas fa-check p-2 m-1 no"}
         onClick={() => {
           if (seen) {
             deleteSeen();
@@ -112,8 +112,8 @@ const Toolbar_ = (props) => {
           }
         }}
       ></button>
-      <button
-        className={favo ? "fas fa-star p-2 m-1 yes" : "far fa-star p-2 m-1 no"}
+      <button title="Add to your favourite list"
+        className={favo ? "fas fa-star p-2 m-1 yes-favo" : "far fa-star p-2 m-1 no"}
         onClick={() => {
             if (favo) {
                 deleteFavo();
@@ -122,8 +122,8 @@ const Toolbar_ = (props) => {
               }
         }}
       ></button>
-      <button
-        className={pend ? "fas fa-flag p-2 m-1 yes" : "fas fa-flag p-2 m-1 no"}
+      <button title="Add to your pending list"
+        className={pend ? "fas fa-thumbtack p-2 m-1 yes-pend" : "fas fa-thumbtack p-2 m-1 no"}
         onClick={() => {
           if (pend) {
             deletePending();

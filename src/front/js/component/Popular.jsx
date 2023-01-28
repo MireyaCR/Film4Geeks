@@ -48,7 +48,7 @@ const Popular = () => {
 			<div key={index}>   
 				<div key={index} className='ind me-1'>
 					<Link to={`/detailspopular/${movie.id}`}> 
-						<img className="card-img-top" src={API_IMAGE+movie.poster_path} style={{minHeight:'25rem'}}/>
+						<img className="card-img-top" src={API_IMAGE+movie.poster_path} style={{minHeight:'25rem', borderRadius: '3px'}}/>
 					</Link>  
 				</div>
 				<div className="d-flex justify-content-around p-1">

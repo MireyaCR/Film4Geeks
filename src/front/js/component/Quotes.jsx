@@ -23,7 +23,7 @@ const Quotes = () => {
 						<div className='quote'>
 							<div className='column text-center'> 
 								<h6 className="p-0"><i><strong>"{quote.quote}"</strong></i></h6>
-								<h6><small>{quote.movie}-{quote.year}</small></h6>
+								<h6><small>{quote.movie}, {quote.year}</small></h6>
 								
 							</div>
 						</div>	
