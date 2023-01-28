@@ -7,6 +7,7 @@ import Logo from "/workspace/Film4Geeks/src/front/img/LOGO.png"
 import { Link } from "react-router-dom";
 import SpeechRecognition from 'react-speech-recognition'
 
+
 function Search() {
   const {store, actions} = useContext(Context)
   const [searchValue, setSearchValue] = useState("");
@@ -106,7 +107,10 @@ function Search() {
         ) : !searched ? (
           ""
         ) : (
-          <h3 className="mx-auto mt-3">"No results found"</h3>
+          <div className="mx-auto mt-3 d-flex flex-column">
+            <img src={Logo}  style={{height: '18rem'}}/>
+            <h3 className="text-center" style={{color: 'rgb(241, 6, 6)'}}>"No results found"</h3>
+          </div>
         )}
       </div>
     </div>
