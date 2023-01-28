@@ -198,9 +198,11 @@ def get_info():
     email = get_jwt_identity()
     user = User.query.filter_by(email=email).first()
     seen = Seen.query.filter_by(user_id = user.id)
+    user_id = user.id
     name = user.name
     email = user.email
     response_body = {}
+    response_body["user_id"]= user_id
     response_body["name"]= name
     response_body["email"] = email
     genres = []

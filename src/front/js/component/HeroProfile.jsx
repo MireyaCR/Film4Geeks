@@ -120,11 +120,13 @@ export const HeroProfile = () => {
 
 
 
+
+
     return (
         <div className=" row justify-content-center align-items-center p-3 mx-3 mb-4 ">
                 <div className="col-md-5">
                     <div className="avatars text-center reduced-line-height-left m-2 p-2 ">
-                        <img src="https://source.boringavatars.com/beam/Maria%20Mitchell?colors=264653,2a9d8f,e9c46a,f4a261,e76f51" alt=""/>
+                        <img src={`https://robohash.org/${userInfo.user_id}?set=set2&size=180x180`} alt=""/>
                     </div>
 
                     <div className="text-center m-2 p-2 reduced-line-height-right"  >
@@ -139,8 +141,15 @@ export const HeroProfile = () => {
                 </div>
 
                 <div className="col-md-6 item m-2 p-2 reduced-line-height-left">
-                    <h6 >Your favourite Genders:</h6>
-                    <Pie  data={data} options={options} />
+                    <h6 >Your most-seen movie genders:</h6>
+                    { allGenres.length !== 0 ? (
+                         <Pie  data={data} options={options} />
+                    ) : (
+                        <p>Add movies to see your favourite movie genres!</p>
+                    )
+                         
+                    }
+                   
                 </div>
         </div>
     )
