@@ -40,7 +40,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					const resp = await fetch(`${process.env.BACKEND_URL}/api/token`, requestOptions)
 	
 					if (resp.status !== 200){
-						alert("There has been some error")
+						alert("User does not exist")
 						return false
 					}
 
