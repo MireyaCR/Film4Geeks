@@ -2,7 +2,9 @@
  @media only screen and (min-width: 600px) {
   .result-card {
     width: 300px;
-    background-color: #132f4c;
+    background-color:  rgb(19, 47, 76);
+    border-radius: 10px;
+    border: 2px solid white;
   }
 
 }   
@@ -29,8 +31,10 @@
 }
 
 .card{
-  border-radius: 10px;
+   
+    background-color:  #132f4c;  
 }
+
 
 
 
