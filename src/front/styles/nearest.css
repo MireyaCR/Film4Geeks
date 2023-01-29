@@ -1,5 +1,5 @@
 .button-nearest {
-    background-color: #d29435;
+    background: linear-gradient(to top, rgb(210, 148, 53), rgb(255, 206, 71));;
     border: none;
     width: 200px;
     border-radius: 30px;
@@ -9,7 +9,7 @@
 }
 
 .button-nearest:hover{
-    background-color: orange;
+    background: linear-gradient(to top, rgb(210, 148, 53), rgb(255, 206, 71));
     color: black;
 }
 

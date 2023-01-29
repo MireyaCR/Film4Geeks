@@ -5,7 +5,7 @@ import { API_IMAGE } from "/workspace/Film4Geeks/src/front/js/services/API_IMAGE
 import { useNavigate } from "react-router-dom";
 import {Context } from "../store/appContext"
 import Toolbar_ from "../component/Toolbar_.jsx"
-import img404 from "/workspace/Film4Geeks/src/front/img/Imagenerror.png"
+import Logo from "/workspace/Film4Geeks/src/front/img/LOGO.png"
 
 import "../../styles/detailspopular.css";
 
@@ -110,12 +110,7 @@ const Detailspopular = () => {
       <div className="row justify-content-center">
         <div className="col-md-5 col-12 p-2">
           <div className="row-image border-rounded position-relative">
-            <object className="img-fluid" data={`${API_IMAGE}${popularMovie.poster_path}`} type="image/png">
-              <img
-              className="img-fluid"
-                src={`${img404}`}
-              />
-            </object>
+            <img className="img-fluid postal" src={`${API_IMAGE}${popularMovie.poster_path}`} onError={(e)=>{e.target.src=Logo}}type="image/png"/>     
             <button className="play-button" onClick={handleClick}>
             <i className={`fas ${icon}`}></i>       
             </button>            
@@ -123,7 +118,7 @@ const Detailspopular = () => {
           <div className="row gutter">
             <div className=" d-flex flex-row mb-3">
               <Toolbar_ idFilm={popularMovie.id}></Toolbar_>
-              <span className="far fa-clock ms-auto p-2 ">
+              <span className="far fa-clock ms-auto warning p-2 ">
                 {" "}
                 {popularMovie.runtime} min.{" "}
               </span>

@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import '../../img/spiderman.png'
 import '../../img/super.png'
-import '../../img/superw.png'
+import '../../img/fenix.png'
 
 
 export const Starring = () => {
@@ -14,9 +14,9 @@ export const Starring = () => {
     <div className='container text-center mt-5'>
         <div className='d-flex justify-content-around flex-wrap'>
             <div>
-                <div className='card mt-2' style={{width: '19rem', height: '19rem', background: 'radial-gradient(circle, rgba(2,0,36,1) 0%, rgba(29,9,121,0.8379726890756303) 8%, rgba(0,212,255,1) 100%)'}}>
+                <div className='card mt-2' style={{width: '16rem', height: '16rem', background: 'radial-gradient(circle, rgb(242 63 97) 0%, rgb(245 64 90) 10%, rgb(10, 25, 41) 65%)',borderRadius: '50%'}}>
                     <div style={{marginTop: '30px'}}>
-                        <img src='spiderman.png' style={{height: '13rem', objectFit: 'contain'}}/>   
+                        <img src='spiderman.png' style={{height: '13rem', objectFit: 'contain',marginTop:'1px'}}/>   
                     </div>
                 </div>
                 <div className='mt-3'>
@@ -27,7 +27,7 @@ export const Starring = () => {
                 </div>
             </div>
             <div>
-                <div className='card mt-2' style={{width: '19rem', height: '19rem', background: 'radial-gradient(circle, rgba(127,130,56,1) 0%, rgba(2,0,36,1) 56%, rgba(86,148,161,1) 100%)'}}>
+                <div className='card mt-2' style={{width: '16rem', height: '16rem', background: 'radial-gradient(circle, #95d3f5 0%, #95d3f5 6%, rgb(10, 25, 41) 60%)',borderRadius: '50%'}}>
                     <div style={{marginTop:'30px'}}>
                         <img src='super.png' style={{height: '13rem', objectFit: 'contain'}}/>   
                     </div>
@@ -40,9 +40,9 @@ export const Starring = () => {
                 </div>
             </div>
             <div>
-                <div className='card mt-2' style={{width: '19rem', height: '19rem', background: 'radial-gradient(circle, rgba(2,0,36,1) 0%, rgba(127,130,56,1) 3%, rgba(86,148,161,1) 100%)'}}>
+                <div className='card mt-2' style={{width: '16rem', height: '16rem', background: 'radial-gradient(circle, rgb(210, 148, 53) 0%, rgba(210, 148, 53, 45) 6%, rgb(10, 25, 41) 60%)',borderRadius: '50%'}}>
                      <div style={{marginTop:'30px'}}>
-                        <img src='superw.png' style={{height: '13rem', objectFit: 'contain'}}/>   
+                        <img src='fenix.png' style={{height: '13rem', objectFit: 'contain'}}/>   
                     </div>
                 </div>
                 <div className='mt-2'>
