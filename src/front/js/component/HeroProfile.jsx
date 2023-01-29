@@ -123,34 +123,37 @@ export const HeroProfile = () => {
 
 
     return (
+         
+
+
         <div className=" row justify-content-center align-items-center p-3 mx-3 mb-4 ">
-                <div className="col-md-5">
-                    <div className="avatars text-center reduced-line-height-left m-2 p-2 ">
-                        <img src={`https://robohash.org/${userInfo.user_id}?set=set2&size=180x180`} alt=""/>
-                    </div>
+        <div className="col-md-5 reduced-line-height-left">
+            <div className="avatars text-center m-2 p-2 ">
+                <img src={`https://robohash.org/${userInfo.user_id}?set=set2&size=180x180`} alt=""/>
+            </div>
 
-                    <div className="text-center m-2 p-2 reduced-line-height-right"  >
-                        <h4 >Name: </h4><h5 style={{color:"white"}} >{userInfo.name} <i 
-                                                                                        onClick={()=>setShow(true)} className="fas fa-edit" style={{color:"#ffa500"}}
-                                                                                        ></i>
-                                                                                            {show ? 
-                                                                                            <div><input onChange = {(e)=>setName(e.target.value)} value = {name} type= "text" id = "name" /><i className="fas fa-times" onClick={()=>setShow(false)}></i><i className="fas fa-check" onClick={putName}></i></div>
-                                                                                            :""}</h5>
-                        <h4 >Email: </h4><h5 style={{color:"white"}}>{userInfo.email}</h5>
-                    </div>
-                </div>
-
-                <div className="col-md-6 item m-2 p-2 reduced-line-height-left">
-                    <h6 >Your most-seen movie genders:</h6>
-                    { allGenres.length !== 0 ? (
-                         <Pie  data={data} options={options} />
-                    ) : (
-                        <p>Add movies to see your favourite movie genres!</p>
-                    )
-                         
-                    }
-                   
-                </div>
+            <div className="text-center m-3 p-2 "  >
+                <h4 className="text-warning" >Name: </h4><h5 style={{color:"white"}} >{userInfo.name} <i 
+                                                                                onClick={()=>setShow(true)} className="fas fa-edit" style={{color:"#ffa500"}}
+                                                                                ></i>
+                                                                                    {show ? 
+                                                                                    <div><input className="change-info" onChange = {(e)=>setName(e.target.value)} value = {name} type= "text" id = "name" /><i className="fas fa-times text-danger me-1"  onClick={()=>setShow(false)}></i><i className="fas fa-check text-success" onClick={putName}></i></div>
+                                                                                    :""}</h5>
+                <h4 className="text-warning" >Email: </h4><h5 style={{color:"white"}}>{userInfo.email}</h5>
+            </div>
         </div>
+
+        <div className="col-md-6 item m-3  p-4 reduced-line-height-right">
+            <h6 className="text-center text-pie" >Your most-seen movie genders:</h6>
+            { allGenres.length !== 0 ? (
+                 <Pie  data={data} options={options} />
+            ) : (
+                <p>Add movies to see your favourite movie genres!</p>
+            )
+
+            }
+
+        </div>
+</div>
     )
 }
