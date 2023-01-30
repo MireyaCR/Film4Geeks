@@ -50,8 +50,8 @@ export const SignUp = () => {
     
     let schemaPassword = yup.object().shape({
         password:yup.string()
-        .min(6,"Too short!")
-        .max(10,"too long!")
+        .min(10,"Too short!")
+        .max(15,"too long!")
         .required("Required")
     })
     
@@ -89,25 +89,23 @@ export const SignUp = () => {
                         <div className="p-2">
                             <h3>Email</h3>
                             <label ></label>
-                            {/* <input className="input" type="email"  placeholder="Email"/> */}
-                            <input className={`input form-control ${isValidEmail ? "input" : "is-invalid"}`} required onBlur={handleBlurEmail} type = "email" id="email" placeholder="Email" />
+                            
+                            <input className={`input form-control ${isValidEmail ? "" : "is-invalid"}`} required onBlur={handleBlurEmail} type = "email" id="email" placeholder="Email" />
+                            {!isValidEmail && (<div className="invalid-feedback">Email is invalid</div>)}
                         </div>
                         <div className="p-2">
                             <h3>Password</h3>
                             <label></label>
-                            {/* <input className="input" type="password" placeholder="Password"/> */}
                             <input className={`input form-control ${isValidPassword ? "" :"is-invalid"}`} required onBlur={handleBlurPassword} type ="password" id="password" placeholder="Password" />
+                            {!isValidPassword && (<div className="invalid-feedback">Password must be at least 10 characters long and alphanumeric </div>)}
                         </div>
-                        {/* <div className="p-2">
-                            <h3>Repeat Your Password</h3>
-                            <label></label>
-                            <input className="input mb-4" type="password" placeholder="Password"/>
-                        </div> */}
                         
                         
-                        {/* <div className="format" >  */}
+                        
+                        
+                       
                             <button onClick={()=>{sendInfo()}} type="submit" className="button" value="Send">Send</button>
-                        {/* </div>  */}
+                        
                         
                     </form>
                     
