@@ -3,6 +3,7 @@ import { useState, useContext } from 'react';
 import axios from 'axios'
 import { Context } from "../store/appContext";
 import YouTube from 'react-youtube';
+import { Link } from 'react-router-dom';
 import '../../styles/recommended.css'
 import '../../styles/carrusel.css'
 
@@ -87,6 +88,14 @@ fetchMovies();
                             ) : (
                                 "Sorry, no trailer available"
                             )}
+                            <Link to={`/detailspopular/${movie.id}`}>
+                            <button
+                                className="close_one"
+                                type="button"
+                            >
+                                More info
+                            </button>
+                            </Link>
                         </div>
                        </div> 
                 </div>
