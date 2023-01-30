@@ -93,6 +93,9 @@
     opacity: 0.55;
     visibility: visible;
   }
+.logobanner{
+  height: 10rem;
+}
 
   .banner {
     background-image: url('https://cdn.pixabay.com/photo/2013/07/12/17/22/curtain-152112_1280.png');

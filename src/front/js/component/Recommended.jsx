@@ -4,7 +4,7 @@ import { useState, useContext } from 'react';
 import { Context } from "../store/appContext";
 import YouTube from 'react-youtube';
 import '../../styles/recommended.css'
-
+import '../../styles/carrusel.css'
 
 
 const Recommended = () => {
@@ -63,7 +63,7 @@ fetchMovies();
   return (
     
       <div className="container mt-3">
-        <h3 className="mb-4"style={{color:"rgb(241 6 6)",fontWeight:"bold"}}>Recommended viewing...</h3>
+        <h3 className="mb-4 h3categorias">Recommended viewing...</h3>
             {movie ? (
             <div className="viewtrailer" style={{
                 backgroundImage: `url("${IMAGE_PATH}${movie.backdrop_path}")`, borderRadius: '5px'

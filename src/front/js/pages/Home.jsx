@@ -31,7 +31,7 @@ const Home = () => {
 			
 		<div className="banner bg-image">
 			<div className="text-center">
-			<img src={logo} style={{height: "15rem"}} className="mt-4"/> 
+			<img src={logo}  className="mt-4 logobanner"/> 
 			<h2>Films4Geeks</h2>
 			<Quotes />
 			</div>

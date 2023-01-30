@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import AliceCarousel from 'react-alice-carousel';
 import 'react-alice-carousel/lib/alice-carousel.css';
 import '../../styles/nearest.css'
+import '../../styles/carrusel.css'
 
 const apiURL = process.env.GOOGLE_API
 
@@ -64,7 +65,7 @@ const NearestCinema = () => {
 	
 	return (
 		<div className="container" >
-            	<h3 className="mb-4" style={{color:"rgb(241 6 6)",fontWeight:"bold"}}>Your nearest cinemas...</h3>
+            	<h3 className="mb-4 h3categorias">Your nearest cinemas...</h3>
 			<div className="d-flex justify-content-center mx-2" >
 				<AliceCarousel responsive={responsive} autoPlay autoPlayInterval="1500" > 
 				{type.map((place, index) => (    
