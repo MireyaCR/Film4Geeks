@@ -44,7 +44,7 @@ export const PendingMovies = () => {
 						<div key={index}>
 							<div className='ind me-1'>
 								<Link to={`/detailspopular/${pending.film_id}`}>
-									<img src={pending.image_url} className='grid' style={{height:"10rem"}}/>
+									<img src={pending.image_url} className='grid postercarrusel-profile' style={{height:"10rem"}}/>
 								</Link>
 							</div> 
 						</div>)

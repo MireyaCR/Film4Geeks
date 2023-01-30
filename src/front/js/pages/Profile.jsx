@@ -1,6 +1,7 @@
 import React,{useContext, useEffect, useState} from "react"
 import { useNavigate } from "react-router-dom";
 import { Context } from '../store/appContext';
+import "../../styles/carrusel.css"
 import { Pie } from 'react-chartjs-2';
 import 'chart.js/auto';
 import "../../styles/profile.css"
@@ -33,15 +34,15 @@ export const Profile = () => {
             <HeroProfile/>
             <hr></hr>
             
-            <h3 className="text-center py-2" style={{color: 'rgb(241, 6, 6)'}}>My favourite films</h3>
+            <h3 className="h3categorias text-center py-2" >My favourite films</h3>
                 <MyFavourites/>
             <hr></hr>
                 
-            <h3 className="text-center py-2" style={{color: 'rgb(241, 6, 6)'}}>Films I want to see</h3>
+            <h3 className="h3categorias text-center py-2" >Films I want to see</h3>
                 <PendingMovies/>
             <hr></hr>
             
-            <h3 className="text-center py-2" style={{color: 'rgb(241, 6, 6)'}}>Films I have already seen</h3>
+            <h3 className="h3categorias text-center py-2" >Films I have already seen</h3>
                 <FilmsSeen/>
             <hr></hr>
         </div>

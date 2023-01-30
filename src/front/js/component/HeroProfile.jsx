@@ -98,16 +98,16 @@ export const HeroProfile = () => {
             'rgba(54, 162, 235, 5)',
             'rgba(153, 102, 255, 5)',
             'rgba(201, 203, 207, 5)',
-            'rgba(54, 162, 235, 5)',
-            'rgba(255, 206, 86, 5)',
-            'rgba(75, 192, 192, 5)',
-            'rgba(153, 102, 255, 5)',
-            'rgba(255, 159, 64, 5)',
-            'rgba(255, 99, 132, 5)',
-            'rgba(54, 162, 235, 5)',
-            'rgba(255, 206, 86, 5)',
-            'rgba(75, 192, 192, 5)',
-            'rgba(153, 102, 255, 5)'
+            'rgba(178, 145, 207, 5)',
+            'rgba(155, 106, 186, 5)',
+            'rgba(255, 255, 255, 5)',
+            'rgba(253, 2, 155, 5)',
+            'rgba(245, 159, 64, 5)',
+            'rgba(225, 99, 132, 5)',
+            'rgba(154, 162, 235, 5)',
+            'rgba(235, 206, 86, 5)',
+            'rgba(175, 192, 192, 5)',
+            'rgba(190, 102, 255, 5)'
             ], //fondo
             borderColor:"rgb(255, 206, 71)",
         }]
@@ -127,23 +127,23 @@ export const HeroProfile = () => {
 
 
         <div className=" row justify-content-center align-items-center p-3 mx-3 mb-4 ">
-        <div className="col-md-5 reduced-line-height-left">
+        <div className="col-md-5 ">
             <div className="avatars text-center m-2 p-2 ">
                 <img src={`https://robohash.org/${userInfo.user_id}?set=set2&size=180x180`} alt=""/>
             </div>
 
             <div className="text-center m-3 p-2 "  >
-                <h4 className="text-warning" >Name: </h4><h5 style={{color:"white"}} >{userInfo.name} <i 
+                <h4 className="text-profile" >Name: </h4><h5 className="text-user-data">{userInfo.name} <i 
                                                                                 onClick={()=>setShow(true)} className="fas fa-edit" style={{color:"#ffa500"}}
                                                                                 ></i>
                                                                                     {show ? 
                                                                                     <div><input className="change-info" onChange = {(e)=>setName(e.target.value)} value = {name} type= "text" id = "name" /><i className="fas fa-times text-danger me-1"  onClick={()=>setShow(false)}></i><i className="fas fa-check text-success" onClick={putName}></i></div>
                                                                                     :""}</h5>
-                <h4 className="text-warning" >Email: </h4><h5 style={{color:"white"}}>{userInfo.email}</h5>
+                <h4 className="text-profile" >Email: </h4><h5 className="text-user-data">{userInfo.email}</h5>
             </div>
         </div>
 
-        <div className="col-md-6 item m-3  p-4 reduced-line-height-right">
+        <div className="col-md-6 item m-3  p-4">
             <h6 className="text-center text-pie" >Your most-seen movie genders:</h6>
             { allGenres.length !== 0 ? (
                  <Pie  data={data} options={options} />

@@ -40,7 +40,7 @@ export const FilmsSeen = () => {
 						<div key={index}>
 							<div className='ind me-1'>
 								<Link to={`/detailspopular/${seen.film_id}`}>
-									<img src={seen.image_url} className='grid' style={{height:"10rem"}}/>
+									<img src={seen.image_url} className='grid postercarrusel-profile' style={{height:"10rem"}}/>
 								</Link>
 							</div> 
 						</div>)

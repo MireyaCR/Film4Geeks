@@ -40,7 +40,7 @@ export const MyFavourites = () => {
 						<div key={index}>
 							<div className='ind me-1'>
 								<Link to={`/detailspopular/${favourite.film_id}`}>
-									<img src={favourite.image_url} className='grid' style={{height:"10rem"}}/>
+									<img src={favourite.image_url} className='grid postercarrusel-profile' style={{height:"10rem"}}/>
 								</Link>
 							</div> 
 						</div>)

@@ -37,11 +37,31 @@
   box-shadow: 2px 2px 10px #95D3F5;    
 }
 
-h4 {
+.light .text-profile  {
   text-decoration:underline ;
-  text-decoration-color: #95D3F5
+  text-decoration-color: #95D3F5;
+  color:#0A1929 
   
 }
+
+.dark .text-profile {
+  text-decoration:underline ;
+  text-decoration-color: #95D3F5;
+  color:rgb(255, 206, 71)
+  
+}
+
+
+.light .text-user-data {
+  color:grey
+  
+}
+
+.dark .text-user-data{
+  color:white
+  
+}
+
 
 .text-pie {
   color:rgb(255, 206, 71)
@@ -54,4 +74,19 @@ h4 {
         width: auto; 
         margin-bottom: 2rem;
         color: cornsilk
+}
+
+
+.h3categorias{
+  color:#d29435;
+  font-weight: bold;
+}
+.postercarrusel{
+  min-height: 18rem;
+  border-radius: 10px ;
+}
+
+.postercarrusel-profile{
+  min-height: 10rem;
+  border-radius: 5px ;
 }
