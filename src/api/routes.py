@@ -252,11 +252,12 @@ def validate_email(email):
     return email
 
 
+
 @validates("password")
 def validate_password(password):
     if not password:
         raise AssertionError("Password not provided")
-    if not re.match('[A-Z]|[A-Z]', password):
-        raise AssertionError("Invalid format password")
+    if not re.match("^[a-zA-Z0-9]{10,}$", password):
+        raise AssertionError("Password must be at least 10 characters long and alphanumeric")
 
     return password
