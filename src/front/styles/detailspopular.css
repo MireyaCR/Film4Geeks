@@ -34,16 +34,20 @@
     border-radius: 10px;
     color: #ffa500;
     border: solid 2px #ffa500;
-    box-shadow: 2px 2px 10px #ffa500;    
+    box-shadow: 2px 2px 10px #ffa500;      
 }
 
   .text-color-h5 {
     color: rgb(255, 206, 71)
   }
   .text-color-small {
-    color: rgb(255, 206, 71)
+    color: rgb(45, 192, 233)
   }
-  .video-modal {
+  .sizedata{
+    font-size: 16px;;
+    color: ;
+  }
+   .video-modal {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -67,5 +71,17 @@
 }
 
 .light h5{
-  color:red
+  color:#ffa500;
+  font-weight: bold;
+}
+.fasize{
+  font-size: 14px;
+}
+.sizedate{
+  font-size: 15px;
+  color:#ffa500;
+}
+
+.title-detail{
+  margin-bottom: 5px;
 }
