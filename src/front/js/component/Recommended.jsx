@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
-import axios from 'axios'
 import { useState, useContext } from 'react';
+import axios from 'axios'
 import { Context } from "../store/appContext";
 import YouTube from 'react-youtube';
 import '../../styles/recommended.css'
@@ -15,20 +15,19 @@ const {store, actions } = useContext(Context);
 
   // variables de estado
 
-  //const [selectedMovie, setSelectedMovie] = useState({})
+
   const [trailer, setTrailer] = useState(null);
   const [movie, setMovie] = useState({ title: "Loading Movies" });
   const [playing, setPlaying] = useState(false);
 
   // funcion para realizar la peticion get a la api
   const fetchMovies = async () => {
-   // const type = searchKey ? "search" : "discover";
+
     const {
       data: { results },
     } = await axios.get(`https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&vote_average.gte=8`, 
    );
-    //console.log('data',results);
-    //setSelectedMovie(results[0])
+   
 
     setMovie(results[Math.floor(Math.random()*results.length)]);
  

@@ -1,7 +1,7 @@
 
  @media only screen and (min-width: 600px) {
   .result-card {
-    width: 300px;
+    /* width: 300px; */
     background-color:  rgb(19, 47, 76);
     border-radius: 10px;
     border: 2px solid white;
@@ -24,17 +24,26 @@
 .card-body{
   background-color: #132f4c;
   font-size: 10px;
-  border-radius: 5px;
+  border-radius: 5px; 
 } 
-.card-img {
-  object-fit:cover
+.card-img-left {
+  object-fit:cover;
+  height: 100%;
+  width: 100%;
+  border-radius: 10px;
 }
 
-.card{
-   
+.card{   
     background-color:  #132f4c;  
+    border-radius: 10px;
+    border: 2px solid white;
 }
-
-
-
-
+.sizetex{
+  font-size: 16px;
+}
+.colortitle{
+  color:#d29435;
+}
+.notfound{
+  color: rgb(241, 6, 6);
+}

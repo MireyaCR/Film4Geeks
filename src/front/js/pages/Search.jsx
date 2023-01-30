@@ -93,10 +93,10 @@ function Search() {
                         <img className="card-img-left img-fluid mx-auto" src={`${API_IMAGE}${result.poster_path}`} onError={(e)=>{e.target.src=Logo}}></img>
                       </Link>                   
                     </div>
-                    <div className="col-sm-9 ms-0 "style={{height: "100%"}}>
+                    <div className="col-sm-9 ms-0 h-100">
                         <div className="card-body mt-1 align-self-center w-100">
-                          <h5 className="card-title p-0 mt-2 text-danger"style={{fontWeight:'bold'}}>{result.title}</h5>
-                          <p className="card-text p-1 text-info"style={{fontSize:'16px'}}><strong>{result.release_date}</strong></p>  
+                          <h5 className="card-title p-0 mt-2 colortitle">{result.title}</h5>
+                          <h6 className="card-text p-1 text-info sizetex">{result.release_date}</h6>  
                           <h6 className="card-text p-1 text-white">{sinopsys(result)}</h6>               
                         </div>                 
                       </div>
@@ -109,7 +109,7 @@ function Search() {
         ) : (
           <div className="mx-auto mt-3 d-flex flex-column">
             <img src={Logo}  style={{height: '18rem'}}/>
-            <h3 className="text-center" style={{color: 'rgb(241, 6, 6)'}}>"No results found"</h3>
+            <h3 className="text-center notfound" >"No results found"</h3>
           </div>
         )}
       </div>
