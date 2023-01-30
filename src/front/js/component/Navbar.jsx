@@ -22,6 +22,7 @@ const Navbar = () => {
     } else {
       setTheme("light");
     }
+    handleClickLink();
   };
 
   const handleClick = () => {

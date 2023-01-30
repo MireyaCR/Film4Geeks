@@ -17,6 +17,8 @@ const Detailspopular = () => {
 
   const navigate = useNavigate()
 	
+  
+    
 	useEffect(() => {
 	 	if(!store.token)
 		navigate("/login")
@@ -28,6 +30,10 @@ const Detailspopular = () => {
   const [trailer, setTrailer] = useState(null);
   const [showModal, setShowModal] = useState(false);
   const [icon, setIcon] = useState('fa-play');
+  
+  useEffect(() => {
+		window.scrollTo(0, 0)
+	  }, [])
 
   useEffect(() => {
     async function fetchMovieData() {

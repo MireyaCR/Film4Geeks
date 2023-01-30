@@ -36,7 +36,7 @@
 .card{   
     background-color:  #132f4c;  
     border-radius: 10px;
-    border: 2px solid white;
+    
 }
 .sizetex{
   font-size: 16px;
@@ -46,4 +46,7 @@
 }
 .notfound{
   color: rgb(241, 6, 6);
+}
+.result-card{
+  border: 2px solid white
 }
