@@ -52,8 +52,8 @@ export const Login = () => {
     
     let schemaPassword = yup.object().shape({
         password:yup.string()
-        .min(6,"Too short!")
-        .max(10,"too long!")
+        .min(10,"Too short!")
+        .max(15,"too long!")
         .required("Required")
     })
     
@@ -89,12 +89,15 @@ export const Login = () => {
                                 <label ></label>
                                 {/* <input className="input" type="email"  placeholder="Email"/> */}
                                 <input className={`input form-control ${isValidEmail ? "" : "is-invalid"}`} required onBlur={handleBlurEmail} type = "email" id="email" placeholder="Email" onChange = {(e)=>setEmail(e.target.value)} value = {email}/>
+                                {!isValidEmail && (<div className="invalid-feedback">Email is invalid</div>)}
                             </div>
                             <div className="p-2">
                                 <h3>Password</h3>
                                 <label></label>
                                 {/* <input className="input" type="password" placeholder="Password"/> */}
                                 <input className={`input form-control ${isValidPassword ? "" :"is-invalid"}`} required onBlur={handleBlurPassword} type ="password" id="password" placeholder="Password" onChange = {(e)=>setPassword(e.target.value)} value = {password}/>
+                                {!isValidPassword && (<div className="invalid-feedback">Password must be at least 10 characters long and alphanumeric </div>)}
+
                             </div>
                             
                             {/* <div className="format" > */}

@@ -34,14 +34,11 @@ export const SignUp = () => {
         .then(result => console.log(result))
         .catch(error => console.log('error', error));
 
-
         if (isValidEmail && isValidPassword ){
             navigate("/login")
         }
 
     }
-
-
 
     let schemaEmail = yup.object().shape({
         email:yup.string().email()  //Valida que es un email al ponerle la extension de email
@@ -80,6 +77,7 @@ export const SignUp = () => {
                 <div className="col bg-color">
                     <h1 className="text-center title">Sign Up</h1>
                     <form>
+
                         <div className="p-2">
                             <h3>Name</h3>
                             <label ></label>
@@ -89,24 +87,18 @@ export const SignUp = () => {
                         <div className="p-2">
                             <h3>Email</h3>
                             <label ></label>
-                            
                             <input className={`input form-control ${isValidEmail ? "" : "is-invalid"}`} required onBlur={handleBlurEmail} type = "email" id="email" placeholder="Email" />
                             {!isValidEmail && (<div className="invalid-feedback">Email is invalid</div>)}
                         </div>
+
                         <div className="p-2">
                             <h3>Password</h3>
                             <label></label>
                             <input className={`input form-control ${isValidPassword ? "" :"is-invalid"}`} required onBlur={handleBlurPassword} type ="password" id="password" placeholder="Password" />
                             {!isValidPassword && (<div className="invalid-feedback">Password must be at least 10 characters long and alphanumeric </div>)}
                         </div>
-                        
-                        
-                        
-                        
-                       
+
                             <button onClick={()=>{sendInfo()}} type="submit" className="button" value="Send">Send</button>
-                        
-                        
                     </form>
                     
                 </div>
