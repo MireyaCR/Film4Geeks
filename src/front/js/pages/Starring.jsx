@@ -25,7 +25,7 @@ export const Starring = () => {
                     <p className="coceo">Co-Founder & CEO, Films4Geeks</p>
                     <p className="coceo">Lead developer</p> 
                     <a href="">
-                        <button className="fab fa-linkedin" style={{backgroundColor:'rgb(10, 25, 41)', color:'white',border:'none'}}> </button>
+                    <button className="fab fa-linkedin" style={{backgroundColor:"transparent", color:'#1c9eb8',border:'none'}}> </button>
                     </a>                     
                 </div>
             </div>
@@ -40,7 +40,7 @@ export const Starring = () => {
                     <p className="coceo">Co-Founder & CEO, Films4Geeks</p>
                     <p className="coceo">Lead developer</p> 
                     <a href="">
-                        <button className="fab fa-linkedin" style={{backgroundColor:'rgb(10, 25, 41)', color:'white',border:'none'}}> </button>
+                        <button className="fab fa-linkedin" style={{backgroundColor:"transparent", color:'#1c9eb8',border:'none'}}> </button>
                     </a>                         
                 </div>
             </div>
@@ -55,7 +55,7 @@ export const Starring = () => {
                     <p className="coceo">Co-Founder & CEO, Films4Geeks </p>
                     <p className="coceo">Lead developer</p>  
                     <a href="https://www.linkedin.com/in/mireya-de-la-corte-375485a0/">
-                        <button className="fab fa-linkedin" style={{backgroundColor:'rgb(10, 25, 41)', color:'white',border:'none'}}> </button>
+                    <button className="fab fa-linkedin" style={{backgroundColor:"transparent", color:'#1c9eb8',border:'none'}}> </button>
                     </a>                 
                 </div>
             </div>        
