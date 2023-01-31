@@ -101,7 +101,7 @@ export const Login = () => {
                             </div>
                             
                             {/* <div className="format" > */}
-                                <button type="submit" className="button" onClick={handleClick}>Send</button>
+                                <button type="submit" className="btnlogin" onClick={handleClick}>Send</button>
                             {/* </div> */}
                             
                         </div>

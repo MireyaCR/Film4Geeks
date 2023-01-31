@@ -52,27 +52,30 @@
     }
 
 @media (max-width: 600px){
-.button {
-    background-color:#D29435 ;
+.btnlogin {
+    background: linear-gradient(to top, rgb(210, 148, 53), rgb(255, 206, 71));
+    color: black;
     border-radius: 20px;
-    padding: 3px;
-    width: 30%;
+    padding: 2px;
+    width: 8rem;
     font-weight: bold;
     text-align: center;
-    
+    margin-left:10px;
     
     
 }
 }
 @media (max-width: 2000px){
-    .button {
-        background-color:#D29435 ;
-        border-radius: 20px;
-        padding: 3px;
-        width: 30%;
-        font-weight: bold;
-        
-        
+.btnlogin {
+    background: linear-gradient(to top, rgb(210, 148, 53), rgb(255, 206, 71));
+    color: black;
+    border-radius: 20px;
+    padding: 2px;
+    width: 8rem;
+    font-weight: bold;
+    text-align: center;
+    margin-left:10px;
+    
     }
     }
 

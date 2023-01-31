@@ -98,7 +98,7 @@ export const SignUp = () => {
                             {!isValidPassword && (<div className="invalid-feedback">Password must be at least 10 characters long and alphanumeric </div>)}
                         </div>
 
-                            <button onClick={()=>{sendInfo()}} type="submit" className="button" value="Send">Send</button>
+                            <button onClick={()=>{sendInfo()}} type="submit" className="btnsignup" value="Send">Send</button>
                     </form>
                     
                 </div>
