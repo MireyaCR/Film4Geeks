@@ -92,22 +92,23 @@ export const HeroProfile = () => {
             data:percentages,  //porcentajes
             backgroundColor: [
             'rgba(255, 99, 132, 5)',
-            'rgba(255, 159, 64, 5)',
-            'rgba(255, 205, 86, 5)',
+            'rgba(190, 159, 64, 5)',
             'rgba(75, 192, 192, 5)',
-            'rgba(54, 162, 235, 5)',
-            'rgba(153, 102, 255, 5)',
+            'rgba(54, 100, 235, 5)',
+            'rgba(150, 100, 220, 5)',
             'rgba(201, 203, 207, 5)',
             'rgba(178, 145, 207, 5)',
-            'rgba(155, 106, 186, 5)',
-            'rgba(255, 255, 255, 5)',
+            'rgba(100, 100, 186, 5)',
+            'rgba(4, 150, 190, 5)',
             'rgba(253, 2, 155, 5)',
             'rgba(245, 159, 64, 5)',
             'rgba(225, 99, 132, 5)',
             'rgba(154, 162, 235, 5)',
             'rgba(235, 206, 86, 5)',
             'rgba(175, 192, 192, 5)',
-            'rgba(190, 102, 255, 5)'
+            'rgba(190, 102, 255, 5)',
+            'rgba(255, 159, 64, 5)',
+            'rgba(255, 205, 86, 5)'
             ], //fondo
             borderColor:"rgb(255, 206, 71)",
         }]
@@ -116,6 +117,7 @@ export const HeroProfile = () => {
     const options= {
         responsive:true,
         aspectRatio:2, 
+        
     }
 
 
