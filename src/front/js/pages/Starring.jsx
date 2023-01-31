@@ -24,7 +24,7 @@ export const Starring = () => {
                     <h6 className="textname">David Galisteo Pujol</h6>
                     <p className="coceo">Co-Founder & CEO, Films4Geeks</p>
                     <p className="coceo">Lead developer</p> 
-                    <a href="">
+                    <a href="https://www.linkedin.com/in/davidgalisteopujol/">
                     <button className="fab fa-linkedin" style={{backgroundColor:"transparent", color:'#1c9eb8',border:'none'}}> </button>
                     </a>                     
                 </div>
@@ -39,7 +39,7 @@ export const Starring = () => {
                     <h6 className="textname">Jack Caldwell-Nichols</h6>
                     <p className="coceo">Co-Founder & CEO, Films4Geeks</p>
                     <p className="coceo">Lead developer</p> 
-                    <a href="">
+                    <a href="https://www.linkedin.com/in/jack-caldwell-nichols-45b313264/">
                         <button className="fab fa-linkedin" style={{backgroundColor:"transparent", color:'#1c9eb8',border:'none'}}> </button>
                     </a>                         
                 </div>
