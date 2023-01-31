@@ -4,6 +4,7 @@ import '../../img/super.png'
 import '../../img/fenix.png'
 import '../../styles/starring.css'
 
+
 export const Starring = () => {
 
     useEffect(() => {
@@ -22,7 +23,10 @@ export const Starring = () => {
                 <div className='mt-2'>
                     <h6 className="textname">David Galisteo Pujol</h6>
                     <p className="coceo">Co-Founder & CEO, Films4Geeks</p>
-                    <p className="coceo">Lead developer</p>                    
+                    <p className="coceo">Lead developer</p> 
+                    <a href="">
+                        <button className="fab fa-linkedin" style={{backgroundColor:'rgb(10, 25, 41)', color:'white',border:'none'}}> </button>
+                    </a>                     
                 </div>
             </div>
             <div>
@@ -34,7 +38,10 @@ export const Starring = () => {
                 <div className='mt-2'>
                     <h6 className="textname">Jack Caldwell-Nichols</h6>
                     <p className="coceo">Co-Founder & CEO, Films4Geeks</p>
-                    <p className="coceo">Lead developer</p>                    
+                    <p className="coceo">Lead developer</p> 
+                    <a href="">
+                        <button className="fab fa-linkedin" style={{backgroundColor:'rgb(10, 25, 41)', color:'white',border:'none'}}> </button>
+                    </a>                         
                 </div>
             </div>
             <div className="mb-5">
@@ -46,7 +53,10 @@ export const Starring = () => {
                 <div className='mx-auto mt-2'>
                     <h6 className="textname">Mireya De La Corte Ríos</h6>
                     <p className="coceo">Co-Founder & CEO, Films4Geeks </p>
-                    <p className="coceo">Lead developer</p>                 
+                    <p className="coceo">Lead developer</p>  
+                    <a href="https://www.linkedin.com/in/mireya-de-la-corte-375485a0/">
+                        <button className="fab fa-linkedin" style={{backgroundColor:'rgb(10, 25, 41)', color:'white',border:'none'}}> </button>
+                    </a>                 
                 </div>
             </div>        
         </div>    
