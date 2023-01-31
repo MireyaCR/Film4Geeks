@@ -133,8 +133,8 @@ const Detailspopular = () => {
         </div>
         <div className="col-md-6 col-12 p-2">
           <div className="p-3 reduced-line-height text-border-shine">
-            <h5 className="mt-1 colortitle">{popularMovie.title}</h5>
-            <h5 className="sizedate colortitle">{popularMovie.release_date}</h5>
+            <h5 className="mt-1 ctitlemovie">{popularMovie.title}</h5>
+            <h5 className="sizedate ctitlemovie">{popularMovie.release_date}</h5>
             <p className="title-detail"><small className="text-color-small ">SYNOPSIS</small></p>
             <p>{popularMovie.overview}</p>
             {/* <p>

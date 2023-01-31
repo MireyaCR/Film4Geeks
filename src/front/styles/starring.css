@@ -20,3 +20,9 @@
     background: radial-gradient(circle, rgb(210, 148, 53) 0%, rgba(210, 148, 53, 45) 6%, rgb(10, 25, 41) 60%);
     border-radius: 50%
 }
+.dark .textname{
+    color:#d29435;
+}
+.textname{
+    color:#1c9eb8;
+}

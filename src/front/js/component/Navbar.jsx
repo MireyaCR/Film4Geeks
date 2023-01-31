@@ -107,7 +107,7 @@ const Navbar = () => {
 
                 {theme === "light" ? (
                   <button className="toggle" onClick={toggleTheme}>
-                    <i className="fas fa-moon"></i>
+                    <i className="fas fa-moon" style={{color: '#d29435'}}></i>
                   </button>
                 ) : (
                   <button className="toggle" onClick={toggleTheme}>

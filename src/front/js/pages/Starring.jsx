@@ -20,10 +20,9 @@ export const Starring = () => {
                     </div>
                 </div>
                 <div className='mt-2'>
-                    <h6 className="text-info">David Galisteo Pujol</h6>
+                    <h6 className="textname">David Galisteo Pujol</h6>
                     <p className="coceo">Co-Founder & CEO, Films4Geeks</p>
-                    <p className="coceo">Lead developer</p>
-                    <h6>Linkedin: </h6>
+                    <p className="coceo">Lead developer</p>                    
                 </div>
             </div>
             <div>
@@ -33,10 +32,9 @@ export const Starring = () => {
                     </div>
                 </div>
                 <div className='mt-2'>
-                    <h6 className="text-info">Jack Caldwell-Nichols</h6>
+                    <h6 className="textname">Jack Caldwell-Nichols</h6>
                     <p className="coceo">Co-Founder & CEO, Films4Geeks</p>
-                    <p className="coceo">Lead developer</p>
-                    <h6>Linkedin: </h6>
+                    <p className="coceo">Lead developer</p>                    
                 </div>
             </div>
             <div className="mb-5">
@@ -46,10 +44,9 @@ export const Starring = () => {
                     </div>
                 </div>
                 <div className='mx-auto mt-2'>
-                    <h6 className="text-info">Mireya De La Corte Ríos</h6>
+                    <h6 className="textname">Mireya De La Corte Ríos</h6>
                     <p className="coceo">Co-Founder & CEO, Films4Geeks </p>
-                    <p className="coceo">Lead developer</p>
-                    <h6>Linkedin: </h6>
+                    <p className="coceo">Lead developer</p>                 
                 </div>
             </div>        
         </div>    

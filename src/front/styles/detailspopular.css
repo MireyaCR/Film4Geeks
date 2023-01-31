@@ -55,7 +55,9 @@
   }
   
   .text-color-small {
-    color: rgb(45, 192, 233);
+    color: #1c9eb8;
+    font-weight: bold;
+    font-size: 16px;
   }
   .sizedata{
     font-size: 16px;;
@@ -105,4 +107,12 @@
 }
 .light.text-color-small {
   color: rgb(233, 174, 45);
+}
+.ctitlemovie{
+  color: rgb(233, 174, 45);
+  font-weight: bold;
+}
+.light .ctitlemovie{
+  color: #132f4c;
+  font-weight: bold;
 }
