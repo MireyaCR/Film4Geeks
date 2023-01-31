@@ -148,7 +148,7 @@ export const HeroProfile = () => {
             { allGenres.length !== 0 ? (
                  <Pie  data={data} options={options} />
             ) : (
-                <p>Add movies to see your favourite movie genres!</p>
+                <p className="text-center">Add movies to see your favourite movie genres!</p>
             )
 
             }
