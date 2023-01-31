@@ -10,6 +10,13 @@
     border: solid 1px #ccc;
     box-shadow: 2px 2px 10px #ccc;
 }
+.light .postal {
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  border: solid 1px  #132f4c;
+  box-shadow: 2px 2px 10px  #132f4c;
+}
 .play-button {
     position: absolute;
     top: 2%;
@@ -29,23 +36,32 @@
 }
 
 
-.reduced-line-height {
+.light .reduced-line-height {
     line-height: 1;
     border-radius: 10px;
-    color: #ffa500;
-    border: solid 2px #ffa500;
-    box-shadow: 2px 2px 10px #ffa500;      
+    color:  #132f4c;
+    border: solid 2px  #132f4c;
+    box-shadow: 2px 2px 10px #132f4c;      
 }
-
+.reduced-line-height {
+  line-height: 1;
+  border-radius: 10px;
+  color:white;
+  border: solid 2px white;
+  box-shadow: 2px 2px 10px white;      
+}
   .text-color-h5 {
     color: rgb(255, 206, 71)
   }
+  
   .text-color-small {
-    color: rgb(45, 192, 233)
+    color: #1c9eb8;
+    font-weight: bold;
+    font-size: 16px;
   }
   .sizedata{
     font-size: 16px;;
-    color: ;
+    
   }
    .video-modal {
     position: absolute;
@@ -71,7 +87,7 @@
 }
 
 .light h5{
-  color:#ffa500;
+  color:#132f4c;
   font-weight: bold;
 }
 .fasize{
@@ -81,7 +97,22 @@
   font-size: 15px;
   color:#ffa500;
 }
+.light.sizedate{
+  font-size: 15px;
+  color:#132f4c;
+}
 
 .title-detail{
   margin-bottom: 5px;
+}
+.light.text-color-small {
+  color: rgb(233, 174, 45);
+}
+.ctitlemovie{
+  color: rgb(233, 174, 45);
+  font-weight: bold;
+}
+.light .ctitlemovie{
+  color: #132f4c;
+  font-weight: bold;
 }

@@ -1,0 +1,28 @@
+.coceo{
+    margin-bottom: 3px;
+    font-size: 15px;
+}
+.cardspiderman{
+    width: 16rem;
+    height: 16rem;
+    background: radial-gradient(circle, rgb(242 63 97) 0%, rgb(245 64 90) 10%, rgb(10, 25, 41) 65%);
+    border-radius: 50%;
+}
+.cadrsuperman {
+    width: 16rem;
+    height: 16rem; 
+    background: radial-gradient(circle, #95d3f5 0%, #95d3f5 6%, rgb(10, 25, 41) 60%);
+    border-radius: 50%
+}
+.cardfenix{
+    width: 16rem;
+    height: 16rem;
+    background: radial-gradient(circle, rgb(210, 148, 53) 0%, rgba(210, 148, 53, 45) 6%, rgb(10, 25, 41) 60%);
+    border-radius: 50%
+}
+.dark .textname{
+    color:#d29435;
+}
+.textname{
+    color:#1c9eb8;
+}

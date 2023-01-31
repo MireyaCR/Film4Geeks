@@ -4,7 +4,7 @@
     /* width: 300px; */
     background-color:  rgb(19, 47, 76);
     border-radius: 10px;
-    border: 2px solid white;
+    border: 3px solid white;
   }
 
 }   
@@ -36,7 +36,7 @@
 .card{   
     background-color:  #132f4c;  
     border-radius: 10px;
-    border: 2px solid white;
+    
 }
 .sizetex{
   font-size: 16px;
@@ -44,6 +44,16 @@
 .colortitle{
   color:#d29435;
 }
+.light .colortitle{
+  color:rgb(255, 206, 71);
+}
 .notfound{
   color: rgb(241, 6, 6);
+}
+.result-card{
+  border: 2px solid white
+}
+.light .result-card{
+  border: 2px solid grey;
+  box-shadow: #132f4c;
 }
