@@ -20,6 +20,8 @@ import { Prueba } from "./pages/Prueba.jsx";
 
 import { Starring } from "./pages/Starring.jsx";
 
+import Welcome from "./pages/Welcome.jsx";
+
 //create your first component
 const Layout = () => {
     //the basename is used when your project is published in a subdirectory and not in the root of the domain
@@ -43,6 +45,7 @@ const Layout = () => {
                             <Route element = {<Prueba/>}path="/prueba"/>
                             <Route element = {<Starring/>}path="/starring"/>
                             <Route element={<h1>Not found!</h1>} />
+                            <Route element= {<Welcome/>} path="welcome" />
                        
                     </Routes>
                     <Footer />
