@@ -21,6 +21,7 @@ import { Prueba } from "./pages/Prueba.jsx";
 import { Starring } from "./pages/Starring.jsx";
 
 import Welcome from "./pages/Welcome.jsx";
+import Logout from "./pages/Logout.jsx";
 
 //create your first component
 const Layout = () => {
@@ -46,6 +47,7 @@ const Layout = () => {
                             <Route element = {<Starring/>}path="/starring"/>
                             <Route element={<h1>Not found!</h1>} />
                             <Route element= {<Welcome/>} path="welcome" />
+                            <Route element= {<Logout/>} path="logout" />
                        
                     </Routes>
                     <Footer />

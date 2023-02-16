@@ -24,7 +24,7 @@ width: 100%;
 }
 
 .button-welcome {
-  background: linear-gradient(to top, rgb(210, 148, 53), rgb(255, 206, 71));
+  background: linear-gradient(to top, rgb(255, 206, 71),  rgb(210, 148, 53));
     color: black;
     border-radius: 20px;
     padding: 2px;
@@ -32,6 +32,7 @@ width: 100%;
     font-weight: bold;
     text-align: center;
     margin-left:10px;
+    box-shadow: 1px 5px 4px #121212
 }
 
 .logo {
@@ -105,7 +106,7 @@ width: 100%;
   }
 
   .button-welcome {
-    background: linear-gradient(to top, rgb(210, 148, 53), rgb(255, 206, 71));
+    background: linear-gradient(to top, rgb(255, 206, 71),  rgb(210, 148, 53));
       color: black;
       border-radius: 20px;
       padding: 5px;
@@ -113,6 +114,7 @@ width: 100%;
       font-weight: bold;
       text-align: center;
       margin-left:10px;
+      box-shadow: 1px 5px 4px #121212
   }
 
   .title-welcome {
