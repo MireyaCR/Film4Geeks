@@ -57,43 +57,45 @@ width: 100%;
     z-index: 1;
   }
 
-  .title-welcome {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, 300%);
-    font-size: 3em;
-    color: rgb(255, 206, 71);
-    text-shadow: 2px 5px 4px #000000;
-    text-align: center;
-    z-index: 1;
-  }
+.title-welcome {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, 300%);
+  font-size: 3em;
+  color: rgb(255, 206, 71);
+  text-shadow: 2px 5px 4px #000000;
+  text-align: center;
+  z-index: 1;
+}
 
-  .subtitle-welcome {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, 870%);
-    font-size: 1.5em;
-    color: rgb(210, 148, 53);
-    text-shadow: 2px 5px 4px #000000 ;
-    text-align: center;
-    z-index: 1;
-  }
+.subtitle-welcome {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, 870%);
+  font-size: 1.5em;
+  color: rgb(210, 148, 53);
+  text-shadow: 2px 5px 4px #000000 ;
+  text-align: center;
+  z-index: 1;
+}
 
-  .text-welcome {
-    text-align: center;
-    align-items: center;
-  }
+.text-welcome {
+  text-align: center;
+  align-items: center;
+}
 
- @media (max-width: 768px) { /* Cambia los estilos en dispositivos con un ancho máximo de 768px */
+
+
+/* Mobile version */
+
+@media (max-width: 768px) { /* Cambia los estilos en dispositivos con un ancho máximo de 768px */
   .img-welcome {
     height: 100vh; /* Establece la altura de la imagen al 100% del alto de la pantalla */
     object-position: center 20%; /* Centra la imagen verticalmente y la corta un poco arriba */
   }
 
- }
- @media (max-width: 768px) {
   .button-container {
     position: absolute;
     top: 50%;
@@ -107,14 +109,14 @@ width: 100%;
 
   .button-welcome {
     background: linear-gradient(to top, rgb(255, 206, 71),  rgb(210, 148, 53));
-      color: black;
-      border-radius: 20px;
-      padding: 5px;
-      width: 5rem;
-      font-weight: bold;
-      text-align: center;
-      margin-left:10px;
-      box-shadow: 1px 5px 4px #121212
+    color: black;
+    border-radius: 20px;
+    padding: 5px;
+    width: 5rem;
+    font-weight: bold;
+    text-align: center;
+    margin-left:10px;
+    box-shadow: 1px 5px 4px #121212
   }
 
   .title-welcome {
@@ -140,7 +142,8 @@ width: 100%;
     text-align: center;
     z-index: 1;
   }
- }
+ 
+}
 
 
 

@@ -1,158 +1,155 @@
 .content-logout {
-    width: 100%;
-    }
+  width: 100%;
+}
     
-    .img-container-logout {
-      width: 100%;
-      height: 100vh;
-      background-repeat: no-repeat;
-      background-size: cover;
-      background-position: center;
-      position: relative;
-    }
+.img-container-logout {
+  width: 100%;
+  height: 100vh;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
     
-    .button-container-logout {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, 320%);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-wrap: wrap;
+.button-container-logout {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, 320%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;    
+}
+    
+.button-logout{
+  background: linear-gradient(to top, rgb(255, 206, 71),  rgb(210, 148, 53));
+  color: black;
+  border-radius: 20px;
+  padding: 3px;
+  width: 8rem;
+  height: 3rem;
+  font-weight: bold;
+  text-align: center;
+  box-shadow: 1px 5px 4px #121212;
+}
       
-    }
+.img-logout { 
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  max-height: 100%;
+  margin: 0 auto;
+  object-fit: cover;
+  position: absolute;
+  z-index: 1;
+}
     
-    .button-logout{
-      background: linear-gradient(to top, rgb(255, 206, 71),  rgb(210, 148, 53));
-        color: black;
-        border-radius: 20px;
-        padding: 3px;
-        width: 8rem;
-        height: 3rem;
-        font-weight: bold;
-        text-align: center;
-        box-shadow: 1px 5px 4px #121212;
-    }
-   
+.title-logout {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -120%);
+  font-size: 2.5em;
+  color: orange;
+  text-shadow: 2px 5px 4px #000000;
+  text-align: center;
+  z-index: 1;
+}
     
-    .img-logout { 
-        width: 100%;
-        height: 100%;
-        max-width: 100%;
-        max-height: 100%;
-        margin: 0 auto;
-        object-fit: cover;
-        position: absolute;
-        z-index: 1;
-      }
-    
-      .title-logout {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -120%);
-        font-size: 2.5em;
-        color: orange;
-        text-shadow: 2px 5px 4px #000000;
-        text-align: center;
-        z-index: 1;
-      }
-    
-      .subtitle-logout-first {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, 120%);
-        font-size: 1.5em;
-        color: rgb(210, 148, 53);
-        text-shadow: 2px 5px 4px #000000 ;
-        text-align: center;
-        z-index: 1;
-      }
+.subtitle-logout-first {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, 120%);
+  font-size: 1.5em;
+  color: rgb(210, 148, 53);
+  text-shadow: 2px 5px 4px #000000 ;
+  text-align: center;
+  z-index: 1;
+}
 
-      .subtitle-logout-second{
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, 280%);
-        font-size: 1.5em;
-        color: rgb(210, 148, 53);
-        text-shadow: 2px 5px 4px #000000 ;
-        text-align: center;
-        z-index: 1;
-      }
+.subtitle-logout-second{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, 280%);
+  font-size: 1.5em;
+  color: rgb(210, 148, 53);
+  text-shadow: 2px 5px 4px #000000 ;
+  text-align: center;
+  z-index: 1;
+}
     
-      .text-logout {
-        text-align: center;
-        align-items: center;
-      }
-    
-     @media (max-width: 768px) { /* Cambia los estilos en dispositivos con un ancho máximo de 768px */
-      .img-logout {
-        height: 100vh; /* Establece la altura de la imagen al 100% del alto de la pantalla */
-        object-position: center 20%; /* Centra la imagen verticalmente y la corta un poco arriba */
-      }
-    
-      .button-container-logout {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, 400%);
-        display:flex;
-        justify-content: center;
-        align-items: center;
-        flex-wrap: wrap;
-      }
-    
-      .button-logout {
-        background: linear-gradient(to top, rgb(210, 148, 53), rgb(255, 206, 71));
-          color: black;
-          border-radius: 20px;
-         
-          width: 7rem;
-          font-size: 1em;
-          font-weight: bold;
-          text-align: center;
-          margin-left:10px;
-      }
-    
-      .title-logout {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%,);
-        font-size: 3em;
-        color: rgb(255, 206, 71);
-        text-shadow: 2px 4px 2px #000000;
-        text-align: center;
-        z-index: 1;
-      }
+.text-logout {
+  text-align: center;
+  align-items: center;
+}
 
-      .subtitle-logout-first {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, 60%);
-        font-size: 2em;
-        width: 100%;
-        color: rgb(210, 148, 53);
-        text-shadow: 2px 5px 4px #000000 ;
-        text-align: center;
-        z-index: 1;
-      }
+/* Mobile version */
 
-      .subtitle-logout-second{
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, 230%);
-        font-size: 2em;
-        color: rgb(210, 148, 53);
-        text-shadow: 2px 5px 4px #000000 ;
-        text-align: center;
-        z-index: 1;
-      }
+@media (max-width: 768px) { /* Cambia los estilos en dispositivos con un ancho máximo de 768px */
+  .img-logout {
+    height: 100vh; /* Establece la altura de la imagen al 100% del alto de la pantalla */
+    object-position: center 20%; /* Centra la imagen verticalmente y la corta un poco arriba */
+  }
     
-     
-     }
+  .button-container-logout {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, 400%);
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+    
+  .button-logout {
+    background: linear-gradient(to top, rgb(210, 148, 53), rgb(255, 206, 71));
+    color: black;
+    border-radius: 20px;  
+    width: 7rem;
+    font-size: 1em;
+    font-weight: bold;
+    text-align: center;
+    margin-left:10px;
+  }
+    
+  .title-logout {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,);
+    font-size: 3em;
+    color: rgb(255, 206, 71);
+    text-shadow: 2px 4px 2px #000000;
+    text-align: center;
+    z-index: 1;
+  }
+
+  .subtitle-logout-first {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, 60%);
+    font-size: 2em;
+    width: 100%;
+    color: rgb(210, 148, 53);
+    text-shadow: 2px 5px 4px #000000 ;
+    text-align: center;
+    z-index: 1;
+  }
+
+  .subtitle-logout-second{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, 230%);
+    font-size: 2em;
+    color: rgb(210, 148, 53);
+    text-shadow: 2px 5px 4px #000000 ;
+    text-align: center;
+    z-index: 1;
+  }  
+}
