@@ -26,8 +26,6 @@ const Welcome = () => {
                                 <img className="logo" src={logoImage} />
                                 <Link to="/login"><button className="button-welcome">Login</button></Link>
                                 <Link to="/signup"><button className="button-welcome">Sign Up</button></Link>
-                                
-                                
                             </div>
                         </div>
                     </div>
