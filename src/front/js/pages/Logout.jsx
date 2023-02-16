@@ -21,7 +21,7 @@ const Logout = () => {
                         <h2 className="subtitle-logout-second">Films4Geeks</h2>
                         <div className="img-container-logout" style={{backgroundImage: `url(${welcomeImage})`}}>
                             <div className="button-container-logout">
-                                <Link to="/welcome"><button className="button-logout">Visit Again</button></Link>
+                                <Link to="/login"><button className="button-logout">Visit Again</button></Link>
                             </div>
                         </div>
                     </div>

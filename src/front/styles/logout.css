@@ -94,13 +94,11 @@
         object-position: center 20%; /* Centra la imagen verticalmente y la corta un poco arriba */
       }
     
-     }
-     @media (max-width: 768px) {
       .button-container-logout {
         position: absolute;
         top: 50%;
         left: 50%;
-        transform: translate(-50%, 10%);
+        transform: translate(-50%, 400%);
         display:flex;
         justify-content: center;
         align-items: center;
@@ -111,8 +109,9 @@
         background: linear-gradient(to top, rgb(210, 148, 53), rgb(255, 206, 71));
           color: black;
           border-radius: 20px;
-          padding: 5px;
-          width: 5rem;
+         
+          width: 7rem;
+          font-size: 1em;
           font-weight: bold;
           text-align: center;
           margin-left:10px;
@@ -122,10 +121,35 @@
         position: absolute;
         top: 50%;
         left: 50%;
-        transform: translate(-50%, 240%);
+        transform: translate(-50%,);
         font-size: 3em;
         color: rgb(255, 206, 71);
-        text-shadow: 2px 5px 4px #000000;
+        text-shadow: 2px 4px 2px #000000;
+        text-align: center;
+        z-index: 1;
+      }
+
+      .subtitle-logout-first {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, 60%);
+        font-size: 2em;
+        width: 100%;
+        color: rgb(210, 148, 53);
+        text-shadow: 2px 5px 4px #000000 ;
+        text-align: center;
+        z-index: 1;
+      }
+
+      .subtitle-logout-second{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, 230%);
+        font-size: 2em;
+        color: rgb(210, 148, 53);
+        text-shadow: 2px 5px 4px #000000 ;
         text-align: center;
         z-index: 1;
       }
