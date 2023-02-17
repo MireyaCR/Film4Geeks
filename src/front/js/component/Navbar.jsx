@@ -26,7 +26,7 @@ const Navbar = () => {
   };
 
   const handleClick = () => {
-    navigate("login");
+    navigate("logout");
     actions.logout();
   };
 
