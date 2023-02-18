@@ -90,3 +90,28 @@ class Pending(db.Model):
             # do not serialize the password, its a security breach
         }
 
+class Comment(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    film_id = db.Column(db.Integer)
+    user = db.relationship('User', backref='comment', lazy = True)
+    comment = db.Column(db.String(350))
+    
+
+    __table_args__ = (
+        db.UniqueConstraint('user_id', 'film_id', name='acomentxfilm'),
+    )
+
+
+    def __repr__(self):
+        return f'<Comment {self.id}>'
+
+    def serialize(self):
+        return {
+            "id": self.id,
+            "user_id": self.user_id,
+            "film_id": self.film_id,
+            "comment": self.comment,
+            # do not serialize the password, its a security breach
+        }
+

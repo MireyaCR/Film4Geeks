@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: dd8fe39026dd
+Revision ID: 849836eaf2e3
 Revises: 
-Create Date: 2023-01-30 16:18:13.947453
+Create Date: 2023-02-18 22:48:09.101499
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = 'dd8fe39026dd'
+revision = '849836eaf2e3'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -25,6 +25,15 @@ def upgrade():
     sa.Column('password', sa.String(length=80), nullable=False),
     sa.PrimaryKeyConstraint('id'),
     sa.UniqueConstraint('email')
+    )
+    op.create_table('comment',
+    sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('user_id', sa.Integer(), nullable=True),
+    sa.Column('film_id', sa.Integer(), nullable=True),
+    sa.Column('comment', sa.String(length=350), nullable=True),
+    sa.ForeignKeyConstraint(['user_id'], ['user.id'], ),
+    sa.PrimaryKeyConstraint('id'),
+    sa.UniqueConstraint('user_id', 'film_id', name='acomentxfilm')
     )
     op.create_table('favourite',
     sa.Column('id', sa.Integer(), nullable=False),
@@ -58,5 +67,6 @@ def downgrade():
     op.drop_table('seen')
     op.drop_table('pending')
     op.drop_table('favourite')
+    op.drop_table('comment')
     op.drop_table('user')
     # ### end Alembic commands ###

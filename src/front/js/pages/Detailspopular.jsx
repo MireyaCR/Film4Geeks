@@ -153,8 +153,17 @@ const Detailspopular = () => {
               <small className="text-color-small">CASTING</small>
             </p>
             <p>{casting}</p>
+            <p className="title-detail">
+              <small className="text-color-small">YOUR REVIEW</small>
+            </p>
+            <button className="btn btn-sm btn-rounded btn-orange-gradient text-white fa fa-edit"></button>
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Asperiores culpa et temporibus soluta laborum cupiditate iusto aliquam, dolorem possimus aspernatur ullam rem reprehenderit iure nam ut consectetur voluptates quam quasi?</p>
           </div>
         </div>
+      </div>
+      <div className="row justify-content-center">
+        <p>Nombre de usuario</p>
+        <p>lorem</p>
       </div>
       <Modal className="video-modal"
              isOpen={showModal}

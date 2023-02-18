@@ -2,7 +2,7 @@
 This module takes care of starting the API Server, Loading the DB and Adding the endpoints
 """
 from flask import Flask, request, jsonify, url_for, Blueprint
-from api.models import db, User, Favourite, Pending, Seen
+from api.models import db, User, Favourite, Pending, Seen, Comment
 from api.utils import generate_sitemap, APIException
 from flask_jwt_extended import create_access_token
 from flask_jwt_extended import get_jwt_identity
@@ -194,6 +194,21 @@ def add_pending_to_db():
             return jsonify({"message":"Película borrada de pendientes", "status":200}), 200
         else:
             return jsonify({"message": "Film not found", "status":404}), 404   
+
+@api.route('comment/<int:film_id>', methods=['GET'])
+@jwt_required()    
+def get_comment(film_id):
+    print('hola')
+    email = get_jwt_identity()             
+    user = User.query.filter_by(email=email).first() 
+    comments = Comment.query.filter_by(user_id=user.id, film_id=film_id).all()
+    print(comments)     
+    if comments:
+        for comment in comments:
+            return jsonify( comment.serialize() ), 200
+    else:
+        return jsonify([]), 404      
+
 
 
 @api.route('/user', methods=['GET'])
