@@ -211,7 +211,7 @@ def get_comment(film_id):
         body = request.json
         email = get_jwt_identity()
         user = User.query.filter_by(email=email).first()
-        coment = Comment(film_id=body['film_id'], user_id=user.id)   
+        coment = Comment(film_id=film_id, user_id=user.id, comment=body['comment'])   
         db.session.add(coment)
         db.session.commit()
         return jsonify({"message": "success","status":200}), 200  
