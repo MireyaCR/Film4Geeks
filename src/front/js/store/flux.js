@@ -372,6 +372,28 @@ const getState = ({ getStore, getActions, setStore }) => {
 					console.log("there has been an error", error)
 				}
 			},
+
+			addComment: async (comment, id) => {
+				const store = getStore();
+				const opts = {
+					method: "POST",
+					headers: {
+						"Content-Type": "application/json",
+						Authorization: "Bearer " + store.token
+					},
+					body: JSON.stringify({
+						comment: comment,
+					})
+				};
+				try{
+				const resp = await fetch(`${process.env.BACKEND_URL}/api/film/${id}/comment/user`, opts)
+				const data = await resp.json()	
+				return data
+				}
+				catch (error){
+					console.log("there has been an error",error)					
+				}
+			},
 			
 			
 		}

@@ -26,7 +26,6 @@ const Detailspopular = () => {
   const [showModal, setShowModal] = useState(false);
   const [icon, setIcon] = useState("fa-play");
   const [comment, setComment] = useState(null);
-
   const [comments, setComments] = useState([]);
 
   useEffect(() => {
@@ -90,14 +89,20 @@ const Detailspopular = () => {
     async function getFilmComments() {
       try {
         const data = await actions.getFilmComments(params.index);
-        console.log(data)
+        console.log(data);
         setComments(data);
       } catch (error) {
         console.log(error);
       }
     }
     getFilmComments();
-  }, []);
+  }, [comment]);
+
+  const addComment = async (commenta) => {
+    const data = await actions.addComment(commenta, params.index);
+    setComment(commenta);
+    setComments(prevComments => [...prevComments, commenta]);
+  };
 
   if (!popularMovie) {
     return <div>Loading...</div>;
@@ -186,33 +191,43 @@ const Detailspopular = () => {
             </p>
             <p>{casting}</p>
             <p className="title-detail">
-              <small className="text-color-small">YOUR REVIEW </small>              
+              <small className="text-color-small">YOUR REVIEW </small>
             </p>
-            
+
             <p style={{ display: comment ? "block" : "none" }}>{comment}</p>
             <textarea
               className="form-control mx-auto sizeinput"
               placeholder="350 characters max."
-              rows="3" id="commentUser"
+              rows="3"
+              id="commentUser"
               style={{ display: !comment ? "block" : "none" }}
             ></textarea>
-            <button style={{ display: !comment ? "block" : "none" }} className="btn btn-sm btn-rounded btn-orange-gradient text-white form-control my-2"
-            >Add your review</button>
+            <button
+              className="btn btn-sm btn-rounded btn-orange-gradient text-white form-control my-2"
+              style={{ display: !comment ? "block" : "none" }}
+              onClick={() => {
+                const commentValue =
+                  document.getElementById("commentUser").value;
+                if (commentValue) {
+                  addComment(commentValue);
+                }
+              }}
+            >
+              Add your review
+            </button>
           </div>
         </div>
         <div className="col-md-3 col-12 mt-2">
           <div className="p-3 reduced-line-height text-border-shine">
-          {comments.length==0?"No comments":""}
-          {comments?.map((value) => (
-              <div key={value.id} > 
-            <p className="title-detail">
-              <small className="text-color-small">{value.user_name}</small>
-            </p>
-            <p>
-              {value.comment}
-            </p>
-            </div>
-          ))}
+            {comments.length == 0 ? "No comments" : ""}
+            {comments?.map((value) => (
+              <div key={value.id}>
+                <p className="title-detail">
+                  <small className="text-color-small">{value.user_name}</small>
+                </p>
+                <p>{value.comment}</p>
+              </div>
+            ))}
           </div>
         </div>
       </div>
