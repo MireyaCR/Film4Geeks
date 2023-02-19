@@ -195,19 +195,36 @@ def add_pending_to_db():
         else:
             return jsonify({"message": "Film not found", "status":404}), 404   
 
-@api.route('comment/<int:film_id>', methods=['GET'])
+@api.route('/film/<int:film_id>/comment/user', methods=['GET','POST'])
 @jwt_required()    
 def get_comment(film_id):
-    print('hola')
-    email = get_jwt_identity()             
-    user = User.query.filter_by(email=email).first() 
-    comments = Comment.query.filter_by(user_id=user.id, film_id=film_id).all()
-    print(comments)     
+    if request.method == 'GET':
+        email = get_jwt_identity()             
+        user = User.query.filter_by(email=email).first() 
+        comments = Comment.query.filter_by(user_id=user.id, film_id=film_id).all()
+        if comments:
+            for comment in comments:
+                return jsonify(comment.serialize() ), 200
+        else:
+            return jsonify([]), 404      
+    if request.method == 'POST':  
+        body = request.json
+        email = get_jwt_identity()
+        user = User.query.filter_by(email=email).first()
+        coment = Comment(film_id=body['film_id'], user_id=user.id)   
+        db.session.add(coment)
+        db.session.commit()
+        return jsonify({"message": "success","status":200}), 200  
+
+@api.route('/film/<int:film_id>/comments', methods=['GET'])
+@jwt_required()    
+def get_comments(film_id):
+    comments = Comment.query.filter_by(film_id=film_id).all()
     if comments:
-        for comment in comments:
-            return jsonify( comment.serialize() ), 200
+        serialized_comments = [comment.serialize() for comment in comments]
+        return jsonify(serialized_comments), 200
     else:
-        return jsonify([]), 404      
+        return jsonify([]), 404  
 
 
 

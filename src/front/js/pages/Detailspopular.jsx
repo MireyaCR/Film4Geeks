@@ -25,6 +25,7 @@ const Detailspopular = () => {
 	
 	}, [store.token])
   
+  console.log(store.token)
   const [popularMovie, setPopularMovie] = useState(null);
   const [actorsMovie, setActorsMovie] = useState(null);
   const [trailer, setTrailer] = useState(null);
