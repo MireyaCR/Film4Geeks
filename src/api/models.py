@@ -110,6 +110,7 @@ class Comment(db.Model):
         return {
             "id": self.id,
             "user_id": self.user_id,
+            "user_name": self.user.name,
             "film_id": self.film_id,
             "comment": self.comment,
             # do not serialize the password, its a security breach

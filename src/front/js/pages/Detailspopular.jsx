@@ -26,8 +26,8 @@ const Detailspopular = () => {
   const [showModal, setShowModal] = useState(false);
   const [icon, setIcon] = useState("fa-play");
   const [comment, setComment] = useState(null);
-  const [addcomment,setAddComment] =useState(false)
-  const [comments, setComments] = useState(null);
+
+  const [comments, setComments] = useState([]);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -84,6 +84,19 @@ const Detailspopular = () => {
       }
     }
     getComment();
+  }, []);
+
+  useEffect(() => {
+    async function getFilmComments() {
+      try {
+        const data = await actions.getFilmComments(params.index);
+        console.log(data)
+        setComments(data);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    getFilmComments();
   }, []);
 
   if (!popularMovie) {
@@ -189,15 +202,17 @@ const Detailspopular = () => {
         </div>
         <div className="col-md-3 col-12 mt-2">
           <div className="p-3 reduced-line-height text-border-shine">
+          {comments.length==0?"No comments":""}
+          {comments?.map((value) => (
+              <div key={value.id} > 
             <p className="title-detail">
-              <small className="text-color-small">User Name</small>
+              <small className="text-color-small">{value.user_name}</small>
             </p>
             <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio
-              ex est quos, ad nisi magnam sint quaerat possimus eaque doloremque
-              dolor enim. Voluptatibus nesciunt quas aperiam aliquid reiciendis?
-              Expedita, voluptatem?
+              {value.comment}
             </p>
+            </div>
+          ))}
           </div>
         </div>
       </div>

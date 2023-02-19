@@ -350,6 +350,28 @@ const getState = ({ getStore, getActions, setStore }) => {
 					console.log("there has been an error", error)
 				}
 			},
+			getFilmComments: async(id)=>{
+				const store= getStore();
+				const opts={
+					method:"GET",
+					headers:{
+						"Content-Type": "application/json",
+						Authorization: "Bearer " + store.token
+					},
+				};
+				try{
+					const url=`${process.env.BACKEND_URL}/api/film/${id}/comments`
+					console.log(url)
+					const resp = await fetch(url, opts)
+					const data = await resp.json()	
+					console.log(data)
+					return data
+					
+				}
+				catch (error){
+					console.log("there has been an error", error)
+				}
+			},
 			
 			
 		}
