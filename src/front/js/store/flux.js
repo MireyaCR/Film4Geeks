@@ -327,6 +327,74 @@ const getState = ({ getStore, getActions, setStore }) => {
 					console.log("there has been an error", error)
 				}
 			},
+
+			getComment: async(id)=>{
+				const store= getStore();
+				const opts={
+					method:"GET",
+					headers:{
+						"Content-Type": "application/json",
+						Authorization: "Bearer " + store.token
+					},
+				};
+				try{
+					const url=`${process.env.BACKEND_URL}/api/film/${id}/comment/user`
+					console.log(url)
+					const resp = await fetch(url, opts)
+					const data = await resp.json()	
+					console.log(data)
+					return data
+					
+				}
+				catch (error){
+					console.log("there has been an error", error)
+				}
+			},
+			getFilmComments: async(id)=>{
+				const store= getStore();
+				const opts={
+					method:"GET",
+					headers:{
+						"Content-Type": "application/json",
+						Authorization: "Bearer " + store.token
+					},
+				};
+				try{
+					const url=`${process.env.BACKEND_URL}/api/film/${id}/comments`
+					console.log(url)
+					const resp = await fetch(url, opts)
+					const data = await resp.json()	
+					console.log(data)
+					return data
+					
+				}
+				catch (error){
+					console.log("there has been an error", error)
+				}
+			},
+
+			addComment: async (comment, id) => {
+				const store = getStore();
+				const opts = {
+					method: "POST",
+					headers: {
+						"Content-Type": "application/json",
+						Authorization: "Bearer " + store.token
+					},
+					body: JSON.stringify({
+						comment: comment,
+					})
+				};
+				try{
+				const resp = await fetch(`${process.env.BACKEND_URL}/api/film/${id}/comment/user`, opts)
+				const data = await resp.json()	
+				return data
+				}
+				catch (error){
+					console.log("there has been an error",error)					
+				}
+			},
+			
 			
 		}
 	};

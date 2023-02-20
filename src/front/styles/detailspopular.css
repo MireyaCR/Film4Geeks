@@ -57,11 +57,10 @@
   .text-color-small {
     color: #1c9eb8;
     font-weight: bold;
-    font-size: 16px;
+    font-size: 14px;
   }
   .sizedata{
-    font-size: 16px;;
-    
+    font-size: 14px;    
   }
    .video-modal {
     position: absolute;
@@ -94,7 +93,7 @@
   font-size: 14px;
 }
 .sizedate{
-  font-size: 15px;
+  font-size: 14px;
   color:#ffa500;
 }
 .light.sizedate{
@@ -115,4 +114,7 @@
 .light .ctitlemovie{
   color: #132f4c;
   font-weight: bold;
+}
+.sizeinput{
+  font-size: 14px;
 }
