@@ -1,12 +1,8 @@
 #!/usr/bin/env bash
 # exit on error
 set -o errexit
-touch .env
-echo "BASENAME=$BASENAME" >> .env
-echo "DATABASE_URL=$DATABASE_URL" >> .env
-cat .env
 
-exit 1;
+./render/set_variables.sh
 
 npm install
 npm run build
