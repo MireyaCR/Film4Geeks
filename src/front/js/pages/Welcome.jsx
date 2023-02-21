@@ -1,5 +1,6 @@
-import React, {useContext} from "react";
+import React, {useContext, useEffect} from "react";
 import { Context } from "../store/appContext";
+import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import NavbarWelcome from "../component/NavbarWelcome.jsx";
 import welcomeImage from "../../img/fondo.jpg"
@@ -9,6 +10,13 @@ import "../../styles/welcome.css"
 const Welcome = () => {
 
     const {store } = useContext(Context)
+    const navigate = useNavigate()
+
+    useEffect(() => {
+        if(store.token)
+       navigate("/")
+   
+   }, [store.token])
 
     return (
         <div>
