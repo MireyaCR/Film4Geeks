@@ -8,5 +8,5 @@ npm install
 npm run build
 
 pipenv install
-
+pipenv freeze
 pipenv run upgrade
