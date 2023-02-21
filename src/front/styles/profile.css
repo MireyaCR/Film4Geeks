@@ -12,8 +12,6 @@
     border-radius: 50%;
   }
 
-
-
 .avatars img {
   width:180px;
   height: 180px;
@@ -38,15 +36,13 @@
 }
 
 .light .text-profile  {
-  text-decoration:underline ;
-  text-decoration-color: #95D3F5;
+  
   color:#0A1929 
   
 }
 
 .dark .text-profile {
-  text-decoration:underline ;
-  text-decoration-color: #95D3F5;
+  
   color:rgb(255, 206, 71)
   
 }
