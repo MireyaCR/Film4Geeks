@@ -42,7 +42,9 @@ const Navbar = () => {
         <nav className="navbar d-flex justify-content-between navbar-expand-sm sticky-top">
           <div>
             <a className="navbar-brand  ms-2 p-2" href="#">
-              <img src={logo} width={50} height={50} />
+              <Link to="/">
+                  <img src={logo} width={50} height={50} />
+              </Link>
               Films4Geeks
             </a>
           </div>
