@@ -14,5 +14,3 @@ pipenv run pip install importlib-metadata
 pipenv run pip freeze
 
 pipenv run upgrade
-
-pipenv run start
