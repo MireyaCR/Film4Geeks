@@ -1,11 +1,11 @@
 import React, { useContext, useEffect, useState } from "react";
 import Modal from "react-modal";
 import { useParams } from "react-router-dom";
-import { API_IMAGE } from "../../../../front/js/services/API_IMAGE.js";
+import { API_IMAGE } from "../services/API_IMAGE.js";
 import { useNavigate } from "react-router-dom";
 import { Context } from "../store/appContext";
 import Toolbar_ from "../component/Toolbar_.jsx";
-import Logo from "../../../../front/img/LOGO.png";
+import Logo from "../../img/LOGO.png";
 
 import "../../styles/detailspopular.css";
 

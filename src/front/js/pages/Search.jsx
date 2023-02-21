@@ -2,10 +2,9 @@ import React, { useContext, useState, useEffect } from "react";
 import { Context } from "../store/appContext";
 import { useNavigate } from "react-router-dom";
 import "../../styles/search.css";
-import { API_IMAGE } from "../../../../front/js/services/API_IMAGE.js";
-import Logo from "../../../../front/img/LOGO.png";
+import { API_IMAGE } from "../services/API_IMAGE.js";
+import Logo from "../../img/LOGO.png";
 import { Link } from "react-router-dom";
-import SpeechRecognition from "react-speech-recognition";
 
 function Search() {
   const { store, actions } = useContext(Context);

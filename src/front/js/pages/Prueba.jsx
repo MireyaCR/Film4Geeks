@@ -1,6 +1,5 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useContext, useState } from "react";
 import { Context } from "../store/appContext";
-import { API_IMAGE } from "../../../../front/js/services/API_IMAGE.js";
 
 export const Prueba = () => {
   const { store, actions } = useContext(Context);

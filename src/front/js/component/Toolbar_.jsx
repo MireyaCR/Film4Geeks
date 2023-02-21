@@ -2,7 +2,7 @@ import propTypes from "prop-types";
 import React, { useContext, useState, useEffect } from "react";
 import { Context } from "../store/appContext";
 
-import "../../../../front/styles/toolbar_.css";
+import "../../styles/toolbar_.css"
 
 const Toolbar_ = (props) => {
   const [favo, setFavo] = useState(false);
