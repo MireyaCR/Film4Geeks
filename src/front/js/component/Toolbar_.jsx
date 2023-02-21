@@ -2,7 +2,7 @@ import propTypes from "prop-types";
 import React, { useContext, useState, useEffect } from "react";
 import { Context } from "../store/appContext";
 
-import "/workspace/Film4Geeks/src/front/styles/toolbar_.css";
+import "../../../../front/styles/toolbar_.css";
 
 const Toolbar_ = (props) => {
   const [favo, setFavo] = useState(false);
@@ -11,7 +11,6 @@ const Toolbar_ = (props) => {
   const { store, actions } = useContext(Context);
 
   useEffect(() => {
-
     const getFavourite = async () => {
       try {
         const data = await actions.getDbFav(props.idFilm);
@@ -73,16 +72,16 @@ const Toolbar_ = (props) => {
   const deleteSeen = async () => {
     const data = await actions.deleteSeen(props.idFilm);
     if (data.status === 200) {
-      console.log("DELETE",data)
+      console.log("DELETE", data);
       setSeen(false);
     } else {
-      console.error("DELETE",data);
+      console.error("DELETE", data);
     }
   };
 
   const addPending = async () => {
     const data = await actions.addDbPending(props.idFilm);
-    console.log("post pending",data)
+    console.log("post pending", data);
     if (data.status === 200) {
       setPend(true);
     } else {
@@ -93,42 +92,53 @@ const Toolbar_ = (props) => {
   const deletePending = async () => {
     const data = await actions.deletePending(props.idFilm);
     if (data.status === 200) {
-      console.log("DELETE",data)
+      console.log("DELETE", data);
       setPend(false);
     } else {
-      console.error("DELETE",data);
+      console.error("DELETE", data);
     }
   };
 
   return (
     <div className="container d-flex justify-content-around">
-      <button title="Add to your seen list"
-        className={seen ? "fas fa-check p-2 m-1 yes-seen" : "fas fa-check p-2 m-1 no"}
+      <button
+        title="Add to your seen list"
+        className={
+          seen ? "fas fa-check p-2 m-1 yes-seen" : "fas fa-check p-2 m-1 no"
+        }
         onClick={() => {
           if (seen) {
             deleteSeen();
           } else {
-            addSeen();            
+            addSeen();
           }
         }}
       ></button>
-      <button title="Add to your favourite list"
-        className={favo ? "fas fa-star p-2 m-1 yes-favo" : "far fa-star p-2 m-1 no"}
+      <button
+        title="Add to your favourite list"
+        className={
+          favo ? "fas fa-star p-2 m-1 yes-favo" : "far fa-star p-2 m-1 no"
+        }
         onClick={() => {
-            if (favo) {
-                deleteFavo();
-              } else {
-                addFavo();            
-              }
+          if (favo) {
+            deleteFavo();
+          } else {
+            addFavo();
+          }
         }}
       ></button>
-      <button title="Add to your pending list"
-        className={pend ? "fas fa-thumbtack p-2 m-1 yes-pend" : "fas fa-thumbtack p-2 m-1 no"}
+      <button
+        title="Add to your pending list"
+        className={
+          pend
+            ? "fas fa-thumbtack p-2 m-1 yes-pend"
+            : "fas fa-thumbtack p-2 m-1 no"
+        }
         onClick={() => {
           if (pend) {
             deletePending();
           } else {
-            addPending();            
+            addPending();
           }
         }}
       ></button>

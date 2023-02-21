@@ -1,11 +1,11 @@
 import React, { useContext, useEffect, useState } from "react";
 import Modal from "react-modal";
 import { useParams } from "react-router-dom";
-import { API_IMAGE } from "/workspace/Film4Geeks/src/front/js/services/API_IMAGE.js";
+import { API_IMAGE } from "../../../../front/js/services/API_IMAGE.js";
 import { useNavigate } from "react-router-dom";
 import { Context } from "../store/appContext";
 import Toolbar_ from "../component/Toolbar_.jsx";
-import Logo from "/workspace/Film4Geeks/src/front/img/LOGO.png";
+import Logo from "../../../../front/img/LOGO.png";
 
 import "../../styles/detailspopular.css";
 
@@ -101,7 +101,7 @@ const Detailspopular = () => {
   const addComment = async (commenta) => {
     const data = await actions.addComment(commenta, params.index);
     setComment(commenta);
-    setComments(prevComments => [...prevComments, commenta]);
+    setComments((prevComments) => [...prevComments, commenta]);
   };
 
   if (!popularMovie) {

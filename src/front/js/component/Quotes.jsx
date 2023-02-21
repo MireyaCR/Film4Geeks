@@ -1,6 +1,5 @@
-import React, {useContext, useEffect,useState} from "react";
-import { Context } from "../store/appContext";
-import quotes from '/workspace/Film4Geeks/quotes.json'
+import React, { useEffect,useState} from "react";
+import quotes from '../../../../quotes.json'
 import 'react-alice-carousel/lib/alice-carousel.css';
 
 import '../../styles/home.css'
