@@ -8,6 +8,9 @@ npm install
 npm run build
 
 pipenv install
+
+pipenv run pip install importlib-metadata
+
 pipenv run pip freeze
 
 pipenv run migrate
