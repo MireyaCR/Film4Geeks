@@ -8,5 +8,10 @@ npm install
 npm run build
 
 pipenv install
-pipenv freeze
+pipenv run pip freeze
+
+pipenv run migrate
+
 pipenv run upgrade
+
+pipenv run start
