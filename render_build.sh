@@ -13,10 +13,6 @@ pipenv run pip install importlib-metadata
 
 pipenv run pip freeze
 
-pipenv run flask db init
-
-pipenv run migrate
-
 pipenv run upgrade
 
 pipenv run start
