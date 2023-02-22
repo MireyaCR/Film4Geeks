@@ -31,7 +31,7 @@ const Popular = () => {
 	return (
 	
 	<div className="container mt-5">
-		<h3 className="mb-4 h3categorias">Popular in 2022...</h3>
+		<h3 className="mb-4 h3categorias">Most Popular...</h3>
 		<div className="d-flex justify-content-around mx-2">
 			<AliceCarousel responsive={responsive} autoPlay autoPlayInterval="1500"> 
 			{store.movies.map((movie, index) => (   
